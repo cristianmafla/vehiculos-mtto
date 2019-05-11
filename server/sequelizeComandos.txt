@@ -7,7 +7,7 @@
 *crear base de datos
     npx sequelize db:create
     
-*crear migracion y modelo    
+*crear migracion y modelo
     npx sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
 
 *ejecutar las migraciones

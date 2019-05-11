@@ -1,21 +1,15 @@
-import axios from 'axios';
-import {errorAxios} from './utils';
 import { companyProfile } from '../../models/company_profile';
+import { companiesUrlAPI } from './utils';
+import {paginationTickers} from '../../../tickers';
 
-export const getOneCompanyProfile = (ticker) => {
-    return new Promise((resolve,reject) => {
-        axios({
-            method: 'get',
-            url: `https://api.iextrading.com/1.0/stock/${ticker}/company`,
-            responseType: 'json'
-        })
-        .then(({ data }) => {
-            const CompanyProfile = new companyProfile(data);
-            CompanyProfile.save();
-            resolve(data);
-            console.log('Data Api iextrading', data)
-        })
-        .catch(error => errorAxios(error));
-    });
+export const getCompanyProfile =  (init = 1,limit = 1) => {
+    const tickers = paginationTickers(init,limit);
+    return companiesUrlAPI(tickers).map(company => company.then(({status,data}) => {
+        if(status === 200){
+            new companyProfile(data).save();
+            return data;
+        }
+        return [];
+    }));
 };
 
