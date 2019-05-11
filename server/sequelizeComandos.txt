@@ -1,0 +1,31 @@
+*instalar
+    npm install --save sequelize-cli
+
+*iniciar
+    npx sequelize init
+
+*crear base de datos
+    npx sequelize db:create
+    
+*crear migracion y modelo    
+    npx sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
+
+*ejecutar las migraciones
+    npx sequelize db:migrate
+
+*revertir las migraciones (tablas en la base de datos) 
+    npx sequelize db:migrate:undo
+    npx sequelize db:migrate:undo:all
+    npx sequelize db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js
+
+*crear SEED
+    npx sequelize seed:generate --name demo-user
+    
+*ejecutar SEED
+    npx sequelize db:seed:all
+
+*revertir los SEED
+    npx sequelize db:seed:undo
+    npx sequelize db:seed:undo --seed name-of-seed-as-in-data
+    npx sequelize db:seed:undo:all
+        
