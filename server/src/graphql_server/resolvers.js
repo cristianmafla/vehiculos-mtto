@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { GraphQLUpload } from 'graphql-upload';
-import {getOneCompanyProfile} from './api/db_nosql/controllers/company_profile';
+import {getCompanyProfile} from './api/db_nosql/controllers/company_profile';
 
 const resolvers = {
 
@@ -8,9 +8,9 @@ const resolvers = {
 
     Query: {
 
-        getOneCompanyProfile: (_, { ticker }) => getOneCompanyProfile(ticker)
+        getCompanyProfile: (_, { init, limit }) => getCompanyProfile(init, limit)
 
     }
 };
-//cambio
+//cambio este
 export { resolvers };

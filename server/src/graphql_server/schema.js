@@ -4,7 +4,7 @@ scalar Date
 type Query {
 
     """ GET ONE COMPANY PROFILE """
-    getOneCompanyProfile(ticker:String):CompanyProfile
+    getCompanyProfile(init:Int,limit:Int):[CompanyProfile]
 }
 
 type CompanyProfile {
