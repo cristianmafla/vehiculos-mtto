@@ -11,7 +11,7 @@ const getOne = (ticker,callback) => {
       const bS = new financials(body)
       const bash = bS.save()
 
-      callback(undefined,body);
+      callback(undefined,body)
       console.log(`Security ${body.symbol} saved`)
     }else{
       callback(`Unable to fetch ${body.symbol} financial reports.`)
@@ -19,30 +19,25 @@ const getOne = (ticker,callback) => {
   })
 }
 
-const getAll = async (tickers) => {
-    tickers.forEach((ticker)=>{
-      const result = await multipleInsert(ticker)
-      console.log(result)
-    })
-  })
-}
-
-const multipleInsert = (ticker)=>{
-  return new Promise((resolve,reject)=>{
+const getAll = (tickers,callback) => {
+  tickers.forEach((ticker)=>{
     setTimeout(()=>{
       request({
         url:`https://api.iextrading.com/1.0/stock/${ticker}/financials`,
         json:true
       },(error,response,body) => {
-        if(error){
-          return reject(`Unable to fetch ${ticker} income statement.`)
-        }
+
+        if(!error && response.statusCode === 200){
           const bS = new financials(body)
           const bash = bS.save()
 
-          resolve(`Security ${body.symbol} saved`)
+          callback(undefined,body);
+          console.log(`Security ${body.symbol} saved`);
+        }else{
+          callback(`Unable to fetch ${ticker} income statement.`);
+        }
       })
-    },2000)
+    },0)
   })
 }
 
