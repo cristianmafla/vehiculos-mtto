@@ -1,5 +1,5 @@
 const yargs = require('yargs')
-const balanceSheet = require('./api_queries/balance_sheet')
+const financials = require('./api_queries/financials')
 const companyProfile = require('./api_queries/company_profile')
 const tickers = [
   'YI',
@@ -3238,7 +3238,7 @@ yargs.command({
   command:'updateBS',
   describe:'Update all securities financials.',
   handler: function (){
-      balanceSheet.getAll(tickers, (errorMessage,results)=> {
+      financials.getAll(tickers, (errorMessage,results)=> {
         if(errorMessage){
           console.log(errorMessage);
         }else{
@@ -3260,7 +3260,7 @@ yargs.command({
         }
     },
     handler(argv) {
-      balanceSheet.getOne(argv.ticker, (errorMessage,results)=> {
+      financials.getOne(argv.ticker, (errorMessage,results)=> {
         if(errorMessage){
           console.log(errorMessage);
         }else{
