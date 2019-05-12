@@ -1,19 +1,7 @@
-import axios from 'axios';
-
-export const companiesUrlAPI = tickers => (
-    tickers.map((ticker) => (
-        axios({
-            method: 'get',
-            url: `https://api.iextrading.com/1.0/stock/${ticker}/company`,
-            responseType: 'json'
-        })
-    ))
-)
-
 export const errorHttp = status => {
     switch (status) {
-        case 301 :
-           return 'se está haciendo una redirección de una página a otra';
+        case 301:
+            return 'se está haciendo una redirección de una página a otra';
             break;
         case 302:
             return 'se está haciendo una redirección de una página a otra';
