@@ -1,4 +1,4 @@
-*instalar
+******************instalar
     npm install --save sequelize-cli
 
 *iniciar
