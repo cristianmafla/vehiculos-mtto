@@ -12,5 +12,4 @@ const resolvers = {
 
     }
 };
-//cambio este
 export { resolvers };

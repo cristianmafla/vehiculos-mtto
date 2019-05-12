@@ -1,6 +1,6 @@
 import { companyProfile } from '../../models/company_profile';
-import { companiesUrlAPI } from './utils';
-import {paginationTickers} from '../../../tickers';
+import { companiesUrlAPI, errorHttp } from './utils';
+import { paginationTickers } from '../../../tickers';
 
 export const getCompanyProfile =  (init = 1,limit = 1) => {
     const tickers = paginationTickers(init,limit);
@@ -9,6 +9,7 @@ export const getCompanyProfile =  (init = 1,limit = 1) => {
             new companyProfile(data).save();
             return data;
         }
+        console.log(errorHttp(status));
         return [];
     }));
 };

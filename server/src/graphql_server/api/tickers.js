@@ -3237,5 +3237,4 @@ export const paginationTickers = (init = 1, limit = 1) => {
         tickers[i] ? filterTickers.push(tickers[i]) : false;
     }
     return filterTickers;
-
 };
