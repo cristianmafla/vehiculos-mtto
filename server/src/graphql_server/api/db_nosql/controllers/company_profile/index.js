@@ -16,7 +16,7 @@ export const setCompanyProfileProxy =  (init = 1, limit = 1) => {
         return companies.map(company => company.then(data => {
             if(i === 0){
                 serverproxy.close();
-                console.log(`server proxy CLOSED http://localhost${port}`);
+                console.log(`***server proxy CLOSED http://localhost${port}***`);
                 i = 1;
             }
             return getSave(data)

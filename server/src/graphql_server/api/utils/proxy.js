@@ -9,8 +9,11 @@ export const serverProxy = () => {
         port = portRandom();
     app.use('/', (req, res) => {
         const url = req.url.replace('/?url=', '');
-        req.pipe(request(url)).pipe(res);
+        req
+            .on('error', error => console.log('error proxy',error))
+            .pipe(request(url).on('error', error => console.log('error proxy request', error)))
+            .pipe(res);
     });
-    const serverproxy = app.listen(port, () => console.log(`server proxy OPEN http://localhost:${port}`));
+    const serverproxy = app.listen(port, () => console.log(`***server proxy OPEN http://localhost:${port}***`));
     return ({ port, serverproxy });
 };
