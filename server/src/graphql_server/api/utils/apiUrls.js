@@ -1,2 +1,2 @@
 export const companyProfileUrl = ticker => `https://api.iextrading.com/1.0/stock/${ticker}/company`;
-export const companyProfileUrlProxy = (port, ticker) => `http://localhost:${port}/?url=https://api.iextrading.com/1.0/stock/${ticker}/company`;
+export const companyProfileUrlProxy = (port, ticker) => `http://localhost:${port}/?url=https://api.iextrading.com/1.0/stock/${ticker}/company`; 

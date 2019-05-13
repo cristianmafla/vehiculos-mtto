@@ -3,11 +3,11 @@ scalar Date
 
 type Query {
 
-    """ GET COMPANIES PROFILE API <api.iextrading.com>"""
-    getCompanyProfile(init:Int,limit:Int):[CompanyProfile]
+    """ SET COMPANIES PROFILE API <api.iextrading.com>"""
+    setCompanyProfile(init:Int,limit:Int):[CompanyProfile]
 
-    """ GET COMPANIES PROFILE API WITH PROXY <api.iextrading.com>"""
-    getCompanyProfileProxy(init:Int,limit:Int):[CompanyProfile]
+    """ SET COMPANIES PROFILE API WITH PROXY <api.iextrading.com>"""
+    setCompanyProfileProxy(init:Int,limit:Int):[CompanyProfile]
 }
 
 type CompanyProfile {
@@ -20,6 +20,6 @@ type CompanyProfile {
     CEO:String
     issueType:String
     sector:String
+    tags:[String]
 }
-
 `;

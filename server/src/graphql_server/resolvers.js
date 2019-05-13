@@ -1,8 +1,8 @@
 import fs from 'fs';
 import { GraphQLUpload } from 'graphql-upload';
 import {
-    getCompanyProfile,
-    getCompanyProfileProxy
+    setCompanyProfile,
+    setCompanyProfileProxy
     } from './api/db_nosql/controllers/company_profile';
 
 const resolvers = {
@@ -11,9 +11,9 @@ const resolvers = {
 
     Query: {
 
-        getCompanyProfile: (_, { init, limit }) => getCompanyProfile(init, limit),
+        setCompanyProfile: (_, { init, limit }) => setCompanyProfile(init, limit),
 
-        getCompanyProfileProxy: (_, { init, limit }) => getCompanyProfileProxy(init, limit),
+        setCompanyProfileProxy: (_, { init, limit }) => setCompanyProfileProxy(init, limit),
 
     }
 };

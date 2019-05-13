@@ -1,34 +1,26 @@
-import { companyProfile } from '../../models/company_profile';
 import { companiesUrlApiProxy } from './utils/endPointUrlProxy';
 import { companiesUrlApi } from './utils/endPointUrl';
-import { errorHttp } from './utils'
+import { getSave } from './utils'
 import { paginationTickers } from '../../../utils/tickers';
 
 //COMPANIES PROFILE
-export const getCompanyProfile = (init = 1, limit = 1) => {
+export const setCompanyProfile = (init = 1, limit = 1) => {
     const tickers = paginationTickers(init, limit);
-    return companiesUrlApi(tickers).map(company => company.then(({ status, data }) => {
-        if (status === 200) {
-            new companyProfile(data).save();
-            return data;
-        }
-        console.log(errorHttp(status));
-        return [];
-    }));
+    return companiesUrlApi(tickers).map(company => company.then(data => getSave(data)));
 };
 //COMPANIES PROFILE PROXY
-export const getCompanyProfileProxy = (init = 1, limit = 1) => {
+export const setCompanyProfileProxy =  (init = 1, limit = 1) => {
     const tickers = paginationTickers(init, limit);
-    return companiesUrlApiProxy(tickers).then(data => (
-        data.map(company => company.then(({ status, data }) => {
-            if (status === 200) {
-                new companyProfile(data).save();
-                return data;
-            } else {
-                console.log(errorHttp(status));
-                return [];
+    return companiesUrlApiProxy(tickers).then(({ companies, serverproxy, port}) => {
+        let i = 0 ;
+        return companies.map(company => company.then(data => {
+            if(i === 0){
+                serverproxy.close();
+                console.log(`server proxy CLOSED http://localhost${port}`);
+                i = 1;
             }
+            return getSave(data)
         }))
-    ));
+    });
 };
 

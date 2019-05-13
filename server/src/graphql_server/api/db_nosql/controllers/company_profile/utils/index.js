@@ -1,4 +1,6 @@
-export const errorHttp = status => {
+import { companyProfile } from '../../../models/company_profile';
+
+const errorHttp = status => {
     switch (status) {
         case 301:
             return 'se está haciendo una redirección de una página a otra';
@@ -28,4 +30,9 @@ export const errorHttp = status => {
             return null;
             break;
     }
+};
+
+export const getSave = ({status,data}) => {
+    if (status === 200) return new companyProfile(data).save();
+    console.log(errorHttp(status));
 };
