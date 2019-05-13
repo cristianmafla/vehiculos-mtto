@@ -1,5 +1,10 @@
 import { companyProfile } from '../../../models/company_profile';
 
+export const getSave = ({ status, data }) => {
+    if (status === 200) return new companyProfile(data).save();
+    console.log(errorHttp(status));
+};
+
 const errorHttp = status => {
     switch (status) {
         case 301:
@@ -30,9 +35,4 @@ const errorHttp = status => {
             return null;
             break;
     }
-};
-
-export const getSave = ({status,data}) => {
-    if (status === 200) return new companyProfile(data).save();
-    console.log(errorHttp(status));
 };

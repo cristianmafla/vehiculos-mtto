@@ -14,6 +14,6 @@ export const serverProxy = () => {
             .pipe(request(url).on('error', error => console.log('error proxy request', error)))
             .pipe(res);
     });
-    const serverproxy = app.listen(port, () => console.log(`***server proxy OPEN http://localhost:${port}***`));
+    const serverproxy = app.listen(port, () => console.log(`*** SERVER PROXY OPEN http://localhost:${port} ***`));
     return ({ port, serverproxy });
 };

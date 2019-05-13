@@ -1,57 +1,68 @@
 import mongoose from '../config/database';
 
-const Schema = new mongoose.Schema({
+const schema = new mongoose.Schema({
   symbol:{
-    type:String,
-    trim:true
+    type: String,
+    required: true,
+    trim: true,
+    lowercase: true,
+    unique: true,
+    validate: () => { }
   },
   companyName:{
-    type:String,
-    trim:true
+    type: String,
+    required: true,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   exchange:{
-    type:String,
-    trim:true
+    type: String,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   industry:{
-    type:String,
-    trim:true
+    type: String,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   website:{
-    type:String,
-    trim:true
+    type: String,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   description:{
-    type:String,
-    trim:true
+    type: String,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   CEO:{
-    type:String,
-    trim:true
+    type: String,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   issueType:{
-    type:String,
-    trim:true
+    type: String,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   sector:{
-    type:String,
-    trim:true
+    type: String,
+    trim: true,
+    lowercase: true,
+    validate: () => { }
   },
   tags:{
-    0	:{
-      type:String,
-      trim:true
-    },
-    1	:{
-      type:String,
-      trim:true
-    },
-    2	:{
-      type:String,
-      trim:true
-    },
+    type: [String],
+    default: ['default-value1', 'default-value2'],
   }
 });
 
-export const companyProfile = mongoose.model('companyProfile', Schema);
+export const companyProfile = mongoose.model('companyProfile', schema);
 
