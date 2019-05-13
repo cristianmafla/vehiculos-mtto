@@ -21,7 +21,7 @@ export const companiesUrlApiProxy =  tickers => {
                     });
                 }
                 companies.push(axios.get(companyProfileUrlProxy(port, ticker)))
-            }, 10);
+            }, 10);//modificador tiempo entre consultas*****
         });
     });
 };
