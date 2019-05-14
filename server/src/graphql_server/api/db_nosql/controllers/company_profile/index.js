@@ -1,14 +1,26 @@
-import { companyProfile } from '../../models/company_profile';
-import { companiesUrlAPI } from './utils';
-import {paginationTickers} from '../../../tickers';
+import { companiesUrlApiProxy } from './utils/endPointUrlProxy';
+import { companiesUrlApi } from './utils/endPointUrl';
+import { getSave } from './utils'
+import { paginationTickers } from '../../../utils/tickers';
 
-export const getCompanyProfile =  (init = 1,limit = 1) => {
-    const tickers = paginationTickers(init,limit);
-    return companiesUrlAPI(tickers).map(company => company.then(({status,data}) => {
-        if(status === 200){
-            new companyProfile(data).save();
-            return data;
-        }
-        return [];
-    }));
+//COMPANIES PROFILE
+export const setCompanyProfile = (init = 1, limit = 1) => {
+    const tickers = paginationTickers(init, limit);
+    return companiesUrlApi(tickers).map(company => company.then(data => getSave(data)));
 };
+//COMPANIES PROFILE PROXY
+export const setCompanyProfileProxy =  (init = 1, limit = 1) => {
+    const tickers = paginationTickers(init, limit);
+    return companiesUrlApiProxy(tickers).then(({ companies, serverproxy, port}) => {
+        let i = 0 ;
+        return companies.map(company => company.then(data => {
+            if(i === 0){
+                serverproxy.close();
+                console.log(`*** SERVER PROXY CLOSED http://localhost${port} ***`);
+                i = 1;
+            }
+            return getSave(data)
+        }))
+    });
+};
+
