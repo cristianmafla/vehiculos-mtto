@@ -8,6 +8,7 @@ export const setCompanyProfile = (init = 1, limit = 1) => {
     const tickers = paginationTickers(init, limit);
     return companiesUrlApi(tickers).map(company => company.then(data => getSave(data)));
 };
+
 //COMPANIES PROFILE PROXY
 export const setCompanyProfileProxy =  (init = 1, limit = 1) => {
     const tickers = paginationTickers(init, limit);
