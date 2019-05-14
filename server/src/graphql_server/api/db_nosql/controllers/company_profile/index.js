@@ -3,11 +3,12 @@ import { companiesUrlApi } from './utils/endPointUrl';
 import { getSave } from './utils'
 import { paginationTickers } from '../../../utils/tickers';
 
-//COMPANIES PROFILE
+//COMPANIES PROFILE***
 export const setCompanyProfile = (init = 1, limit = 1) => {
     const tickers = paginationTickers(init, limit);
     return companiesUrlApi(tickers).map(company => company.then(data => getSave(data)));
 };
+
 //COMPANIES PROFILE PROXY
 export const setCompanyProfileProxy =  (init = 1, limit = 1) => {
     const tickers = paginationTickers(init, limit);
