@@ -12,4 +12,3 @@ export const getCompanyProfile =  (init = 1,limit = 1) => {
         return [];
     }));
 };
-

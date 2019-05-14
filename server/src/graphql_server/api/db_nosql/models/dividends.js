@@ -1,0 +1,42 @@
+import mongoose from '../config/database'
+
+const Schema = new mongoose.schema({
+    [{
+    exDate:{
+      type:Date,
+      trim:true
+    },
+    paymentDate:{
+      type:Date,
+      trim:true
+    },
+    recordDate:{
+      trype:Date,
+      trim:true
+    },
+    declaredDate:{
+      type:Date,
+      trim:true
+    },
+    amount:{
+      type:Number,
+      trim:true
+    },
+    flag:{
+      type:String,
+      trim:true
+    },
+    type:{
+      type:String,
+      trim:true
+    },
+    qualified:
+    {
+      type:String,
+      trim:true
+    },
+    indicated:{
+      type:String,
+      trim:true
+    }}]
+})
