@@ -1,9 +1,7 @@
 import fs from 'fs';
 import { GraphQLUpload } from 'graphql-upload';
-import {
-    setCompanyProfile,
-    setCompanyProfileProxy
-    } from './api/db_nosql/controllers/company_profile';
+import { setCompanyProfile, setCompanyProfileProxy } from './api/db_nosql/controllers/company_profile';
+import { setCompanyDividens } from './api/db_nosql/controllers/companies_dividens';
 
 const resolvers = {
 
@@ -12,9 +10,13 @@ const resolvers = {
     Query: {
 
         setCompanyProfile: (_, { init, limit }) => setCompanyProfile(init, limit),
-
         setCompanyProfileProxy: (_, { init, limit }) => setCompanyProfileProxy(init, limit),
 
+    },
+    Mutation: {
+
+        setCompanyDividens: (_, { init, limit, range,symbol }) => setCompanyDividens(init, limit, range, symbol)
     }
+
 };
 export { resolvers };

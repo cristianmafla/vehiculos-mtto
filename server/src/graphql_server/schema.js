@@ -10,6 +10,12 @@ type Query {
     setCompanyProfileProxy(init:Int,limit:Int):[CompanyProfile]
 }
 
+type Mutation {
+
+    """ SET COMPANIES DIVIDENS API WITH PROXY <api.iextrading.com>"""
+    setCompanyDividens(init:Int,limit:Int,range:String,symbol:String):[[CompanyDividens]]
+}
+
 type CompanyProfile {
     symbol:String
     companyName:String
@@ -21,5 +27,16 @@ type CompanyProfile {
     issueType:String
     sector:String
     tags:[String]
+}
+
+type CompanyDividens {
+    symbol:String
+    exDate: Date
+    paymentDate: Date
+    recordDate:Date
+    declaredDate:Date
+    amount:Float
+    type:String
+    qualified:String
 }
 `;
