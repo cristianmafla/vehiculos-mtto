@@ -2,7 +2,7 @@ import fs from 'fs';
 import { GraphQLUpload } from 'graphql-upload';
 import { setCompanyProfile, setCompanyProfileProxy } from '../api/db_nosql/controllers/company_profile';
 
-const resolvers = {
+export default {
 
     Upload: GraphQLUpload,
 
@@ -19,4 +19,3 @@ const resolvers = {
         setCompanyProfileProxy: (_, { init, limit }) => setCompanyProfileProxy(init, limit),
     }
 };
-export default resolvers;
