@@ -1,4 +1,4 @@
 import axios from 'axios';
-import { companyProfileUrl } from '../../../../utils/apiUrls';
+import { companiesIPO } from '../../../../utils/apiUrls';
 
-export const companiesUrlApi = tickers => tickers.map((ticker) => axios.get(companyProfileUrl(ticker)));
+export const companiesUrlApi = tickers => tickers.map((ticker) => axios.get(companiesIPO(ticker)));
