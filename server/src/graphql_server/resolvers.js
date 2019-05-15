@@ -15,6 +15,7 @@ const resolvers = {
     },
     Mutation: {
 
+<<<<<<< HEAD
         setCompanyDividens: (_, { init, limit, range,symbol }) => setCompanyDividens(init, limit, range, symbol)
     }
 
@@ -22,3 +23,9 @@ const resolvers = {
 export { resolvers };
 
 //test please ple
+=======
+        setCompanyDividens: (_, { range,symbol }) => setCompanyDividens( range, symbol)
+    }
+};
+export { resolvers }; 
+>>>>>>> dcd424f054b2d6f45ca9557284b5ab6ad9190c04

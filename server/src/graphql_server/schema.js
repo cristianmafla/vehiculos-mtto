@@ -13,7 +13,11 @@ type Query {
 type Mutation {
 
     """ SET COMPANIES DIVIDENS API WITH PROXY <api.iextrading.com>"""
+<<<<<<< HEAD
     setCompanyDividens(init:Int,limit:Int,range:String,symbol:String):[[CompanyDividens]]
+=======
+    setCompanyDividens(range:String,symbol:String):[CompanyDividens]
+>>>>>>> dcd424f054b2d6f45ca9557284b5ab6ad9190c04
 }
 
 type CompanyProfile {
