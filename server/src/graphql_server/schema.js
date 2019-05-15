@@ -14,8 +14,8 @@ type Mutation {
     """ SET COMPANIES PROFILE API WITH PROXY <api.iextrading.com>"""
     setCompanyProfileProxy(init:Int,limit:Int):[CompanyProfile]
 
-    """ SET COMPANIES DIVIDENS API WITH PROXY <api.iextrading.com>"""
-    setCompanyDividens(range:String,symbol:String):[CompanyDividens]
+    """ SET COMPANIES DIVIDENS API <api.iextrading.com>"""
+    setCompanyDividens(init:Int,limit:Int,range:String,symbol:String):[[CompanyDividens]]
 }
 
 type CompanyProfile {
