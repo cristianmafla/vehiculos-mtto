@@ -1,9 +1,14 @@
-export default `
+import { gql } from 'apollo-server-express';
+
+export default gql`
+
 scalar Date
 
 type Query {
 
-    pruebaQuery:String
+    """ GET COMPANIES PROFILE """
+    getCompanyProfile:String
+
 }
 
 type Mutation {
@@ -13,9 +18,6 @@ type Mutation {
 
     """ SET COMPANIES PROFILE API WITH PROXY <api.iextrading.com>"""
     setCompanyProfileProxy(init:Int,limit:Int):[CompanyProfile]
-
-    """ SET COMPANIES DIVIDENS API <api.iextrading.com>"""
-    setCompanyDividens(init:Int,limit:Int,range:String,symbol:String):[CompanyDividens]
 }
 
 type CompanyProfile {
@@ -30,15 +32,4 @@ type CompanyProfile {
     sector:String
     tags:[String]
 }
-
-type CompanyDividens {
-    symbol:String
-    exDate: Date
-    paymentDate: Date
-    recordDate:Date
-    declaredDate:Date
-    amount:Float
-    type:String
-    qualified:String
-}
-`;
+` ;

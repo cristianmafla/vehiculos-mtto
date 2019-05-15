@@ -9,14 +9,6 @@ module.exports = {
 		filename: 'bundle_server.js',
 		publicPath: '/'
 	},
-	plugins: [
-		new CopyWebpackPlugin([
-			{
-				from: path.resolve(__dirname, 'src', 'assets'),
-				to: path.resolve(__dirname, 'dist', 'assets')
-			}
-		])
-	],
 	module: {
 		loaders: [
 			{
