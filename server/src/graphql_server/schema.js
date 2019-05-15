@@ -1,0 +1,42 @@
+export default `
+scalar Date
+
+type Query {
+
+    """ SET COMPANIES PROFILE API <api.iextrading.com> """
+    setCompanyProfile(init:Int,limit:Int):[CompanyProfile]
+
+    """ SET COMPANIES PROFILE API WITH PROXY <api.iextrading.com>"""
+    setCompanyProfileProxy(init:Int,limit:Int):[CompanyProfile]
+}
+
+type Mutation {
+
+    """ SET COMPANIES DIVIDENS API WITH PROXY <api.iextrading.com>"""
+    setCompanyDividens(range:String,symbol:String):[CompanyDividens]
+}
+
+type CompanyProfile {
+    symbol:String
+    companyName:String
+    exchange:String
+    industry:String
+    website:String
+    description:String
+    CEO:String
+    issueType:String
+    sector:String
+    tags:[String]
+}
+
+type CompanyDividens {
+    symbol:String
+    exDate: Date
+    paymentDate: Date
+    recordDate:Date
+    declaredDate:Date
+    amount:Float
+    type:String
+    qualified:String
+}
+`;
