@@ -3,14 +3,16 @@ scalar Date
 
 type Query {
 
+    pruebaQuery:String
+}
+
+type Mutation {
+
     """ SET COMPANIES PROFILE API <api.iextrading.com> """
     setCompanyProfile(init:Int,limit:Int):[CompanyProfile]
 
     """ SET COMPANIES PROFILE API WITH PROXY <api.iextrading.com>"""
     setCompanyProfileProxy(init:Int,limit:Int):[CompanyProfile]
-}
-
-type Mutation {
 
     """ SET COMPANIES DIVIDENS API WITH PROXY <api.iextrading.com>"""
     setCompanyDividens(range:String,symbol:String):[CompanyDividens]

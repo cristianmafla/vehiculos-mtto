@@ -8,14 +8,16 @@ const resolvers = {
     Upload: GraphQLUpload,
 
     Query: {
+        pruebaQuery:(_, args)  => 'Prueba query'
+    },
+
+    Mutation: {
 
         setCompanyProfile: (_, { init, limit }) => setCompanyProfile(init, limit),
         setCompanyProfileProxy: (_, { init, limit }) => setCompanyProfileProxy(init, limit),
 
-    },
-    Mutation: {
+        setCompanyDividens: (_, { range, symbol }) => setCompanyDividens(range, symbol),
 
-        setCompanyDividens: (_, { range,symbol }) => setCompanyDividens( range, symbol)
     }
 };
-export { resolvers }; 
+export { resolvers };
