@@ -2,35 +2,27 @@ import axios from 'axios';
 import { companyProfileUrlProxy } from '../../../../utils/apiUrls';
 import { serverProxy } from '../../../../utils/proxy';
 
-export const companiesUrlApiProxy =  tickers => {
+export const getApiCompaniesProfileProxy = symbols => {
     const {port,serverproxy} = serverProxy();
     return new Promise((resolve,reject) => {
         let
             i = 0,
-            totalTickers = tickers.length,
+            totalSymbols = symbols.length,
             companies = [];
 
-        tickers.map((ticker) => {
+        symbols.map(symbol => {
             setTimeout(() => {
                 i = i + 1 ;
-                if(i >= totalTickers){
+                if (i >= totalSymbols){
                     resolve({
                         companies,
                         port,
                         serverproxy
                     });
-                }
-                companies.push(axios.get(companyProfileUrlProxy(port, ticker)))
+                };
+                companies.push(axios.get(companyProfileUrlProxy(port, symbol)));
             }, 10);//modificador tiempo entre consultas*****
         });
     });
 };
-
-/*
-export const companiesUrlApiProxy = async tickers => {
-    const { port, serverproxy } = serverProxy();
-    const companies = await tickers.map((ticker) => axios.get(companyProfileUrlProxy(port, ticker)));
-    return { companies, serverproxy, port };
-};
-*/
 

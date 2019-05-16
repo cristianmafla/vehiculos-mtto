@@ -1,4 +1,4 @@
-import { companyDividens } from '../../../models/company_dividens';
+import { companyDividens as model } from '../../../models/company_dividens';
 import { errorHttp } from '../../utils';
 
 export const getSave = ({status,data},symbol) => {
@@ -8,8 +8,8 @@ export const getSave = ({status,data},symbol) => {
             dividen.symbol = symbol;
             return dividen;
         });
-        companyDividens.insertMany(dividens, (error, data) => {
-            error ? console.log('error', error) : console.log('data', data);
+        model.insertMany(dividens, (error, data) => {
+            error ? console.log('ERROR-MODEL:', error) : null;
         });
         return dividens;
     }

@@ -1,18 +1,9 @@
-import http from 'http'
-import express from 'express'
-import appConfig from './utils'
-import server from './graphql_server'
+import app from './utils';
+import graphQL from './graphql_server';
 
-const
-    app = express(),
-    PORT = process.env.PORT || 3000
+graphQL.applyMiddleware({app});
+graphQL.installSubscriptionHandlers(app);
 
-server.applyMiddleware({ app })
+const PORT = process.env.PORT || 3000;
 
-app.use(appConfig);
-
-const httpServer = http.createServer(app);
-
-server.installSubscriptionHandlers(httpServer);
-
-httpServer.listen(PORT, () => console.log(`*** SERVER OPEN http://localhost:${PORT}${server.graphqlPath} ***`));
+app.listen(PORT, () => console.log(`*** SERVER OPEN http://localhost:${PORT}${graphQL.graphqlPath} ***`));

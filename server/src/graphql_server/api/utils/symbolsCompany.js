@@ -1,4 +1,4 @@
-const tickers = [
+const symbols = [
     'YI',
     'PIH',
     'PIHPP',
@@ -3229,12 +3229,12 @@ const tickers = [
     'ZNGA',
 ];
 //const validEmptyNewTicker = tickers => tickers.length > 0 ? tickers : false;
-export const paginationTickers = (init = 1, limit = 1) => {
+export const paginationSymbols = (init = 1, limit = 1) => {
     init = init -1;
-    limit = limit -1;
-    let filterTickers = [];
+    limit = (limit -1) + init;
+    let filterSymbols = [];
     for (let i = init; i <= limit; i++) {
-        tickers[i] ? filterTickers.push(tickers[i]) : false;
+        symbols[i] ? filterSymbols.push(symbols[i]) : false;
     }
-    return filterTickers;
+    return filterSymbols;
 };

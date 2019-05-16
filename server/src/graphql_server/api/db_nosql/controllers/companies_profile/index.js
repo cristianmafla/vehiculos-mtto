@@ -1,18 +1,18 @@
-import { companiesUrlApiProxy } from './utils/endPointUrlProxy';
-import { companiesUrlApi } from './utils/endPointUrl';
+import { getApiCompaniesProfileProxy } from './utils/endPointUrlProxy';
+import { getApiCompaniesProfile } from './utils/endPointUrl';
 import { getSave } from './utils'
-import { paginationTickers } from '../../../utils/tickers';
+import { paginationSymbols } from '../../../utils/symbolsCompany';
 
 //COMPANIES PROFILE
 export const setCompanyProfile = (init = 1, limit = 1) => {
-    const tickers = paginationTickers(init, limit);
-    return companiesUrlApi(tickers).map(company => company.then(data => getSave(data)));
+    const symbols = paginationSymbols(init, limit);
+    return getApiCompaniesProfile(symbols).map(company => company.then(data => getSave(data)));
 };
 
 //COMPANIES PROFILE PROXY
 export const setCompanyProfileProxy =  (init = 1, limit = 1) => {
-    const tickers = paginationTickers(init, limit);
-    return companiesUrlApiProxy(tickers).then(({ companies, serverproxy, port}) => {
+    const symbols = paginationSymbols(init, limit);
+    return getApiCompaniesProfileProxy(symbols).then(({ companies, serverproxy, port}) => {
         let i = 0 ;
         return companies.map(company => company.then(data => {
             if(i === 0){
