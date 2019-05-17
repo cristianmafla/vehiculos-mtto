@@ -1,0 +1,67 @@
+
+/////////////////////// GIT /////////////////////////
+git remote -v ///muestra la url del repositorio remoto ejemplo ==> origin https//github.com/cristianmafla/algunrepositorio.git
+git remote rm <nombreURL ej:origin> ///elimina el repositorio remoto de git
+git remote add origin https://github.com/cristianmafla/apiFinancieraRespaldo.git ///agrega un repositori remoto a git
+git remote add origin https://github.com/jchristian1/financialData.git
+git add . ///guarda los cambios en git de manera provisional
+git commit -m "first commit" ///crea un commit
+git pull ///actualiza el repositori local con el remoto
+git push -u origin master ///inserta los cambios del repositorio local en el repositorio remoto
+
+
+
+//////////////////////////////// WINDOWS 10 //////////////////////////
+netstat -aon ///procesos abierto [localhost]
+taskkill /F /PID nro_pid ///matar proceso
+
+//////////////////// SEQUELIZE ////////////////////////////
+******************instalar
+    npm install --save sequelize-cli
+
+*iniciar
+    npx sequelize init
+
+*crear base de datos
+    npx sequelize db:create
+
+*crear migracion y modelo
+    npx sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
+
+*ejecutar las migraciones
+    npx sequelize db:migrate
+
+*revertir las migraciones (tablas en la base de datos)
+    npx sequelize db:migrate:undo
+    npx sequelize db:migrate:undo:all
+    npx sequelize db:migrate:undo:all --to XXXXXXXXXXXXXX-create-posts.js
+
+*crear SEED
+    npx sequelize seed:generate --name demo-user
+
+*ejecutar SEED
+    npx sequelize db:seed:all
+
+*revertir los SEED
+    npx sequelize db:seed:undo
+    npx sequelize db:seed:undo --seed name-of-seed-as-in-data
+    npx sequelize db:seed:undo:all
+
+
+
+
+
+
+
+
+apollo-client
+apollo-upload-client
+apollo-link-context
+apollo-cache-inmemory
+isomorphic-ws
+apollo-link
+apollo-link-ws
+subscriptions-transport-ws
+apollo-utilities
+node-fetch
+graphql-tag
