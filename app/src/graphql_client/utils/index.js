@@ -13,7 +13,7 @@ global.fetch = require('node-fetch');
 
 const UploadLink = createUploadLink({ uri:BASE_URL_GRAPHQL});
 const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('tokenUsuario');
+    const token = localStorage.getItem('tokenUser');
     return { headers: { authorization: token } };
 });
 

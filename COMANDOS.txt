@@ -47,21 +47,3 @@ taskkill /F /PID nro_pid ///matar proceso
     npx sequelize db:seed:undo --seed name-of-seed-as-in-data
     npx sequelize db:seed:undo:all
 
-
-
-
-
-
-
-
-apollo-client
-apollo-upload-client
-apollo-link-context
-apollo-cache-inmemory
-isomorphic-ws
-apollo-link
-apollo-link-ws
-subscriptions-transport-ws
-apollo-utilities
-node-fetch
-graphql-tag

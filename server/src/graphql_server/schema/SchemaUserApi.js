@@ -7,17 +7,28 @@ scalar Date
 type Query {
 
     """ USUARIO VALIDO """
-    UsuarioValid:Usuario
+    userValid:User
 
 }
 
-type Usuario {
+type Mutation {
+
+    """LOGIN USUARIO AUTHENTICATION JWT"""
+    loginUser(correo:String!,contrasena:String!):Token!
+
+}
+
+type User {
     id:Int
     nombres:String
     apellidos:String
     correo:String
     imageUrl:String
     roles:Rol
+}
+
+type Token {
+    token:String
 }
 
 type Rol {

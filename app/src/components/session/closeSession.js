@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import authApp from '../../redux_store/actions/authApp';
 
 const btnClose = (user,history,handlerToogle,authApp) => {
-    localStorage.removeItem('tokenUsuario','');
+    localStorage.removeItem('tokenUser','');
     authApp('');
     user.resetStore();
     handlerToogle();

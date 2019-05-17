@@ -6,9 +6,9 @@ export const ANYQUERY = gql`
 }
 `;
 
-export const LOGIN_USUARIO_VALID = gql`
-    query UsuarioValid{
-        UsuarioValid{
+export const LOGIN_USER_VALID = gql`
+    query userValid{
+        userValid{
             id
             nombres
             apellidos
