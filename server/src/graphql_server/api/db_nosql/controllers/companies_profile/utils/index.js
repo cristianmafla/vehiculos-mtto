@@ -8,5 +8,3 @@ export const getSave = ({ status, data }) => {
     };
     console.log(errorHttp(status));
 };
-
-//new companyProfile(data).save()

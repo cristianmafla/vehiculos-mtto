@@ -7,7 +7,7 @@ scalar Date
 type Query {
 
     """ EXAMPLE QUERY SCHEMA """
-    anyQuery(parameter:String):anyObjet
+    anyQuery(parameter:String):String
 
 }
 

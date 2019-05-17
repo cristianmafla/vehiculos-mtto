@@ -4,7 +4,7 @@ export default {
 
     Query:{
 
-        getCompanyProfile:() => 'getCompanyProfile'
+        getCompanyProfile:() => 'CADENA DE RESPUESTA'
 
     },
 
