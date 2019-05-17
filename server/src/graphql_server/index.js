@@ -7,7 +7,7 @@ import {context,uploads,subscriptions} from './utils';
 const server = new ApolloServer({
     typeDefs,
     resolvers,
-    //context,
+    context,
     uploads,
     subscriptions
 });

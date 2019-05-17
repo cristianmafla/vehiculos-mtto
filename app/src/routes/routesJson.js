@@ -8,6 +8,12 @@ const routesGeneral = [
         viewNav: true,
     },
     {
+        to: '/login',
+        name: 'Entrar',
+        icon: <i className="fas fa-sign-in-alt"></i>,
+        viewNav: true,
+    },
+    {
         to: '*',
         viewNav:false,
     }

@@ -1,20 +1,30 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config({ path: 'variables.env' });
-
+/*
+        if(token !== "null"){
+            try{
+                const currentUserApi = await jwt.verify(token, process.env.SECRET);
+                req.currentUserApi = currentUserApi;
+                console.log('CURRENT_USER',currentUserApi);
+                return { currentUserApi };
+            }catch(err){
+                console.log(`*** WARNING: NOT TOKEN ACCESS API ***`);
+            }
+        };
+*/ 
 const context = async ({req, connection}) => {
     if(connection){
         return connection.context;
     }else{
         const token = req.headers.authorization || "";
-        if(token !== "null"){
-            try{
-                const usuarioActual = await jwt.verify(token, process.env.SECRET);
-                req.usuarioActual = usuarioActual;
-                return { usuarioActual };
-            }catch(err){
-                console.log('error_token', err);
-            }
+        if(token !== "null" && token !== null && token !== ""){
+            const currentUserApi = await jwt.verify(token, process.env.SECRET);
+            req.currentUserApi = currentUserApi;
+            console.log('*** ACCESS_TOKEN_USER_API: ',currentUserApi);
+            return { currentUserApi };
+        }else{
+            console.log(`*** WARNING: NOT TOKEN ACCESS API ***`);
         };
     };
 };
