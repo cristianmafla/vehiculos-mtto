@@ -18,6 +18,8 @@ const resolvers = {
 
         setCompanyDividens: (_, { range, symbol }) => setCompanyDividens(range, symbol),
 
+        
+
     }
 };
 export { resolvers };
