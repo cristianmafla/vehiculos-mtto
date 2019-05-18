@@ -4,7 +4,6 @@ export default gql`
 
 scalar Date
 
-
 type Mutation {
 
     """ SET IPOs today API <api.iextrading.com> """
