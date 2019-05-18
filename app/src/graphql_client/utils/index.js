@@ -40,8 +40,8 @@ const link = process.browser ? split(
 const cache = new InMemoryCache({ addTypename: false });
 const fetchOptions = { credentials: 'include' };
 const onError = ({ networkError, graphQLErrors }) => {
-    console.log('netWorkError__', networkError);
-    console.log('graphQLErrors__', graphQLErrors);
+    console.log('*** netWorkError__', networkError);
+    console.log('*** graphQLErrors__', graphQLErrors);
 };
 
 export {link,cache,fetchOptions,onError};

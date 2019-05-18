@@ -9,7 +9,7 @@ const Session = Component => props => (
         if(loading) return null;
         let session = false;
         if(data){
-            console.log('DATA USUARIO VALID TOKEN',data);
+            console.log('*** TOKEN ACCESS CLIENT: ', data.userValid);
             session = data.userValid;
         }
         return <Component {...props} refetch={refetch} session={session}/>;

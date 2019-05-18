@@ -31,8 +31,8 @@ class Home extends Component {
 							<title>home</title>
 						</Helmet>
 						<div className="col-sm-8 col-lg-5 mx-auto form_signin">
-							<h1 className="h3 mb-3 font-weight-normal text-center">HOME.</h1>
-							<h4>*** {loading ? 'cargando...' : ''} {data ? data.anyQuery : 'Error verifique su conexion a GRAPHQL'} ***</h4>
+							<h1 className="h3 mb-3 font-weight-normal text-center">HOME</h1>
+							<h4>*** {loading ? 'cargando...' : ''} {data ? data.anyQuery : 'Error: SERVER GRAPHQL'} ***</h4>
 						</div>
 					</TemplateLayout>
 				);

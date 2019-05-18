@@ -8,4 +8,4 @@ const LOGIN_USER = gql`
     }
 `;
 
-export { LOGIN_USER }; 
+export { LOGIN_USER };
