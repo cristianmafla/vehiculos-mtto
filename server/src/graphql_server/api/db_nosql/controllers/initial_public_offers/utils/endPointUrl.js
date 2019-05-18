@@ -1,4 +1,4 @@
 import axios from 'axios';
-import { companiesIPO } from '../../../../utils/apiUrls';
+import { companyTodayIPO } from '../../../../utils/apiUrls';
 
-export const getApiCompanies = symbols => symbols.map(symbol => axios.get(companiesIPO(symbol)));
+export const getApiCompanies = () => axios.get(companyTodayIPO());
