@@ -10,8 +10,8 @@ export default {
 
     Mutation: {
 
-        setTodayIpo: (_) => setTodayIPO()
+        setTodayIpo: (_,args) => setTodayIPO()
 
-        //setCompanyProfileProxy: (_, { init, limit }) => setCompanyProfileProxy(init, limit),
     }
 };
+
