@@ -1,4 +1,4 @@
-import { getTokenUser } from './utils'
+import { getTokenUser, addNewUser } from './utils'
 
 //GENERATE TOKEN
 export const loginUser = (correo, contrasena) => getTokenUser(correo,contrasena);
@@ -6,17 +6,5 @@ export const loginUser = (correo, contrasena) => getTokenUser(correo,contrasena)
 //OBTIENE EL USUARIO DEL TOKEN VALIDADO
 export const userValid = currentUserApi => currentUserApi;
 
-/*
-export const userValid = currentUserApi => ({
-    id: 1,
-    nombres: 'usuario',
-    apellidos: 'valido',
-    correo: 'usuario@correo.com',
-    imageUrl: '../../assets/images_locals/goku.png',
-    roles: {
-        id: 11,
-        nombre: 'administrador',
-        descripcion: 'administrador del sitio'
-    }
-});
-*/
+//NUEVO USUARIO Y ROLES PARA INTERACTUAR CON LA API
+export const newUser = user => addNewUser(user);

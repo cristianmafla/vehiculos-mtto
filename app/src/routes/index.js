@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import Session from '../components/session';
 import Login from '../components/login';
 import Home from '../components/home';
+import NewUser from '../components/new_user';
 import Nomatch from '../components/nomatch';
 import NotAuthorized from '../components/nomatch/notauthorized';
 
@@ -15,6 +16,7 @@ const App = (props) => {
     <Switch>
       <Route path="/" render={() => Component(props, Home)} exact />
       <Route path="/login" render={() => Component(props, Login)} exact />
+      <Route path="/new_user" render={() => Component(props, NewUser)} exact />
       <Route path="*" component={Nomatch} />
     </Switch>
   );

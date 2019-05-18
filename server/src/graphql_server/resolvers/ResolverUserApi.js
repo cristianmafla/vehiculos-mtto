@@ -1,6 +1,10 @@
-import { loginUser, userValid } from '../api/db_nosql/controllers/users_api';
+import fs from 'fs';
+import { GraphQLUpload } from 'graphql-upload';
+import { loginUser, userValid, newUser } from '../api/db_nosql/controllers/users_api';
 
 export default {
+
+    Upload: GraphQLUpload,
 
     Query: {
 
@@ -10,6 +14,8 @@ export default {
     Mutation:{
 
         loginUser: (_, { correo, contrasena }) => loginUser(correo, contrasena),
+
+        newUser: (_, { user }) => newUser(user)
 
     }
 };

@@ -14,6 +14,12 @@ const routesGeneral = [
         viewNav: true,
     },
     {
+        to: '/new_user',
+        name: 'Registrarme',
+        icon: <i className="fas fa-user"></i>,
+        viewNav:true,
+    },
+    {
         to: '*',
         viewNav:false,
     }
