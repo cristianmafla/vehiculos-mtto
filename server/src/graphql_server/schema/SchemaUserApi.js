@@ -16,15 +16,20 @@ type Mutation {
     """LOGIN USUARIO AUTHENTICATION JWT"""
     loginUser(correo:String!,contrasena:String!):Token!
 
+    """CREATION NEW USER AND ROLES API"""
+    newUser(user:InputUser):User
+
 }
 
 type User {
+    state:Boolean
+    message:String
     id:Int
     nombres:String
     apellidos:String
     correo:String
     imageUrl:String
-    roles:Rol
+    roles:[Rol]
 }
 
 type Token {
@@ -35,5 +40,15 @@ type Rol {
     id:String
     nombre:String
     descripcion:String
+}
+
+input InputUser {
+    nombres:String
+    apellidos:String
+    correo:String
+    contrasena:String
+    imageUrl:String
+    roles:String
+    file:Upload
 }
 ` ;

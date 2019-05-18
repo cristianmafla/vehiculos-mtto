@@ -1,8 +1,4 @@
-/*===================================================================
-MODELO DE ARCHIVO PARA TRABAJAR LAS PETICIONES A LA BASE DE DATOS NOSQL MONGODB
-=====================================================================*/
-
-//import {  } from '../../../models/any_model';
+import { userApi as model } from '../../../models/user_api';
 //import { compare } from './bcrypt';
 
 import dotenv from 'dotenv';
@@ -26,4 +22,17 @@ export const getTokenUser = (correo, contrasena) => {
     };
     //return { token: jwt.sign({ correo }, process.env.SECRET, { expiresIn: '1h' })}
     return { token: jwt.sign(userDB, process.env.SECRET, { expiresIn: '1h' }) }
+};
+
+export const addNewUser =  user => {
+    user.roles = [{
+        id: user.roles,
+        nombre: 'ADMON',
+        descripcion: 'ADMINISTRADOR DE API'
+    }];
+    return  model.create(user).then(result => {
+        result.state = true;
+        return result;
+    });
+
 };
