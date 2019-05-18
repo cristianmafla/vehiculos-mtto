@@ -440,4 +440,4 @@ const schema = new mongoose.Schema({
     ]
 });
 
-export const plantilla_schema = mongoose.model('plantilla_schema', schema);
+export const ipo = mongoose.model('IPOs', schema);
