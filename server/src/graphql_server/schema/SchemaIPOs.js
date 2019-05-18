@@ -6,12 +6,14 @@ scalar Date
 
 
 type Mutation {
+
     """ SET IPOs today API <api.iextrading.com> """
     setTodayIpo:IPOinfo
+
 }
 
 type IPOinfo {
-    RawData:[RawData]
+    rawData:[RawData]
     viewData:[ViewData]
 }
 
