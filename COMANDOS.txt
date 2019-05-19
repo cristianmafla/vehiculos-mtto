@@ -2,7 +2,7 @@
 /////////////////////// GIT /////////////////////////
 git remote -v ///muestra la url del repositorio remoto ejemplo ==> origin https//github.com/cristianmafla/algunrepositorio.git
 git remote rm <nombreURL ej:origin> ///elimina el repositorio remoto de git
-git remote add origin https://github.com/cristianmafla/apiFinancieraRespaldo.git ///agrega un repositori remoto a git
+git remote add origin https://github.com/cristianmafla/ApiAppGraphQl.git ///agrega un repositori remoto a git
 git remote add origin https://github.com/jchristian1/financialData.git
 git add . ///guarda los cambios en git de manera provisional
 git commit -m "first commit" ///crea un commit

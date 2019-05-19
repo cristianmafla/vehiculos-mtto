@@ -13,7 +13,7 @@ export default {
     },
     Mutation:{
 
-        loginUser: (_, { correo, contrasena }) => loginUser(correo, contrasena),
+        loginUser: (_, { email, password }) => loginUser(email, password),
 
         newUser: (_, { user }) => newUser(user)
 

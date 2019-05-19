@@ -14,7 +14,7 @@ class MessageFlash extends Component {
             this.state.classMessage="error_message";
         }
         return (
-            <div className={this.state.classMessage}>
+            <div id="div_msn_error" className={this.state.classMessage}>
                 <strong>Error!</strong> {message}
                 <button onClick={this.props.closeError} type="button" className="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

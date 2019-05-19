@@ -1,5 +1,5 @@
 
-const ImageUrlUpload = image => {
+export const ImageUrlUpload = image => {
   return new Promise((resolve, reject) => {
     const
     		filePath = image.target.value,
@@ -16,7 +16,7 @@ const ImageUrlUpload = image => {
   });
 }
 
-const ImageUploadValid = image => {
+export const ImageUploadValid = image => {
 	if(image){
 		const extension = image.type.split('/')[1];
 		if(extension === 'jpeg' || extension === 'jpg' || extension === 'png' || extension === 'gif' ||
@@ -27,6 +27,4 @@ const ImageUploadValid = image => {
 			return false;
 		}
 	}
-}
-
-export { ImageUrlUpload, ImageUploadValid} ;
+};

@@ -6,7 +6,6 @@ import Form from './form';
 class NewUsuario extends Component {
 	constructor(props) {
 		super(props);
-		
 	};
 
 	render(){
