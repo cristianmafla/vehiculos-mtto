@@ -39,7 +39,7 @@ type RawData {
     sharesOffered:Int
     priceLow:Int
     priceHigh:Int
-    offerAmount::Int
+    offerAmount:Int
     totalExpenses:Int
     sharesOverAlloted:Int
     shareholderShares:Int
