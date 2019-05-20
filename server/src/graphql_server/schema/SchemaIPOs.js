@@ -70,4 +70,5 @@ type ViewData {
     Market:String
     Expected:Date
 }
+
 ` ;
