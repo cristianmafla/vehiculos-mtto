@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const LOGIN_USER = gql`
-    mutation loginUser($correo:String!,$contrasena:String!){
-        loginUser(correo:$correo,contrasena:$contrasena){
+    mutation loginUser($email:String!,$password:String!){
+        loginUser(email:$email,password:$password){
             token
         }
     }
@@ -13,14 +13,13 @@ export const NEW_USER = gql`
         newUser(user:$user){
             state
             message
-            nombres
-            apellidos
-            correo
+            name
+            lastname
+            email
             imageUrl
             roles{
-                id
-                nombre
-                descripcion
+                name
+                checked
             }
         }
     }

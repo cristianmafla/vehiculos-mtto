@@ -1,32 +1,30 @@
 import mongoose from '../config/database';
 
 const schema = new mongoose.Schema({
-    nombres : {
+    name : {
         type: String,
         default:false,
         trim: true,
         lowercase:true,
         validate:() => { }
     },
-    apellidos: {
+    lastname: {
         type: String,
         default: false,
         trim: true,
         lowercase: true,
         validate: () => { }
     },
-    correo: {
+    email: {
         type: String,
         default: false,
         trim: true,
-        lowercase: true,
         validate: () => { }
     },
-    contrasena: {
+    password: {
         type: String,
         default: false,
         trim: true,
-        lowercase: true,
         validate: () => { }
     },
     imageUrl: {

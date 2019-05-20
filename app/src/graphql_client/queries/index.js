@@ -10,14 +10,13 @@ export const LOGIN_USER_VALID = gql`
     query userValid{
         userValid{
             id
-            nombres
-            apellidos
-            correo
+            name
+            lastname
+            email
             imageUrl
             roles{
-                id
-                nombre
-                descripcion
+                name
+                checked
             }
         }
     }

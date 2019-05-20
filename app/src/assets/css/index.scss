@@ -1,3 +1,15 @@
+.custom-control-input:checked~.custom-control-indicator{
+color:white;
+background-color:#0275d8;
+}
+.div_checks_newuser{
+    background: #ffffff;
+    padding:10px 5px 0px 10px;
+    border: 1px solid #D8D8D8;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
 .date_chat{
   font-size:10px;
   color:#FAFAFA;
