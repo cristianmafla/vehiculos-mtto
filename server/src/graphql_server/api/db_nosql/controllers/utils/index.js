@@ -4,9 +4,9 @@ import shortid from 'shortid';
 import resizeImg from 'resize-img';
 
 
-export const uploadImageUser = async (upload, correo) => {
+export const uploadImageUser = async (upload, email) => {
   if(upload){
-    let UPLOAD_DIR = `./public/usuarios/${correo}/images`
+    let UPLOAD_DIR = `./public/usuarios/${email}/images`
 
     const
         { createReadStream, filename, mimetype } = await upload,
@@ -14,7 +14,7 @@ export const uploadImageUser = async (upload, correo) => {
         ID = shortid.generate(),
         path = `${UPLOAD_DIR}/${ID}_${filename}`,
         pathThumbnail = `${UPLOAD_DIR}/thumbnail_${ID}_${filename}`,
-        PATH_IMAGE_USUARIO = `http://localhost:3000/public/usuarios/${correo}/images/thumbnail_${ID}_${filename}`;
+        PATH_IMAGE_USUARIO = `http://localhost:3000/public/usuarios/${email}/images/thumbnail_${ID}_${filename}`;
 
     mkdirp.sync(UPLOAD_DIR);
     return new Promise( (resolve,reject) => {
@@ -44,10 +44,7 @@ export const uploadImageUser = async (upload, correo) => {
 
 export const SingleUpload = async ({upload,pathfile}) => {
   if(upload){
-    let UPLOAD_DIR ='';
-    process.env.NODE_ENV === 'development'
-      ? UPLOAD_DIR = `./src/assets/${pathfile}`
-      : UPLOAD_DIR = `./dist/assets/${pathfile}`;
+    let UPLOAD_DIR = `http://localhost:3000/public/files_public/${pathfile}`;
 
     const
         { createReadStream, filename, mimetype } = await upload,

@@ -77,7 +77,8 @@ class Form extends  Component {
 			this.state.rol_invited
 		];
 		const { name, lastname, email, password, valid_password, roles } = this.state.user;
-		if (name !== '' && lastname !== '' && email !== '' && password !== '' && roles !== ''){
+		let rolvalid = !(roles[0].checked === false && roles[1].checked === false && roles[2].checked === false);
+		if (name !== '' && lastname !== '' && email !== '' && password !== ''&& rolvalid !== false ){
 			if (password === valid_password) {
 				newUser({ variables: { user:{name, lastname, email, password, roles, file}} })
 					.then(({data}) => data.newUser.state ? this.onCompleted() : this.stateErrorValid(data.newUser.message))

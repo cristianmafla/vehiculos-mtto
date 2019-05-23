@@ -1,99 +1,124 @@
-import React, { Component } from 'react';
+import React, { Component,Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import Modal from '../modal';
+import ModalChat from '../modal';
+import Chat from '../chat';
+import ModalUserProfile from '../modal';
+import ModalNotification from '../modal';
 
 class NavUser extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            visibility:false,
-            usuario:{
-                nombres:"",
-                apellidos:"",
-                correo:"",
-                imageUrl:""
-            },
-            imageUrl:""
-        };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalUser: false,
+      modalChatUser:false,
+      modalNotification:false,
+      user:{
+          name:"",
+          lastname:"",
+          email:"",
+          imageUrl:""
+      },
+      imageUrl:""
     };
-
-  componentWillMount = () => {
-
-  }
-
-	openModal = () => {
-	  this.setState({visibility:true})
   };
 
-	closeModal = () => this.setState({visibility:false});
+  componentWillMount = () => {};
 
-	itemsUsuario = () => {
-	  if(this.props.session){
+  ViewModalUser = () => this.setState({ modalUser: true });
+
+  ModalUser = user => {
+    if(user){
+      return (
+        <ModalUserProfile title={`${user.name} ${user.lastname}`} visibility={this.state.modalUser} size="" closeModal={this.closeModal}>
+          <img src={user.imageUrl} className="img-responsive img-thumbnail center-block " width="170"/>
+          {user.name} {user.lastname}
+        </ModalUserProfile>
+      );
+    };
+  };
+
+  ViewModalChatUser = () => this.setState({ modalChatUser:true });
+
+  ModalChatUser = user => {
+    if(user){
+      return (
+        <ModalChat title="Chat User" visibility={this.state.modalChatUser} size="" closeModal={this.closeModal}>
+          <Chat session={user}/>
+        </ModalChat>
+      );
+    };
+  };
+
+  ViewModaNotificationl = () => this.setState({ modalNotification: true });
+
+  ModaNotificationl = user => {
+    if(user){
+      return (
+        <ModalNotification title="User Notification" visibility={this.state.modalNotification} size="" closeModal={this.closeModal}>
+        </ModalNotification>
+      );
+    };
+  };
+
+  closeModal = () => this.setState({ modalChatUser:false, modalUser:false, modalNotification:false });
+
+	itemsUsuario = user => {
+	  if(user){
   	  return(
-    	  <div>
+        <Fragment>
           <div className="div_msn_notification">
-            <i onClick={() => this.openModal()} className="fas fa-comment-dots"></i>
+            <i onClick={() => this.ViewModalChatUser()} className="fas fa-comment-dots"></i>
           </div>
           <div className="div_nav_notification">
               <div className="div_count_notification"></div>
-              <i className="fas fa-bell"></i>
+            <i onClick={() => this.ViewModaNotificationl()} className="fas fa-bell"></i>
           </div>
-    	  </div>
+        </Fragment>
   	  );
-	  }
-	}
+	  };
+	};
 
 	avatarUsuario = user => {
-	  if(this.props.session){
+	  if(user){
 	    return(
-        <div className="div_nav_img_user">
+        <Fragment>
+          <div className="div_nav_img_user">
             <img
-              onClick={() => this.profileModal()}
-              src={user.imageUrl || "../../assets/images_locals/profile.png"}
-              alt={user.nombres}
+              onClick={() => this.ViewModalUser()}
+              src={user.imageUrl === 'false' ? "../../assets/images_locals/profile.png" : user.imageUrl }
+              alt={user.name}
               className="img_nav_user"
             />
             <p id="p_nav_user_name" className="d-none d-md-inline">
-                {user.nombres || null }
+              {user.name || null}
             </p>
-        </div>
+          </div>
+        </Fragment>
 	    );
-	  }
-    return(
-      <div className="div_nav_img_user">
-        <Link to={'/new_usuario'}>
-          <img  src={user.imageUrl || "../../assets/images_locals/profile.png"} alt="" className="img_nav_user"/>
-        </Link>
-      </div>
-    );
-
-	}
-
-	profileModal = () => {
-	  this.openModal();
-   return <Modal title="Perfil de usuario" visibility={this.state.visibility} size="" closeModal={this.closeModal}></Modal>
-
-	}
+	  }else{
+      return(
+        <div className="div_nav_img_user">
+          <Link to={'/new_user'}>
+            <img src="../../assets/images_locals/profile.png" alt="" className="img_nav_user" />
+          </Link>
+        </div>
+      );
+    };
+  };
 
   render(){
-    let user = {};
-    if(this.props.session){
-        user ={
-            nombres:this.props.session.nombres,
-            apellidos:this.props.session.apellidos,
-            correo:this.props.session.correo,
-            imageUrl: this.props.session.imageUrl
-        };
-    }
     return(
       <div className="nav_user">
-        {this.itemsUsuario()}
-        {this.avatarUsuario(user)}
-        <Modal title="Chat modal" visibility={this.state.visibility} size="" closeModal={this.closeModal}>
-        </Modal>
+        {this.itemsUsuario(this.props.session || false)}
+        {this.avatarUsuario(this.props.session || false)}
+        {this.ModalUser(this.props.session || false)}
+        {this.ModalChatUser(this.props.session || false)}
+        {this.ModaNotificationl(this.props.session || false)}
       </div>
     );
-  }
-}
+  };
+
+};
 
 export default NavUser;

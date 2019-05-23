@@ -10,32 +10,32 @@ class Nav extends Component {
 
   links = () => {
     if(this.props.session.correo){
-        return(
-            routesSession.map((data, i) => (
-                data.viewNav
-                    ? <li key={i} className="list-group-item list-group-item-action">
-                        {data.href
-                            ? <a className="nav-link" href={data.to}>{data.icon} {data.name}</a>
-                            : <Link key={i} to={data.to} onClick={this.props.handlerToogle} className="nav-link">
-                                {data.icon} {data.name}
-                            </Link>
-                        }
-                    </li>
-                    : null
-            ))
-        );
+      return(
+        routesSession.map((data, i) => (
+          data.viewNav
+            ? <li key={i} className="list-group-item list-group-item-action">
+                {data.href
+                    ? <a className="nav-link" href={data.to}>{data.icon} {data.name}</a>
+                    : <Link key={i} to={data.to} onClick={this.props.handlerToogle} className="nav-link">
+                        {data.icon} {data.name}
+                    </Link>
+                }
+            </li>
+            : null
+        ))
+      );
     }else{
-        return(
-            routesGeneral.map((data, i) => (
-                data.viewNav
-                    ? <li key={i} className="list-group-item list-group-item-action">
-                        <Link key={i} to={data.to} onClick={this.props.handlerToogle} className="nav-link">
-                            {data.icon} {data.name}
-                        </Link>
-                    </li>
-                    : null
-            ))
-        );
+      return(
+        routesGeneral.map((data, i) => (
+          data.viewNav
+            ? <li key={i} className="list-group-item list-group-item-action">
+                <Link key={i} to={data.to} onClick={this.props.handlerToogle} className="nav-link">
+                    {data.icon} {data.name}
+                </Link>
+            </li>
+            : null
+        ))
+      );
     };
   };
 

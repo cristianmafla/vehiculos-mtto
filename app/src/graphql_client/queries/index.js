@@ -5,19 +5,3 @@ export const ANYQUERY = gql`
   anyQuery
 }
 `;
-
-export const LOGIN_USER_VALID = gql`
-    query userValid{
-        userValid{
-            id
-            name
-            lastname
-            email
-            imageUrl
-            roles{
-                name
-                checked
-            }
-        }
-    }
-`;

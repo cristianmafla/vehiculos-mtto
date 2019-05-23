@@ -1,12 +1,6 @@
 import bcryptjs from 'bcryptjs';
 
-export const hash = pass => {
-    return new Promise((res, rej) => {
-        bcryptjs.hash(pass, 5, (err, hash) => {
-            err ? rej(err) : res(hash);
-        });
-    });
-};
+export const hash = pass => new Promise((res, rej) => bcryptjs.hash(pass, 5, (err, hash) => err ? rej(err) : res(hash)));
 
 export const compare = async (inputPass,passDB ) => {
   let compare = null;

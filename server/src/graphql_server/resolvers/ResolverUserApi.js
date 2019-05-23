@@ -1,21 +1,36 @@
 import fs from 'fs';
 import { GraphQLUpload } from 'graphql-upload';
-import { loginUser, userValid, newUser } from '../api/db_nosql/controllers/users_api';
+import {
+  loginUser,
+  userValid,
+  newUser,
+  chatUsers,
+  newChatUser,
+  subChatUsers } from '../api/db_nosql/controllers/users_api';
 
 export default {
 
-    Upload: GraphQLUpload,
+  Upload: GraphQLUpload,
 
-    Query: {
+  Query: {
 
-        userValid: (_, args, { currentUserApi }) => userValid(currentUserApi),
+    userValid: (_, args, { currentUserApi }) => userValid(currentUserApi),
 
-    },
-    Mutation:{
+    chatUsers: (_, args) => chatUsers()
 
-        loginUser: (_, { email, password }) => loginUser(email, password),
+  },
+  Mutation:{
 
-        newUser: (_, { user }) => newUser(user)
+    loginUser: (_, { email, password }) => loginUser(email, password),
 
-    }
+    newUser: (_, { user }) => newUser(user),
+
+    newChatUser: (_, { user, message }) => newChatUser(user, message)
+
+  },
+  Subscription: {
+
+    subChatUsers: subChatUsers()
+
+  }
 };

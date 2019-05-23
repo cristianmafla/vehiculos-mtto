@@ -3229,7 +3229,7 @@ const symbols = [
     'ZNGA',
 ];
 //const validEmptyNewTicker = tickers => tickers.length > 0 ? tickers : false;
-export const paginationSymbols = (init = 1, limit = 1) => {
+export const paginationSymbols = (init, limit) => {
     init = init -1;
     limit = (limit -1) + init;
     let filterSymbols = [];

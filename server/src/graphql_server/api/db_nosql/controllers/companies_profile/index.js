@@ -4,13 +4,13 @@ import { getSave } from './utils'
 import { paginationSymbols } from '../../../utils/symbolsCompany';
 
 //COMPANIES PROFILE
-export const setCompanyProfile = (init = 1, limit = 1) => {
+export const setCompanyProfile = (init, limit) => {
     const symbols = paginationSymbols(init, limit);
     return getApiCompaniesProfile(symbols).map(company => company.then(data => getSave(data)));
 };
 
 //COMPANIES PROFILE PROXY
-export const setCompanyProfileProxy =  (init = 1, limit = 1) => {
+export const setCompanyProfileProxy =  (init , limit) => {
     const symbols = paginationSymbols(init, limit);
     return getApiCompaniesProfileProxy(symbols).then(({ companies, serverproxy, port}) => {
         let i = 0 ;

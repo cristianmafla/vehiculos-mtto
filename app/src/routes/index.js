@@ -11,7 +11,7 @@ const ValidSession = (props,Component,params = null ) => props.session.correo ? 
 
 const Component = (props,Component) => <Component {...props} />;
 
-const App = (props) => {
+const App = props => {
   return (
     <Switch>
       <Route path="/" render={() => Component(props, Home)} exact />

@@ -6,5 +6,5 @@ export const companyProfileUrlProxy = (port, symbol) => `http://localhost:${port
 export const companyDividendsUrl = (symbol, range) => `https://api.iextrading.com/1.0/stock/${symbol}/dividends/${range}`;
 
 //COMPANIES UPCOMING IPOs https://api.iextrading.com/1.0/
-export const companyTodayIPO = () => `https://api.iextrading.com/1.0/stock/market/today-ipos`;
+export const companyTodayIPO = () => `https://api.iextrading.com/1.0/stock/market/upcoming-ipos`;
 
