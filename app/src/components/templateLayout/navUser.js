@@ -4,6 +4,8 @@ import ModalChat from '../modal';
 import Chat from '../chat';
 import ModalUserProfile from '../modal';
 import ModalNotification from '../modal';
+import { connect } from 'react-redux';
+import ActionNotificationChat from '../../redux_store/actions/actionNotificationChat';
 
 class NavUser extends Component {
 
@@ -38,7 +40,10 @@ class NavUser extends Component {
     };
   };
 
-  ViewModalChatUser = () => this.setState({ modalChatUser:true });
+  ViewModalChatUser = () => {
+    this.props.ActionNotificationChat({});
+    this.setState({ modalChatUser:true })
+  };
 
   ModalChatUser = user => {
     if(user){
@@ -68,10 +73,11 @@ class NavUser extends Component {
   	  return(
         <Fragment>
           <div className="div_msn_notification">
+            <div className={this.props.NotificationChat}><i></i></div>
             <i onClick={() => this.ViewModalChatUser()} className="fas fa-comment-dots"></i>
           </div>
           <div className="div_nav_notification">
-              <div className="div_count_notification"></div>
+            <div className="div_count_notification"><i></i></div>
             <i onClick={() => this.ViewModaNotificationl()} className="fas fa-bell"></i>
           </div>
         </Fragment>
@@ -121,4 +127,12 @@ class NavUser extends Component {
 
 };
 
-export default NavUser;
+const mapStateToProps = state => ({
+  NotificationChat: state.ActionNotificationChat,
+});
+
+const mapDispatchToProps = {
+  ActionNotificationChat
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavUser);

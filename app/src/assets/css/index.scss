@@ -186,7 +186,7 @@ body{
         display:inline;
         height:100%;
         //background-color:red;
-        
+
         .div_count_notification{
             position:relative;
             left:28px;
@@ -216,13 +216,13 @@ body{
         }
 
         img{
-            margin:0 3px 0 0;
-            padding: 2px 2px 2px 2px;
-            width:50px;
-            height:100%;
-            border-radius:100px;
-            -moz-border-radius:100px;
-            -webkit-border-radius:100px;
+          margin: 0 3px 8px 0;
+          padding: 2px 2px 2px 2px;
+          width: 40px;
+          height: 40px;
+          border-radius:100px;
+          -moz-border-radius:100px;
+          -webkit-border-radius:100px;
         }
     }
     .div_nav_notification{
@@ -241,7 +241,6 @@ body{
         }
     }
 }
-
 
 /*|****|COMPONENT NOMATCHE|****|*/
 

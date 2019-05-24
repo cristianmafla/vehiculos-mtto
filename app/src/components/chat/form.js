@@ -40,7 +40,7 @@ class Form extends Component {
   updateQuerySubscribe = (prev, subscriptionData) => {
     const { message, user, date } = subscriptionData.data.subChatUsers;
     this.props.ActionChat([...prev.chatUsers, { user, message, date }]);
-    if (user.email != this.props.session.email && this.props.visibility === false) {
+    if (user.email != this.props.session.email ) {
       this.props.ActionNotificationChat('div_msn_count_notification');
     }
   };
@@ -134,38 +134,8 @@ const mapDispatchToProps = {
     ActionChat,
     ActionNotificationChat
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(Form);
-
-
-
-
-/* 
-
-{this.listChatUser()}
-
-  componentDidMount = () => {
-    console.log('this.props.chatUsers', this.props.chatUsers)
-    this.props.subscribeToMore({
-      document: SUB_CHAT_USER,
-      updateQuery:(prev, { subscriptionData }) => {
-        if (!subscriptionData.data) return prev;
-        this.chatUsers([...prev.chatUsers, subscriptionData.data.subChatUsers]);
-        if (subscriptionData.data.subChatUsers.user.email != this.props.session.email && this.props.visibility === false) {
-          this.props.ActionNotificationChat('div_msn_count_notification');
-        };
-        if(document.getElementById('list_msn')){
-          const
-              scrltop = document.getElementById('list_msn').scrollTop,
-              scrlh = document.getElementById('list_msn').scrollHeight;
-          if( scrltop  != scrlh ){
-            document.getElementById('list_msn').scrollTop = document.getElementById('list_msn').scrollHeight;
-          };
-        };
-        return { chatUsers:this.props.chatMnsUsers };
-      },
-    });
-  };
-*/
 
 
 

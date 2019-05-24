@@ -16,14 +16,13 @@ class Chat extends Component {
 	render(){
 		return(
       <Query query={CHAT_USERS}>
-			{({loading,error,data,subscribeToMore}) => { 
-				console.log('data.chatUsers',data.chatUsers)
-				return <Form
+			{({loading,error,data,subscribeToMore}) => (
+				<Form
 					chatUsers={data.chatUsers || [] }
 					session={this.props.session}
 					subscribeToMore={subscribeToMore}
 				/>
-			}}
+			)}
 			</Query>
 		);
 	};
