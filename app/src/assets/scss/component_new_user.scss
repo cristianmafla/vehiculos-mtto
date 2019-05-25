@@ -1,0 +1,15 @@
+
+@import 'variables.scss';
+
+.div_checks_newuser{
+    background: #ffffff;
+    padding:10px 5px 0px 10px;
+    border: 1px solid $content_panel_header;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+}
+
+@media (max-width: 759px) {}
+
+@media (max-width: 480px) {}

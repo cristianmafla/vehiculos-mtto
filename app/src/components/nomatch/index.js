@@ -8,7 +8,7 @@ export default ({ location }) => (
       <title>is not found</title>
     </Helmet>
     <div className='container'>
-      <div className='col-sm-8 col-lg-5 mx-auto form_signin break-word '>
+      <div className='col-sm-8 col-lg-5 mx-auto form break-word '>
         <h1 className="h3 mb-3 font-weight-normal text-center ">" {location.pathname} "  404 pagina no encontrada</h1>
       </div>
     </div>

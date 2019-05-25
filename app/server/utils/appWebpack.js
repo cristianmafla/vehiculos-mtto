@@ -21,9 +21,9 @@ if (process.env.NODE_ENV === 'development'){
         }
     }))
     .use(require('webpack-hot-middleware')(compiler))
-    .use(express.static(path.resolve(__dirname, '../../src')));
+    .use('/public',express.static(path.resolve(__dirname, '../../src')));
 } else if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.resolve(__dirname, '../../dist')));
-}
+    app.use('/public',express.static(path.resolve(__dirname, '../../dist')));
+};
 
 export default app;

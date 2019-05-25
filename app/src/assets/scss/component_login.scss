@@ -1,0 +1,34 @@
+@import 'variables.scss';
+
+@media (max-width: 759px) {}
+
+@media (max-width: 480px) {}
+
+/*|****|COMPONENT LOGIN|****|*/
+
+#titulo{
+    margin:0 25px 0 25px;
+    color:$fonts;
+    position:relative;
+    background-color:rgba(0, 0, 0, 0.58);
+    top:-40px;
+    padding:10px 0 10px 0;
+}
+.lgform{
+    margin-top:60px;
+}
+.btn_login_facebook {
+    background-color:#3b5998;
+    color:$fonts;
+    &:hover{
+      background-color:#2f55a4;
+    }
+}
+
+.btn_login_google{
+    background-color:#FE2E2E ;
+    color:$fonts;
+    &:hover{
+    background-color:#FF0000;
+    }
+}

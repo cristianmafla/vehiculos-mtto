@@ -1,3 +1,6 @@
-export const BASE_URL_GRAPHQL = `http://localhost:3000/graphql`;
+const BASE_URL = `localhost:3000`;
+//const BASE_URL = `84533eb5.ngrok.io`;
 
-export const BASE_WS_GRAPHQL = `ws://localhost:3000/graphql`;
+export const BASE_URL_GRAPHQL = `http://${BASE_URL}`;
+
+export const BASE_WS_GRAPHQL = `ws://${BASE_URL}`;

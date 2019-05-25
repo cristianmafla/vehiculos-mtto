@@ -4,8 +4,7 @@ import NavUser from './navUser';
 import Nav from './nav';
 
 if (process.env.WEBPACK) {
-    require('../../assets/css/index.scss');
-    //require('../../assets/css/bootstrap/scss/bootstrap.scss');
+    require('../../assets/scss/index.scss');
 };
 
 class TemplateLayout extends Component {
@@ -32,7 +31,7 @@ class TemplateLayout extends Component {
           <main id="content_panel">
               <header>
                   <span onClick={this.handlerToogle} className="fas fa-bars"></span>
-                  <Link to="/"><h1 className="nombresitio">Lorem Ipsums</h1></Link>
+                  <Link to="/"><h1 className="site_name">Lorem Ipsums</h1></Link>
                   {
                     this.props.pathUrl === 'login'
                       ? null

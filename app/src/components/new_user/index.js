@@ -15,7 +15,7 @@ class NewUsuario extends Component {
 					<title>Nuevo Usuario</title>
 				</Helmet>
 				<div className='container'>
-					<div className='col-sm-8 col-lg-5 mx-auto form_signin'>
+					<div className='col-sm-8 col-lg-5 mx-auto form'>
 						<h1 id="titulo" className="h3 mb-3 font-weight-normal text-center">Registrarme</h1>
 						<Form history={this.props.history}/>
 					</div>

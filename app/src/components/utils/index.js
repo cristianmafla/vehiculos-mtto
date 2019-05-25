@@ -28,3 +28,5 @@ export const ImageUploadValid = image => {
 		}
 	}
 };
+
+export const SizeImageUser = (url, size) => url.replace('**size**',size);

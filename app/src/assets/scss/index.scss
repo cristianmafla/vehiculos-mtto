@@ -1,0 +1,161 @@
+@import 'variables.scss';
+@import 'component_chat.scss';
+@import 'component_template_layout.scss';
+@import 'component_login.scss';
+@import 'component_new_user.scss';
+
+/*|****|GENERAL|****|*/
+body{
+    width: 100%;
+    height: 100%;
+}
+nav{
+  background-color: $content_panel_body;
+  h2{
+    color:$fonts;
+    padding: 10px 0 0 50px;
+  }
+  .ul_menu{
+    li{
+      background-color: $content_panel_body;
+      a{
+        color:$fonts;
+        &:hover{
+          color:$fonts_hover;
+          font-size: 16.95px;
+        }
+      }
+      &:hover{
+        background-color: $content_panel_body;
+      }
+      button{
+        color:$fonts;
+        border:1px solid $fonts;
+        &:hover{
+          color:$fonts_hover;
+          background-color: $content_panel_body;
+          border:1px solid $fonts_hover;
+        }
+      }
+    }
+  }
+}
+.form{
+  margin: 30px 0 0 0;
+  background-color:$bg_form;
+  padding:20px;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+}
+.site_name{
+  position:absolute;
+  top:4px;
+  padding-bottom:15px;
+  margin:0px 50px 0px 50px ;
+  color:$fonts;
+  &:hover{
+    color:$fonts_hover;
+  }
+}
+.g_modal_off{
+  display:none;
+}
+.g_modal{
+  margin:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  padding-top:0px;
+  position:fixed;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.6);
+  top:0;
+  z-index: 10000;
+}
+.custom-input-file {
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.custom-input-file .input-file {
+  border: 10000px solid transparent;
+  opacity: 0;
+  position: absolute;
+  cursor: pointer;
+}
+.margintb{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.margint{
+  margin-top:5px;
+}
+.marginb{
+  margin-bottom:5px;
+}
+.break-word {
+ -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  hyphens: auto;
+}
+.pagination{
+  margin-bottom: 10px;
+}
+.pagination_right{
+  cursor: pointer;
+  margin-left: 20px;
+}
+.pagination_left{
+  cursor: pointer;
+  margin-right: 20px;
+}
+.pagination_disable{
+  cursor:no-drop;
+  background-color:#FFF;
+  color:#A4A4A4;
+}
+.error_message{
+  display:none;
+}
+.link_none{
+  text-decoration:none;
+}
+.pointer{
+  cursor: pointer;
+}
+.icons{
+  color:$icons_font;
+  font-size:20px;
+  margin-left:5px;
+  margin-right:5px;
+  &:hover{
+    color:$icons_font_hover;
+  }
+}
+.imgborder{
+  padding:1px;
+  border: 1px solid $content_panel_header;
+}
+
+/*|****|COMPONENT NOMATCHE|****|*/
+
+
+/*|****|COMPONENT HOME|****|*/
+
+@media (max-width: 759px) {}
+
+@media (max-width: 480px){
+  .site_name{
+    font-size:35px;
+      position:absolute;
+      top:6px;
+      padding-bottom:15px;
+      margin:0px 50px 0px 50px ;
+      color:$fonts;
+  }
+}

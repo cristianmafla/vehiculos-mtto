@@ -2,6 +2,8 @@ import fs from 'fs';
 import mkdirp from 'mkdirp';
 import shortid from 'shortid';
 import resizeImg from 'resize-img';
+import dotenv from 'dotenv';
+dotenv.config({ path: 'variables.env' });
 
 
 export const uploadImageUser = async (upload, email) => {
@@ -12,30 +14,36 @@ export const uploadImageUser = async (upload, email) => {
         { createReadStream, filename, mimetype } = await upload,
         stream = createReadStream(),
         ID = shortid.generate(),
-        path = `${UPLOAD_DIR}/${ID}_${filename}`,
-        pathThumbnail = `${UPLOAD_DIR}/thumbnail_${ID}_${filename}`,
-        PATH_IMAGE_USUARIO = `http://localhost:3000/public/usuarios/${email}/images/thumbnail_${ID}_${filename}`;
+        imgPath = `${UPLOAD_DIR}/lg_${ID}_${filename}`,
+        imgMdPath = `${UPLOAD_DIR}/md_${ID}_${filename}`,
+        imgSxPath = `${UPLOAD_DIR}/sx_${ID}_${filename}`,
+        PATH_IMAGE_USER = `${process.env.HTTP}://${process.env.BASE_URL_IMAGE}/public/usuarios/${email}/images/**size**_${ID}_${filename}`;
 
     mkdirp.sync(UPLOAD_DIR);
     return new Promise( (resolve,reject) => {
        stream
         .on('error', error => {
           if(stream.truncated)
-            fs.unlinkSync(path)
+            fs.unlinkSync(imgPath)
             console.log('error_truncate',error);
             reject(error);
         })
-        .pipe(fs.createWriteStream(path))
+        .pipe(fs.createWriteStream(imgPath))
         .on('error', error => {
           console.log('errorfile',error)
           reject(error);
         })
         .on('finish', result => {
-          resizeImg(fs.readFileSync(path),{width: 170, height: 170})
+          resizeImg(fs.readFileSync(imgPath),{width: 250, height: 250})
             .then(buf => {
-              fs.writeFileSync(pathThumbnail, buf);
-              resolve(`${PATH_IMAGE_USUARIO}`);
-            });
+              fs.writeFileSync(imgMdPath, buf);
+              resolve(`${PATH_IMAGE_USER}`);
+          });
+          resizeImg(fs.readFileSync(imgPath), { width: 65, height: 65 })
+            .then(buf => {
+              fs.writeFileSync(imgSxPath, buf);
+              resolve(`${PATH_IMAGE_USER}`);
+          });
         });
       });
   };
@@ -44,7 +52,7 @@ export const uploadImageUser = async (upload, email) => {
 
 export const SingleUpload = async ({upload,pathfile}) => {
   if(upload){
-    let UPLOAD_DIR = `http://localhost:3000/public/files_public/${pathfile}`;
+    let UPLOAD_DIR = `${process.env.HTTP}://${process.env.BASE_URL_IMAGE}/public/files_public/${pathfile}`;
 
     const
         { createReadStream, filename, mimetype } = await upload,

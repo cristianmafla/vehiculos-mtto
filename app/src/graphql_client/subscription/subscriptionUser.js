@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export const SUB_CHAT_USER = gql`
-subscription{
-  subChatUsers{
+subscription subChatUsers {
+  subChatUsers {
       message
       date
       user{

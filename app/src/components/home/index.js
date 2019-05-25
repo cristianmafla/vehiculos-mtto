@@ -30,7 +30,7 @@ class Home extends Component {
 						<Helmet>
 							<title>home</title>
 						</Helmet>
-						<div className="col-sm-8 col-lg-5 mx-auto form_signin">
+						<div className="col-sm-8 col-lg-5 mx-auto form">
 							<h1 className="h3 mb-3 font-weight-normal text-center">HOME</h1>
 							<h4>*** {loading ? 'cargando...' : ''} {data ? data.anyQuery : 'Error: SERVER GRAPHQL'} ***</h4>
 						</div>

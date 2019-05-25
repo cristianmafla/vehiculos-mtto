@@ -1,0 +1,44 @@
+@import 'variables.scss';
+
+/*|****|COMPONENT CHAT|****|*/
+.li_chat{
+    border:0;
+    padding:2px;
+}
+.list_msn{
+  height:250px;
+  overflow-y: scroll;
+}
+.bubble_chat_user{
+  margin-left:47px;
+  background-color:$bg_chat_user;
+  padding:4px;
+  color:$font_chat_user;
+  border-radius: 15px 0px 15px 15px;
+  -moz-border-radius: 15px 0px 15px 15px;
+  -webkit-border-radius: 15px 0px 15px 15px;
+}
+
+.date_chat_user{
+  font-size:10px;
+  color:$font_chat_user;
+}
+
+.bubble_chat_other_user{
+  margin-right:47px;
+  background-color:$bg_chat_other_user;
+  padding:4px;
+  color:$font_chat_other_user;
+  border-radius: 0px 15px 15px 15px;
+  -moz-border-radius: 0px 15px 15px 15px;
+  -webkit-border-radius: 0px 15px 15px 15px;
+}
+
+.date_chat_other_user{
+  font-size:10px;
+  color:$font_chat_other_user;
+}
+
+@media (max-width: 759px) {}
+
+@media (max-width: 480px) {}

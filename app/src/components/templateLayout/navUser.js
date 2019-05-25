@@ -6,6 +6,7 @@ import ModalUserProfile from '../modal';
 import ModalNotification from '../modal';
 import { connect } from 'react-redux';
 import ActionNotificationChat from '../../redux_store/actions/actionNotificationChat';
+import { SizeImageUser } from '../utils';
 
 class NavUser extends Component {
 
@@ -33,7 +34,7 @@ class NavUser extends Component {
     if(user){
       return (
         <ModalUserProfile title={`${user.name} ${user.lastname}`} visibility={this.state.modalUser} size="" closeModal={this.closeModal}>
-          <img src={user.imageUrl} className="img-responsive img-thumbnail center-block " width="170"/>
+          <img src={SizeImageUser(user.imageUrl,'md')} className="img-responsive img-thumbnail center-block " width="170"/>
           {user.name} {user.lastname}
         </ModalUserProfile>
       );
@@ -41,15 +42,15 @@ class NavUser extends Component {
   };
 
   ViewModalChatUser = () => {
-    this.props.ActionNotificationChat({});
-    this.setState({ modalChatUser:true })
+    this.props.ActionNotificationChat('');
+    this.setState({ modalChatUser:true });
   };
 
   ModalChatUser = user => {
     if(user){
       return (
         <ModalChat title="Chat User" visibility={this.state.modalChatUser} size="" closeModal={this.closeModal}>
-          <Chat session={user}/>
+          <Chat session={user} visibility={this.state.modalChatUser}/>
         </ModalChat>
       );
     };
@@ -92,13 +93,10 @@ class NavUser extends Component {
           <div className="div_nav_img_user">
             <img
               onClick={() => this.ViewModalUser()}
-              src={user.imageUrl === 'false' ? "../../assets/images_locals/profile.png" : user.imageUrl }
+              src={user.imageUrl === 'false' ? "public/assets/images_locals/profile.png" : SizeImageUser(user.imageUrl,'sx') }
               alt={user.name}
               className="img_nav_user"
             />
-            <p id="p_nav_user_name" className="d-none d-md-inline">
-              {user.name || null}
-            </p>
           </div>
         </Fragment>
 	    );
@@ -106,7 +104,11 @@ class NavUser extends Component {
       return(
         <div className="div_nav_img_user">
           <Link to={'/new_user'}>
-            <img src="../../assets/images_locals/profile.png" alt="" className="img_nav_user" />
+            <img
+              src="public/assets/images_locals/profile.png"
+              alt=""
+              className="img_nav_user_off"
+            />
           </Link>
         </div>
       );

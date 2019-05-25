@@ -109,7 +109,7 @@ class Form extends  Component {
               	/>
                 <span className="">
                   <img
-                  	src={this.state.user.imageUrl || "../../assets/images_locals/profile.png"}
+                  	src={this.state.user.imageUrl || "public/assets/images_locals/profile.png"}
                   	className="img-responsive img-thumbnail center-block rounded-circle" width="170"
                 	/>
                 </span>
@@ -168,38 +168,44 @@ class Form extends  Component {
 						</div>
 
 						<div className="form-group div_checks_newuser">
-							<label className="custom-control custom-checkbox">
-								<input
-									name="rol_admon"
-									type="checkbox"
-									className="custom-control-input"
-									checked={this.state.rol_admon.checked}
-									onChange={this.handleCheked} />
-								<span className="custom-control-indicator"></span>
-								<span className="custom-control-description">Administrador</span>
-							</label>
 
-							<label className="custom-control custom-checkbox">
+							<div class="form-check">
+								<label className="form-check-label">
+									<input
+										name="rol_admon"
+										type="checkbox"
+										className="form-check-input"
+										checked={this.state.rol_admon.checked}
+										onChange={this.handleCheked} 
+									/>
+									<span className="">Administrador</span>
+								</label>
+							</div>
+
+							<div class="form-check">
+								<label className="form-check-label">
 								<input
 									name="rol_client"
 									type="checkbox"
-									className="custom-control-input"
+										className="form-check-input"
 									checked={this.state.rol_client.checked}
 									onChange={this.handleCheked} />
-								<span className="custom-control-indicator"></span>
 								<span className="custom-control-description">Cliente</span>
-							</label>
+								</label>
+							</div>
 
-							<label className="custom-control custom-checkbox">
+							<div class="form-check">
+								<label className="form-check-label">
 								<input
 									name="rol_invited"
 									type="checkbox"
-									className="custom-control-input"
+										className="form-check-input"
 									checked={this.state.rol_invited.checked}
 									onChange={this.handleCheked} />
-								<span className="custom-control-indicator"></span>
 								<span className="custom-control-description">Invitado</span>
-							</label>
+								</label>
+							</div>
+
 						</div>
 
 						<button className="btn btn-lg btn-primary btn-block " type="submit">
