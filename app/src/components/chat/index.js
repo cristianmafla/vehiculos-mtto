@@ -15,8 +15,8 @@ class Chat extends Component {
 
 	render(){
 		return(
-      <Query query={CHAT_USERS}>
-      {({loading,error,data,subscribeToMore}) => (
+      <Query query={CHAT_USERS} >
+        {({ loading, error, data, subscribeToMore}) => (
         <Form
           chatUsers={data.chatUsers || [] }
           session={this.props.session}

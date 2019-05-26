@@ -18,7 +18,7 @@ class Modal extends Component {
 
   componentWillMount = () => {};
 
-  componentDidMount = () => {};
+	componentDidMount = () => {};
 
 	render(){
 		return createPortal(

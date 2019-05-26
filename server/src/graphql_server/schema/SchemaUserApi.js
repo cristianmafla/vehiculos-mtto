@@ -54,6 +54,7 @@ type Token {
 }
 
 type MessageChatUser {
+  new:Boolean
   message:String
   user:User
   date:Date

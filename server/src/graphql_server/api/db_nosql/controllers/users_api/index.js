@@ -24,7 +24,7 @@ export const chatUsers = async () => {
   .catch(error => console.log('error_MONGODB_chatUsers',error));
   await objChat.forEach(chat => {
     setTimeout(() => {
-      pubsub.publish(CHAT_USER, { subChatUsers: { user:chat.user, message:chat.message, date:chat.date } });
+      pubsub.publish(CHAT_USER, { subChatUsers: { new:false, user:chat.user, message:chat.message, date:chat.date } });
     }, 10);
   });
   return objChat;
@@ -33,7 +33,7 @@ export const chatUsers = async () => {
 export const newChatUser = (user, message) => {
   const date = new Date();
   setTimeout(() => {
-    pubsub.publish(CHAT_USER, { subChatUsers: { user, message, date } });
+    pubsub.publish(CHAT_USER, { subChatUsers: { new:true, user, message, date } });
   }, 100);
   return model.create({ user, message, date }).then(data => data).catch(error => error);
 };
