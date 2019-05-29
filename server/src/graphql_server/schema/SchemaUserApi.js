@@ -27,24 +27,21 @@ type Mutation {
   """CREATE NEW MESSAGE CHAT USER"""
   newChatUser(user:InputUser,message:String):MessageChatUser
 
-
-  onlineUserOff(email:String):String
+  """CLOSE SESSION USER"""
+  userOnlineOff(email:String):String
 
 }
 
 type Subscription {
 
-  """SUBSCRIPTION"""
+  """SUBSCRIPTION CHAT USERS"""
   subChatUsers:MessageChatUser
 
-  """SUBSCRIPTION USER LOGED"""
-  subUserLoged:User
+  """SUBSCRIPTION USER ONLINE"""
+  subUsersOnline:UserOnline
 
 }
-type UserLoged {
-  open:Boolean
-  user:User
-}
+
 type User {
   state:Boolean
   message:String
@@ -56,10 +53,9 @@ type User {
   roles:[Rol]
 }
 
-type UserLoged {
-  login:String
-  userEmail:String
-  date:Date
+type UserOnline {
+  update:Boolean
+  user:[User]
 }
 
 type Rol {

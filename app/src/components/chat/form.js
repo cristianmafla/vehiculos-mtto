@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Query, Mutation } from 'react-apollo';
 import { USERS_ONLINE } from '../../graphql_client/queries/queryUser';
-import { SUB_CHAT_USER } from '../../graphql_client/subscription/subscriptionUser';
+import { SUB_CHAT_USER, SUB_USER_ONLINE } from '../../graphql_client/subscription/subscriptionUser';
 import { NEW_CHAT_USER } from '../../graphql_client/mutations/mutationUser';
 import { connect } from 'react-redux';
 import ActionChat from '../../redux_store/actions/actionchat';
@@ -29,7 +29,6 @@ class Form extends Component {
         this.scrolling();
       },
     });
-
   };
 
   updateQuerySubscribe = subscriptionData => {
@@ -111,11 +110,11 @@ class Form extends Component {
     return (
       <Fragment>
         {this.listChatUser()}
-        <Query query={USERS_ONLINE} pollInterval={2500}>
-          {({ loading, error, data, startPolling, stopPolling}) =>  {
+        <Query query={USERS_ONLINE} >
+          {({ loading, error, data}) =>  {
             if(loading) return 'cargando';
             if (error) return console.log('error_QUERY_USERS_ONLINE',error);
-            return <UsersOnline usersOnline={data.usersOnline || []} session={this.props.session} />
+            return <UsersOnline usersOnline={data.usersOnline || []} session={this.props.session} subscribeToMore={this.props.subscribeToMore}/>
           }}
         </Query>
         <Mutation mutation={NEW_CHAT_USER}>

@@ -20,13 +20,16 @@ subscription subChatUsers {
   }
 `;
 
-export const SUB_USER_LOGED = gql`
-  subscription subUserLoged{
-    subUserLoged{
-      name
-      lastname
-      email
-      imageUrl
+export const SUB_USER_ONLINE = gql`
+  subscription subUsersOnline{
+    subUsersOnline {
+      update
+      user{
+        name
+        lastname
+        email
+        imageUrl
+      }
     }
   }
 `;

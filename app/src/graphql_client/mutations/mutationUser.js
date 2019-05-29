@@ -45,8 +45,8 @@ mutation newChatUser($user:InputUser,$message:String){
 }
 `;
 
-export const ONLINE_USER_OFF  = gql`
-mutation onlineUserOff($email:String){
-  onlineUserOff(email:$email)
+export const USER_ONLINE_OFF  = gql`
+mutation userOnlineOff($email:String){
+  userOnlineOff(email:$email)
 }
 `;

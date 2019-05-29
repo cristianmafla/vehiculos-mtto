@@ -8,8 +8,9 @@ import {
   chatUsers,
   newChatUser,
   subChatUsers,
-  onlineUserOff,
-  usersOnline
+  userOnlineOff,
+  usersOnline,
+  subUsersOnline
   } from '../api/db_nosql/controllers/users_api';
 
 export default {
@@ -29,7 +30,7 @@ export default {
 
     loginUser: (_, { email, password }) => loginUser(email, password),
 
-    onlineUserOff: (_, { email }) => onlineUserOff(email),
+    userOnlineOff: (_, { email }) => userOnlineOff(email),
 
     newUser: (_, { user }) => newUser(user),
 
@@ -39,6 +40,8 @@ export default {
   Subscription: {
 
     subChatUsers: subChatUsers(),
+
+    subUsersOnline: subUsersOnline()
 
   }
 };
