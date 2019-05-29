@@ -1,6 +1,6 @@
-import React, { Component, Fragment } from './node_modules/react';
-import { Link } from './node_modules/react-router-dom';
-import { Helmet } from './node_modules/react-helmet';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import TemplateLayout from '../templateLayout';
 
 class plantilla_componente extends Component {

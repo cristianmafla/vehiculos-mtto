@@ -40,6 +40,11 @@ const schema = new mongoose.Schema({
         default: ['false'],
         trim: true,
         validate: () => { }
+    },
+    online:{
+        type: Boolean,
+        default: false,
+        validate: () => { }
     }
 });
 

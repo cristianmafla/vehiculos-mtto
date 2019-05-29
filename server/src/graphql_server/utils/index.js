@@ -27,11 +27,11 @@ const uploads = {
 
 const subscriptions = {
     onConnect: (connectionParams, webSocket, context) => {
-        console.log('connectionParams',connectionParams);
+        //console.log('connectionParams',connectionParams);
         if (connectionParams.authorization) {
             return { currentUserApi: true }
         }
-        throw new Error('Missing auth token!');
+        throw new Error('Missing auth token!.');
     },
     onDisconnect: (webSocket, context) => {}
 };

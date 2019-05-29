@@ -4,6 +4,7 @@ export const LOGIN_USER = gql`
   mutation loginUser($email:String!,$password:String!){
     loginUser(email:$email,password:$password){
       token
+      email
     }
   }
 `;
@@ -41,5 +42,11 @@ mutation newChatUser($user:InputUser,$message:String){
       }
     }
   }
+}
+`;
+
+export const ONLINE_USER_OFF  = gql`
+mutation onlineUserOff($email:String){
+  onlineUserOff(email:$email)
 }
 `;

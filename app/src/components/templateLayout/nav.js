@@ -9,7 +9,7 @@ class Nav extends Component {
   };
 
   links = () => {
-    if(this.props.session.correo){
+    if(this.props.session.email){
       return(
         routesSession.map((data, i) => (
           data.viewNav
@@ -45,9 +45,12 @@ class Nav extends Component {
               <h2 className="mb-3 ml-2">Menú</h2>
               <ul className="list-group list-group-flush ul_menu">
                   {this.links()}
-                  <li className="list-group-item list-group-item-action">
-                      <BtnCloseSession handlerToogle={this.props.handlerToogle}/>
-                  </li>
+                  {this.props.session.email
+                    ? <li className="list-group-item list-group-item-action">
+                      <BtnCloseSession handlerToogle={this.props.handlerToogle} email={this.props.session.email} />
+                    </li>
+                    :''
+                  }
               </ul>
           </nav>
       );

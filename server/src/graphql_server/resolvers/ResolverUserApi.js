@@ -1,4 +1,5 @@
 import fs from 'fs';
+import { withFilter } from 'apollo-server-express';
 import { GraphQLUpload } from 'graphql-upload';
 import {
   loginUser,
@@ -6,7 +7,10 @@ import {
   newUser,
   chatUsers,
   newChatUser,
-  subChatUsers } from '../api/db_nosql/controllers/users_api';
+  subChatUsers,
+  onlineUserOff,
+  usersOnline
+  } from '../api/db_nosql/controllers/users_api';
 
 export default {
 
@@ -16,12 +20,16 @@ export default {
 
     userValid: (_, args, { currentUserApi }) => userValid(currentUserApi),
 
-    chatUsers: (_, args) => chatUsers()
+    chatUsers: (_, args) => chatUsers(),
+
+    usersOnline: (_, args) => usersOnline()
 
   },
   Mutation:{
 
     loginUser: (_, { email, password }) => loginUser(email, password),
+
+    onlineUserOff: (_, { email }) => onlineUserOff(email),
 
     newUser: (_, { user }) => newUser(user),
 
@@ -30,7 +38,7 @@ export default {
   },
   Subscription: {
 
-    subChatUsers: subChatUsers()
+    subChatUsers: subChatUsers(),
 
   }
 };

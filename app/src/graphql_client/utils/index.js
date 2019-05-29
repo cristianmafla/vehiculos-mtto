@@ -12,10 +12,7 @@ import { getMainDefinition } from 'apollo-utilities';
 global.fetch = require('node-fetch');
 
 const UploadLink = createUploadLink({ uri:`${BASE_URL_GRAPHQL}/graphql`});
-const authLink = setContext((_, { headers }) => {
-    const token = localStorage.getItem('tokenUser');
-    return { headers: { authorization: token } };
-});
+const authLink = setContext((_, { headers }) => ({ headers: { authorization: localStorage.getItem('tokenUser')  } }));
 
 const numAleatory = () => Math.floor((Math.random() * 100000000) + 1);
 

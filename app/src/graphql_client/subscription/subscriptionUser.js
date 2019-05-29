@@ -19,3 +19,14 @@ subscription subChatUsers {
     }
   }
 `;
+
+export const SUB_USER_LOGED = gql`
+  subscription subUserLoged{
+    subUserLoged{
+      name
+      lastname
+      email
+      imageUrl
+    }
+  }
+`;

@@ -7,22 +7,23 @@ import jwt from 'jsonwebtoken';
 dotenv.config({ path: 'variables.env' });
 
 export const getTokenUser = async (inputEmail, inputPass) => {
-	let token = {};
+  let token = {};
 	await model.find({ email: inputEmail })
 		.then(async userDB => {
 			if(userDB.length > 0){
 				const { name, lastname, email, password, imageUrl } = userDB[0];
 				if(await compare(inputPass,password)){
-					token =  jwt.sign({ name, lastname, email, imageUrl }, process.env.SECRET, { expiresIn: '1h' });
+          await model.updateOne({ email }, { $set: { online: true } });
+					token =  jwt.sign({ name, lastname, email, imageUrl }, process.env.SECRET, { expiresIn: '7d' });
 				}else{
-					token = 'password error'
+          token = 'password error';
 				};
 			}else{
-				token =  `user error` ;
+        token =  `user error` ;
 			};
 		})
 		.catch(error => console.log('*** Error_modelDB', error));
-		return { token };
+  return { token };
 };
 
 export const addNewUser = user => {

@@ -12,6 +12,8 @@ type Query {
   """RETURN CHAT USERS DB"""
   chatUsers:[MessageChatUser]
 
+  usersOnline:[User]
+
 }
 
 type Mutation {
@@ -25,13 +27,24 @@ type Mutation {
   """CREATE NEW MESSAGE CHAT USER"""
   newChatUser(user:InputUser,message:String):MessageChatUser
 
+
+  onlineUserOff(email:String):String
+
 }
 
 type Subscription {
-  """SUBSCRIPTION """
-  subChatUsers:MessageChatUser
-}
 
+  """SUBSCRIPTION"""
+  subChatUsers:MessageChatUser
+
+  """SUBSCRIPTION USER LOGED"""
+  subUserLoged:User
+
+}
+type UserLoged {
+  open:Boolean
+  user:User
+}
 type User {
   state:Boolean
   message:String
@@ -43,6 +56,12 @@ type User {
   roles:[Rol]
 }
 
+type UserLoged {
+  login:String
+  userEmail:String
+  date:Date
+}
+
 type Rol {
   name:String
   checked:Boolean
@@ -51,6 +70,7 @@ type Rol {
 
 type Token {
   token:String
+  email:String
 }
 
 type MessageChatUser {

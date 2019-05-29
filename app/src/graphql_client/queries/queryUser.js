@@ -35,3 +35,14 @@ export const CHAT_USERS = gql`
     }
   }
 `;
+
+export const USERS_ONLINE = gql`
+  query usersOnline{
+    usersOnline{
+      name
+      lastname
+      email
+      imageUrl
+    }
+  }
+`;

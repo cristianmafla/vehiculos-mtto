@@ -38,7 +38,23 @@
   font-size:10px;
   color:$font_chat_other_user;
 }
-
+.div_online_user{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  width: 100%;
+  img{
+    margin:0 2px 0 5px;
+    flex: 0 0 auto;
+    width: 35px;
+    height: 35px;
+    border-radius:100px;
+    -moz-border-radius:100px;
+    -webkit-border-radius:100px;
+    //border: 2px solid $fonts;
+    border: 2px solid rgb(66, 183, 42);
+  }
+}
 @media (max-width: 759px) {}
 
 @media (max-width: 480px) {}

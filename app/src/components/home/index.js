@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import React,{Component, Fragment} from 'react';
 import { Query } from 'react-apollo';
 import {ANYQUERY} from '../../graphql_client/queries';
 import { Helmet } from 'react-helmet';
@@ -15,7 +15,7 @@ class Home extends Component {
 
 	componentWillMount = () => {};
 
-	componentDidMount = () => {};
+  componentDidMount = () => {};
 
 	openModal = () => this.setState({visibility:true});
 
@@ -23,21 +23,21 @@ class Home extends Component {
 
 	render(){
 		return(
-			<Query query={ANYQUERY} variables={{}}>
-			{({ error, loading, data }) => {
-				return(
-					<TemplateLayout session={this.props.session}>
-						<Helmet>
-							<title>home</title>
-						</Helmet>
-						<div className="col-sm-8 col-lg-5 mx-auto form">
-							<h1 className="h3 mb-3 font-weight-normal text-center">HOME</h1>
+			<TemplateLayout session={this.props.session}>
+				<Helmet>
+					<title>home</title>
+				</Helmet>
+				<div className="col-sm-8 col-lg-5 mx-auto form">
+					<h1 className="h3 mb-3 font-weight-normal text-center">HOME</h1>
+					<Query query={ANYQUERY} variables={{}}>
+					{({ error, loading, data }) => (
+						<Fragment>
 							<h4>*** {loading ? 'cargando...' : ''} {data ? data.anyQuery : 'Error: SERVER GRAPHQL'} ***</h4>
-						</div>
-					</TemplateLayout>
-				);
-			}}
-			</Query>
+						</Fragment>
+					)}
+					</Query>
+				</div>
+			</TemplateLayout>
 		);
 	};
 };

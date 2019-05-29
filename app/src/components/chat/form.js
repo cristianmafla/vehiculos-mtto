@@ -1,12 +1,14 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { Mutation } from 'react-apollo';
+import { Query, Mutation } from 'react-apollo';
+import { USERS_ONLINE } from '../../graphql_client/queries/queryUser';
 import { SUB_CHAT_USER } from '../../graphql_client/subscription/subscriptionUser';
 import { NEW_CHAT_USER } from '../../graphql_client/mutations/mutationUser';
 import { connect } from 'react-redux';
 import ActionChat from '../../redux_store/actions/actionchat';
 import ActionNotificationChat from '../../redux_store/actions/actionNotificationChat';
 import { SizeImageUser } from '../utils';
+import UsersOnline from './usersOnline';
 
 class Form extends Component {
 
@@ -27,6 +29,7 @@ class Form extends Component {
         this.scrolling();
       },
     });
+
   };
 
   updateQuerySubscribe = subscriptionData => {
@@ -45,8 +48,9 @@ class Form extends Component {
   scrolling = () => document.getElementById('list_msn').scrollTop = document.getElementById('list_msn').scrollHeight;
 
   listChatUser = () => (
-    <div id="list_msn" className="list_msn">
-      <ul className="list-group list-group-flush ul_chat">
+    <Fragment>
+    <div id="list_msn" className="list_msn border ">
+      <ul className="list-group list-group-flush ul_chat m-1">
         {this.props.chatMnsUsers.map((msn, key) => {
           if (msn.user.email === this.props.session.email) {
             return <li key={key} className="list-group-item li_chat">
@@ -92,6 +96,7 @@ class Form extends Component {
         })}
       </ul>
     </div>
+    </Fragment>
   );
 
   onSubmit = (e, chatUser) => {
@@ -106,6 +111,13 @@ class Form extends Component {
     return (
       <Fragment>
         {this.listChatUser()}
+        <Query query={USERS_ONLINE} pollInterval={2500}>
+          {({ loading, error, data, startPolling, stopPolling}) =>  {
+            if(loading) return 'cargando';
+            if (error) return console.log('error_QUERY_USERS_ONLINE',error);
+            return <UsersOnline usersOnline={data.usersOnline || []} session={this.props.session} />
+          }}
+        </Query>
         <Mutation mutation={NEW_CHAT_USER}>
           {(chatUser, { loading, error, data }) => (
             <form className="form-inline mt-2" onSubmit={e => this.onSubmit(e, chatUser)}>
@@ -113,7 +125,7 @@ class Form extends Component {
                 <input
                   id="input_chat"
                   type="text"
-                  autofocus="autofocus"
+                  //autofocus="autofocus"
                   autoComplete="off"
                   onFocus={() => this.scrolling()}
                   onKeyPress={() => this.scrolling()}
