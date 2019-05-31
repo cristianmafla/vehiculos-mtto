@@ -60,25 +60,8 @@ export const userOnlineOff = async email => {
  return `user ${email} off`;
 };
 
-
 //***SUBSCRIPTION ITERATORS***//
 export const subChatUsers = () => ({ subscribe: () => pubsub.asyncIterator(CHAT_USER) });
 
 export const subUsersOnline = () => ({ subscribe: () => pubsub.asyncIterator(CHAT_USERS_ONLINE) });
-
-
-/*
-export const usersOnline = async (update = false) => {
-  let objUsersOn = [];
-  await modelUser.find({ online: true }).then(async users => {
-    await users.forEach(user => {
-      const { name, lastname, email, imageUrl } = user;
-      pubsub.publish(CHAT_USERS_ONLINE, { subUsersOnline: { update, user: { name, lastname, email, imageUrl } } });
-    });
-    objUsersOn = data;
-  })
-  .catch(error => console.log('*** Error_MONGODB_usersOnline', error));
-  return objUsersOn;
-};
-*/ 
 

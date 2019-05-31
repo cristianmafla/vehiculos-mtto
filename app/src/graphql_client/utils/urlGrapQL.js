@@ -1,5 +1,5 @@
 const BASE_URL = `localhost:5000`;
-//const BASE_URL = `bbd37dea.ngrok.io`;
+//const BASE_URL = `b48e03f9.ngrok.io`;
 
 export const BASE_URL_GRAPHQL = `http://${BASE_URL}`;
 

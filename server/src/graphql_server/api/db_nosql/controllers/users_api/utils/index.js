@@ -13,7 +13,6 @@ export const getTokenUser = async (inputEmail, inputPass) => {
 			if(userDB.length > 0){
 				const { name, lastname, email, password, imageUrl } = userDB[0];
 				if(await compare(inputPass,password)){
-          await model.updateOne({ email }, { $set: { online: true } });
 					token =  jwt.sign({ name, lastname, email, imageUrl }, process.env.SECRET, { expiresIn: '7d' });
 				}else{
           token = 'password error';
@@ -29,13 +28,29 @@ export const getTokenUser = async (inputEmail, inputPass) => {
 export const addNewUser = user => {
   return new Promise((resolve, reject) => {
     model.find({ email: user.email }).then(userDB => {
-      if (userDB.length != 0) {
+      if (userDB.length > 0) {
+        if(user.mode != 'local'){
+          model.updateOne({ email:user.email }, { $set: { online: true } })
+            .then(() => {
+              resolve({
+                state: true,
+                message: 'successfully created user',
+                name:user.name,
+                lastname:user.lastname,
+                email:user.email,
+                imageUrl:user.imageUrl,
+                roles:user.roles
+              });
+            })
+            .catch(error => console.log('*** Error_MONGODB_addNewUser_updateOne',error))
+        }
         resolve({ state: false, message: `this user already exists: ${user.email}` });
       }else{
         uploadImageUser(user.file, user.email).then(urlImage => {
           hash(user.password).then(pass => {
             user.password = pass;
             user.imageUrl = urlImage || user.imageUrl
+            user.online = true;
             model.create(user).then(({name,lastname,email,imageUrl,roles}) => {
               resolve({ state: true, message:'successfully created user', name, lastname, email, imageUrl, roles});
             })

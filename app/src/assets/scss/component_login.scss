@@ -18,17 +18,19 @@
     margin-top:60px;
 }
 .btn_login_facebook {
-    background-color:#3b5998;
-    color:$fonts;
+    background-color: #3864c1;
+    color:$bg_form;
     &:hover{
-      background-color:#2f55a4;
+      background-color:#3b5998;
+      color:$fonts_hover;
     }
 }
 
 .btn_login_google{
-    background-color:#FE2E2E ;
-    color:$fonts;
+    background-color:#ff1919;
+    color:$bg_form;
     &:hover{
     background-color:#FF0000;
+    color:$fonts_hover;
     }
 }

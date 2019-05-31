@@ -8,18 +8,17 @@ class Home extends Component {
 
 	constructor(props){
 		super(props);
-		this.state = {
-			visibility:false
-		};
+		this.state = {};
 	};
 
 	componentWillMount = () => {};
 
   componentDidMount = () => {};
 
-	openModal = () => this.setState({visibility:true});
+  soundReact = () => {
 
-	closeModal = () => this.setState({visibility:false});
+    console.log('sonido')
+  };
 
 	render(){
 		return(
@@ -33,9 +32,11 @@ class Home extends Component {
 					{({ error, loading, data }) => (
 						<Fragment>
 							<h4>*** {loading ? 'cargando...' : ''} {data ? data.anyQuery : 'Error: SERVER GRAPHQL'} ***</h4>
+              <button onClick={this.soundReact}>SOUND CLICK</button>
 						</Fragment>
 					)}
 					</Query>
+
 				</div>
 			</TemplateLayout>
 		);

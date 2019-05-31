@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
 import { LOGIN_USER } from '../../graphql_client/mutations/mutationUser';
 import MessageFlash from '../utils/messageflash';
+import GoogleLogin from './loginGoogle';
+import FacebookLogin from './loginFacebook';
 
 class Login extends Component {
 
@@ -53,6 +55,8 @@ class Login extends Component {
     };
   };
 
+  errorValid = message => this.setState({ errorValid: { error: true, message } });
+
   render() {
     const  {email, password } = this.state.user;
     return (
@@ -69,7 +73,8 @@ class Login extends Component {
                   loading ? this.state.btnSubmit = 'Ingresando...' : this.state.btnSubmit = 'Ingresar';
                   return (
                     <form className="" onSubmit={e => this.handleSubmit(e, loginUser)}>
-
+                      <FacebookLogin history={this.props.history} refetch={this.props.refetch} errorValid={this.errorValid}/>
+                      <GoogleLogin history={this.props.history} refetch={this.props.refetch} errorValid={this.errorValid}/>
                       <MessageFlash errorValid={this.state.errorValid} closeError={this.closeError}/>
 
                       <input

@@ -20,6 +20,12 @@ class UsersOnline extends Component {
         if (!subscriptionData.data) return prev;
         if (subscriptionData.data.subUsersOnline.update){
           this.props.ActionUsersOnline([]);
+          const emailsUsers = subscriptionData.data.subUsersOnline.user.map(user => user.email);
+
+          if(emailsUsers.indexOf(this.props.session.email) < 0){
+            localStorage.setItem('tokenUser','null')
+          };
+          console.log('emailsUsers',emailsUsers);
         };
         console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData);
         let set = new Set([...this.props.UsersOnline, ...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))

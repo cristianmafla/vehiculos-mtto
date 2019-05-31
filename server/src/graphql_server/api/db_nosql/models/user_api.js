@@ -24,14 +24,11 @@ const schema = new mongoose.Schema({
     password: {
         type: String,
         default: false,
-        trim: true,
         validate: () => { }
     },
     imageUrl: {
         type: String,
         default: false,
-        trim: true,
-        lowercase: true,
         validate: () => { }
     },
     roles:{
@@ -44,6 +41,11 @@ const schema = new mongoose.Schema({
     online:{
         type: Boolean,
         default: false,
+        validate: () => { }
+    },
+    mode:{
+        type: String,
+        default: 'local',
         validate: () => { }
     }
 });

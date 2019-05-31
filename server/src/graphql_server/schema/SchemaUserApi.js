@@ -51,6 +51,7 @@ type User {
   email:String
   imageUrl:String
   roles:[Rol]
+  mode:String
 }
 
 type UserOnline {
@@ -91,5 +92,6 @@ input InputUser {
     imageUrl:String
     roles:[InputRolUser]
     file:Upload
+    mode:String
 }
 ` ;

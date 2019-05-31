@@ -9,7 +9,7 @@ import ActionUsersOnline from '../../redux_store/actions/actionUsersOnline';
 const btnClose = (onlineOff, email, client, history, handlerToogle, ActionUsersOnline) => {
   onlineOff({ variables: { email } }).then(() => {
     ActionUsersOnline([]);
-    localStorage.removeItem('tokenUser', '');
+    localStorage.removeItem('tokenUser', 'null');
     client.resetStore();
     handlerToogle();
     history.push('/login');
