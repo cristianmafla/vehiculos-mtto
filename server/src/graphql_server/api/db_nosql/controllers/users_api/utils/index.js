@@ -11,9 +11,12 @@ export const getTokenUser = async (inputEmail, inputPass) => {
 	await model.find({ email: inputEmail })
 		.then(async userDB => {
 			if(userDB.length > 0){
-				const { name, lastname, email, password, imageUrl } = userDB[0];
+        const { name, lastname, email, password, imageUrl,roles,mode } = userDB[0];
 				if(await compare(inputPass,password)){
-					token =  jwt.sign({ name, lastname, email, imageUrl }, process.env.SECRET, { expiresIn: '7d' });
+          if (mode === 'local') {
+            await model.updateOne({ email }, { $set: { online: true } });
+          };
+					token =  jwt.sign({ name, lastname, email, imageUrl,roles,mode }, process.env.SECRET, { expiresIn: '7d' });
 				}else{
           token = 'password error';
 				};
@@ -39,7 +42,8 @@ export const addNewUser = user => {
                 lastname:user.lastname,
                 email:user.email,
                 imageUrl:user.imageUrl,
-                roles:user.roles
+                roles:user.roles,
+                mode:user.mode
               });
             })
             .catch(error => console.log('*** Error_MONGODB_addNewUser_updateOne',error))
@@ -51,8 +55,8 @@ export const addNewUser = user => {
             user.password = pass;
             user.imageUrl = urlImage || user.imageUrl
             user.online = true;
-            model.create(user).then(({name,lastname,email,imageUrl,roles}) => {
-              resolve({ state: true, message:'successfully created user', name, lastname, email, imageUrl, roles});
+            model.create(user).then(({name,lastname,email,imageUrl,roles,mode}) => {
+              resolve({ state: true, message:'successfully created user', name, lastname, email, imageUrl, roles,mode});
             })
             .catch(error => console.log('*** Error_modelDB', error));
           });

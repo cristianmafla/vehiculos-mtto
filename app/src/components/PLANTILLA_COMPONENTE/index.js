@@ -6,15 +6,15 @@ import TemplateLayout from '../templateLayout';
 class plantilla_componente extends Component {
 	constructor(props){
 		super(props);
-	}
+	};
 
   componentWillMount = () => {
 
-  }
+  };
 
   componentDidMount = () => {
 
-  }
+  };
 
 	render(){
 		return(
@@ -25,7 +25,7 @@ class plantilla_componente extends Component {
 				</div>
 			</TemplateLayout>
 		);
-	}
+	};
 };
 export default plantilla_componente;
 

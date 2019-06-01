@@ -1,10 +1,10 @@
 import React from 'react';
 import { ApolloConsumer, Mutation } from 'react-apollo';
-import { USER_ONLINE_OFF } from '../../graphql_client/mutations/mutationUser';
+import { USER_ONLINE_OFF } from '../../../graphql_client/mutations/mutationUser';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import authApp from '../../redux_store/actions/authApp';
-import ActionUsersOnline from '../../redux_store/actions/actionUsersOnline';
+import authApp from '../../../redux_store/actions/authApp';
+import ActionUsersOnline from '../../../redux_store/actions/actionUsersOnline';
 
 const btnClose = (onlineOff, email, client, history, handlerToogle, ActionUsersOnline) => {
   onlineOff({ variables: { email } }).then(() => {

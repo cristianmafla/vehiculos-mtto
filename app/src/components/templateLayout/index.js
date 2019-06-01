@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NavUser from './navUser';
+import NavUser from '../users/nav_user';
 import Nav from './nav';
 
 if (process.env.WEBPACK) {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import TemplateLayout from '../templateLayout';
+import TemplateLayout from '../../templateLayout';
 import Form from './form';
 
 class NewUsuario extends Component {

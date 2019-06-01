@@ -24,6 +24,7 @@ export const SUB_USER_ONLINE = gql`
   subscription subUsersOnline{
     subUsersOnline {
       update
+      deleted
       user{
         name
         lastname

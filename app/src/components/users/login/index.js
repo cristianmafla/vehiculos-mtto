@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Helmet } from "react-helmet";
-import TemplateLayout from '../templateLayout';
+import TemplateLayout from '../../templateLayout';
 import { Link } from 'react-router-dom';
 import { Mutation } from 'react-apollo';
-import { LOGIN_USER } from '../../graphql_client/mutations/mutationUser';
-import MessageFlash from '../utils/messageflash';
+import { LOGIN_USER } from '../../../graphql_client/mutations/mutationUser';
+import MessageFlash from '../../utils/messageflash';
 import GoogleLogin from './loginGoogle';
 import FacebookLogin from './loginFacebook';
 

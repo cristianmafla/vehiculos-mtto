@@ -29,4 +29,9 @@ export const ImageUploadValid = image => {
 	}
 };
 
-export const SizeImageUser = (url, size) => url.replace('**size**',size);
+export const SizeImageUser = (url, size) => {
+	if(url !== 'false' && url !== false){
+		return url.replace('**size**', size);
+	};
+	return 'public/assets/images_locals/profile.png';
+};

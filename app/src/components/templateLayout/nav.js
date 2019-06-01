@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import {routesGeneral, routesSession} from '../../routes/routesJson';
-import BtnCloseSession from '../session/closeSession';
+import BtnCloseSession from '../users/session/closeSession';
 
 class Nav extends Component {
   constructor(props) {

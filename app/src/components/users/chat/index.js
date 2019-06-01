@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { CHAT_USERS } from '../../graphql_client/queries/queryUser';
+import { CHAT_USERS } from '../../../graphql_client/queries/queryUser';
 import { Query } from 'react-apollo';
 import Form from './form';
 

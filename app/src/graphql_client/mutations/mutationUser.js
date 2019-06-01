@@ -44,6 +44,11 @@ mutation newChatUser($user:InputUser,$message:String){
   }
 }
 `;
+export const DELETE_USER = gql`
+  mutation deleteUser($email:String){
+    deleteUser(email:$email)
+  }
+`;
 
 export const USER_ONLINE_OFF  = gql`
 mutation userOnlineOff($email:String){

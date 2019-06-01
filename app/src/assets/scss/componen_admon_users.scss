@@ -1,0 +1,53 @@
+@import 'variables.scss';
+.i_edit{
+  color:#3864c1;
+  padding:10px;
+  &:hover{
+    cursor:pointer;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+.i_delete{
+  color:#FF0000;
+  padding:10px;
+  &:hover{
+    cursor:pointer;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    background-color: rgba(0, 0, 0, 0.12);
+  }
+}
+.user_online{
+  border: 1.5px solid #42b72a;
+}
+.user_offline{
+  border: 1.5px solid #D8D8D8;
+}
+.table_list_users{
+  tbody{
+    tr{
+      td{
+        img{
+          cursor:pointer;
+          background-color: #D8D8D8;
+          width: 40px;
+          height: 40px;
+          padding:1px;
+          border-radius: 100px;
+          -moz-border-radius: 100px;
+          -webkit-border-radius: 100px;
+          &:hover{
+            border: 1.5px solid #FFFFFF;
+          }
+        }
+        i{
+ 
+        }
+      }
+    }
+  }
+}

@@ -1,12 +1,12 @@
 import React, { Component,Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import ModalChat from '../modal';
+import ModalChat from '../../modal';
 import Chat from '../chat';
-import ModalUserProfile from '../modal';
-import ModalNotification from '../modal';
+import ModalUserProfile from '../../modal';
+import ModalNotification from '../../modal';
 import { connect } from 'react-redux';
-import ActionNotificationChat from '../../redux_store/actions/actionNotificationChat';
-import { SizeImageUser } from '../utils';
+import ActionNotificationChat from '../../../redux_store/actions/actionNotificationChat';
+import { SizeImageUser } from '../../utils';
 
 class NavUser extends Component {
 
@@ -58,7 +58,7 @@ class NavUser extends Component {
 
   ViewModaNotificationl = () => this.setState({ modalNotification: true });
 
-  ModaNotificationl = user => {
+  ModalNotification = user => {
     if(user){
       return (
         <ModalNotification title="User Notification" visibility={this.state.modalNotification} size="" closeModal={this.closeModal}>
@@ -122,7 +122,7 @@ class NavUser extends Component {
         {this.avatarUsuario(this.props.session || false)}
         {this.ModalUser(this.props.session || false)}
         {this.ModalChatUser(this.props.session || false)}
-        {this.ModaNotificationl(this.props.session || false)}
+        {this.ModalNotification(this.props.session || false)}
       </div>
     );
   };

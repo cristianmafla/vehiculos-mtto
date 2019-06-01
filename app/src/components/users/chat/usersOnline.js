@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import { SUB_USER_ONLINE } from '../../graphql_client/subscription/subscriptionUser';
+import { SUB_USER_ONLINE } from '../../../graphql_client/subscription/subscriptionUser';
 import { connect } from 'react-redux';
-import ActionUsersOnline from '../../redux_store/actions/actionUsersOnline';
-import { SizeImageUser } from '../utils';
+import ActionUsersOnline from '../../../redux_store/actions/actionUsersOnline';
+import { SizeImageUser } from '../../utils';
 
 class UsersOnline extends Component {
 	constructor(props){
@@ -17,15 +17,22 @@ class UsersOnline extends Component {
 	  this.props.subscribeToMore({
 		  document: SUB_USER_ONLINE,
 		  updateQuery: (prev, { subscriptionData }) => {
+        const emailsUsers = subscriptionData.data.subUsersOnline.user.map(user => user.email);
         if (!subscriptionData.data) return prev;
+
+        if (subscriptionData.data.subUsersOnline.deleted){
+          if (emailsUsers.indexOf(this.props.session.email) < 0) {
+            localStorage.setItem('tokenUser', 'null')
+            location.reload();
+          };
+        };
+
         if (subscriptionData.data.subUsersOnline.update){
           this.props.ActionUsersOnline([]);
-          const emailsUsers = subscriptionData.data.subUsersOnline.user.map(user => user.email);
-
           if(emailsUsers.indexOf(this.props.session.email) < 0){
             localStorage.setItem('tokenUser','null')
+            location.reload();
           };
-          console.log('emailsUsers',emailsUsers);
         };
         console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData);
         let set = new Set([...this.props.UsersOnline, ...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))

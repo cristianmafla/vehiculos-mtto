@@ -25,7 +25,15 @@ const routesGeneral = [
     }
 ];
 
-const routesSession = [ ...routesGeneral ];
+const routesSession = [ 
+  ...routesGeneral ,
+  {
+    to: '/admin_users',
+    name: 'Admin Users',
+    icon: <i className="fas fa-users"></i>,
+    viewNav: true,
+  },
+];
 
 
 export  {routesGeneral, routesSession};

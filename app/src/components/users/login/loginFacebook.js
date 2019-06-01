@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props';
 import { Mutation } from 'react-apollo';
-import { NEW_USER, LOGIN_USER } from '../../graphql_client/mutations/mutationUser'
+import { NEW_USER, LOGIN_USER } from '../../../graphql_client/mutations/mutationUser'
 
 class Facebook extends Component {
     constructor(props) {
@@ -17,6 +17,10 @@ class Facebook extends Component {
         email: userFacebook.email,
         password: userFacebook.id,
         imageUrl: userFacebook.picture.data.url,
+        roles:{
+          name:'rol_invited',
+          checked:true
+        },
         file: false,
         mode:'facebook'
     };

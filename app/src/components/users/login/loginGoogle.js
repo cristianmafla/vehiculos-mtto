@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GoogleLogin from 'react-google-login';
 import { Mutation } from 'react-apollo';
-import { NEW_USER, LOGIN_USER } from '../../graphql_client/mutations/mutationUser'
+import { NEW_USER, LOGIN_USER } from '../../../graphql_client/mutations/mutationUser'
 
 class Google extends Component {
   constructor(props) {
@@ -16,6 +16,10 @@ class Google extends Component {
       email:userGoogle.w3.U3,
       password:userGoogle.w3.Eea,
       imageUrl:userGoogle.w3.Paa,
+      roles: {
+        name: 'rol_invited',
+        checked: true
+      },
       file:false,
       mode:'google'
     };

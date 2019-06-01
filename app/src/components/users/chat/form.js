@@ -1,13 +1,13 @@
 import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Query, Mutation } from 'react-apollo';
-import { USERS_ONLINE } from '../../graphql_client/queries/queryUser';
-import { SUB_CHAT_USER, SUB_USER_ONLINE } from '../../graphql_client/subscription/subscriptionUser';
-import { NEW_CHAT_USER } from '../../graphql_client/mutations/mutationUser';
+import { USERS_ONLINE } from '../../../graphql_client/queries/queryUser';
+import { SUB_CHAT_USER, SUB_USER_ONLINE } from '../../../graphql_client/subscription/subscriptionUser';
+import { NEW_CHAT_USER } from '../../../graphql_client/mutations/mutationUser';
 import { connect } from 'react-redux';
-import ActionChat from '../../redux_store/actions/actionchat';
-import ActionNotificationChat from '../../redux_store/actions/actionNotificationChat';
-import { SizeImageUser } from '../utils';
+import ActionChat from '../../../redux_store/actions/actionchat';
+import ActionNotificationChat from '../../../redux_store/actions/actionNotificationChat';
+import { SizeImageUser } from '../../utils';
 import UsersOnline from './usersOnline';
 
 class Form extends Component {

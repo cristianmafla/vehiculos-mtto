@@ -6,6 +6,9 @@ scalar Date
 
 type Query {
 
+  """ TOTAL USERS ONLY ADMIN """
+  totalUsers:[User]
+
   """ USUARIO VALIDO """
   userValid:User
 
@@ -23,6 +26,9 @@ type Mutation {
 
   """CREATION NEW USER AND ROLES API"""
   newUser(user:InputUser):User
+
+  """DELETE USER"""
+  deleteUser(email:String):String
 
   """CREATE NEW MESSAGE CHAT USER"""
   newChatUser(user:InputUser,message:String):MessageChatUser
@@ -52,10 +58,12 @@ type User {
   imageUrl:String
   roles:[Rol]
   mode:String
+  online:Boolean
 }
 
 type UserOnline {
   update:Boolean
+  deleted:Boolean
   user:[User]
 }
 

@@ -20,8 +20,26 @@ export const userValid =  async currentUserApi => {
   return currentUserApi;
 };
 
+export const totalUsers = currentUserApi => {
+  if(currentUserApi){
+    const rolAdmon = currentUserApi.roles.map(rol => rol.name);
+    if (rolAdmon.indexOf('rol_admon') >= 0 ){
+      return modelUser.find().then(users => users).catch(error => console.log('*** Error_MONGODB_totalUsers', error));
+    };
+  };
+};
+
 //NUEVO USUARIO Y ROLES PARA INTERACTUAR CON LA API
 export const newUser =  user =>  addNewUser(user);
+
+export const deleteUser = async email =>  {
+  let delt = '';
+  await modelUser.deleteOne({ email }).then(async () => {
+    await usersOnline(true,true);
+    delt = 'delete user ok';
+  });
+  return delt;
+};
 
 export const chatUsers = async () => {
   let objChat = [];
@@ -42,10 +60,10 @@ export const newChatUser = (user, message) => {
   return model.create({ user, message, date }).then(data => data).catch(error => error);
 };
 
-export const usersOnline = async (update = false) => {
+export const usersOnline = async (update = false, deleted = false) => {
   let objUsersOn = [];
   await modelUser.find({ online: true }).then(async users => {
-    await pubsub.publish(CHAT_USERS_ONLINE, { subUsersOnline: { update, user: users } });
+    await pubsub.publish(CHAT_USERS_ONLINE, { subUsersOnline: { update, deleted, user: users } });
     objUsersOn = users;
   })
   .catch(error => console.log('*** Error_MONGODB_usersOnline', error));

@@ -2,9 +2,11 @@ import fs from 'fs';
 import { withFilter } from 'apollo-server-express';
 import { GraphQLUpload } from 'graphql-upload';
 import {
+  totalUsers,
   loginUser,
   userValid,
   newUser,
+  deleteUser,
   chatUsers,
   newChatUser,
   subChatUsers,
@@ -23,7 +25,9 @@ export default {
 
     chatUsers: (_, args) => chatUsers(),
 
-    usersOnline: (_, args) => usersOnline()
+    usersOnline: (_, args) => usersOnline(),
+
+    totalUsers: (_, args, { currentUserApi }) => totalUsers(currentUserApi)
 
   },
   Mutation:{
@@ -34,7 +38,9 @@ export default {
 
     newUser: (_, { user }) => newUser(user),
 
-    newChatUser: (_, { user, message }) => newChatUser(user, message)
+    newChatUser: (_, { user, message }) => newChatUser(user, message),
+
+    deleteUser: (_, { email }) => deleteUser(email)
 
   },
   Subscription: {

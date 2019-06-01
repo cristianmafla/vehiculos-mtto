@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import { NEW_USER, LOGIN_USER } from '../../graphql_client/mutations/mutationUser';
-import { Mutation } from 'react-apollo';
-import MessageFlash from '../utils/messageflash';
-import { ImageUrlUpload, ImageUploadValid } from '../utils';
 
-class Form extends  Component {
+import React, { Component } from 'react';
+import { NEW_USER, LOGIN_USER } from '../../../graphql_client/mutations/mutationUser';
+import { Mutation } from 'react-apollo';
+import MessageFlash from '../../utils/messageflash';
+import { ImageUrlUpload, ImageUploadValid,SizeImageUser } from '../../utils';
+
+class FormEdit extends  Component {
 
   constructor(props) {
     super(props);
@@ -12,11 +13,9 @@ class Form extends  Component {
 			user:{
 				name:'',
 				lastname:'',
-				email:'',
-				password:'',
-				valid_password:'',
+				email: '',
 				roles:[],
-				imageUrl:''
+				imageUrl: ''
 			},
 			errorValid:{
         error:false,
@@ -32,10 +31,14 @@ class Form extends  Component {
 			},
 			rol_invited:{
 				name: 'rol_invited',
-				checked: true
+				checked: false
 			}
 		};
-  };
+	};
+
+	componentDidMount = () => {
+
+	};
 
 	closeError = () => this.setState({errorValid:{error:false}});
 
@@ -133,7 +136,7 @@ class Form extends  Component {
 									/>
 									<span className="">
 										<img
-											src={this.state.user.imageUrl || "public/assets/images_locals/profile.png"}
+											src={SizeImageUser(String(this.props.user.imageUrl),'md') || "public/assets/images_locals/profile.png"}
 											className="img-responsive img-thumbnail center-block rounded-circle" width="170"
 										/>
 									</span>
@@ -148,6 +151,7 @@ class Form extends  Component {
 										name="name"
 										placeholder="Nombres"
 										onChange={this.onChange}
+										value={this.props.user.name}
 									/>
 								</div>
 
@@ -158,6 +162,7 @@ class Form extends  Component {
 										name="lastname"
 										placeholder="Apellidos"
 										onChange={this.onChange}
+										value={this.props.user.lastname}
 									/>
 								</div>
 
@@ -168,26 +173,7 @@ class Form extends  Component {
 										name="email"
 										placeholder="Correo"
 										onChange={this.onChange}
-									/>
-								</div>
-
-								<div className="form-group">
-									<input
-										type="text"
-										className="form-control"
-										name="password"
-										placeholder="Contraseña"
-										onChange={this.onChange}
-									/>
-								</div>
-
-								<div className="form-group">
-									<input
-										type="text"
-										className="form-control"
-										name="valid_password"
-										placeholder="Repetir Contraseña"
-										onChange={this.onChange}
+										value={this.props.user.email}
 									/>
 								</div>
 
@@ -199,41 +185,16 @@ class Form extends  Component {
 												name="rol_admon"
 												type="checkbox"
 												className="form-check-input"
-												checked={this.state.rol_admon.checked}
+												checked={true}
 												onChange={this.handleCheked}
 											/>
-											<span className="">Administrador</span>
+											<span className="">{'nombre rol'}</span>
 										</label>
 									</div>
-
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name="rol_client"
-												type="checkbox"
-												className="form-check-input"
-												checked={this.state.rol_client.checked}
-												onChange={this.handleCheked} />
-											<span className="custom-control-description">Cliente</span>
-										</label>
-									</div>
-
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name="rol_invited"
-												type="checkbox"
-												className="form-check-input"
-												checked={this.state.rol_invited.checked}
-												onChange={this.handleCheked} />
-											<span className="custom-control-description">Invitado</span>
-										</label>
-									</div>
-
 								</div>
 
 								<button className="btn btn-lg btn-primary btn-block " type="submit">
-									{loading ? 'Registrarme...' : 'Registrarme'}
+									{loading ? 'loading...' : 'Update'}
 								</button>
 
 								<p className="mt-5 mb-3 text-muted"> ©node-2019</p>
@@ -245,4 +206,4 @@ class Form extends  Component {
     );
   }
 }
-export default Form;
+export default FormEdit;
