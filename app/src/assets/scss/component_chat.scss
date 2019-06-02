@@ -44,16 +44,35 @@
   overflow-x: auto;
   width: 100%;
   img{
-    margin:0 2px 0 5px;
-    flex: 0 0 auto;
-    width: 35px;
-    height: 35px;
-    border-radius:100px;
-    -moz-border-radius:100px;
-    -webkit-border-radius:100px;
-    //border: 2px solid $fonts;
-    border: 2px solid rgb(66, 183, 42);
+      margin:0 2px 0 5px;
+      flex: 0 0 auto;
+      width: 35px;
+      height: 35px;
+      border-radius:100px;
+      -moz-border-radius:100px;
+      -webkit-border-radius:100px;
+      border: 1.5px solid rgba(0, 0, 0, 0.13);
+      &:hover{
+        border: 1.5px solid rgba(0, 0, 0, 0.20);
+      }
   }
+}
+.chat_user_online{
+  position: relative;
+  width: 9px;
+  height: 15px;
+  left: -13px;
+  top: 20px;
+  display: inline;
+  background-color: #42b72a;
+  color: #42b72a;
+  font-size: 9px;
+  padding: 0px 6px 0px 6px;
+  border: 1.4px solid #FFFFFF;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  z-index: 1;
 }
 @media (max-width: 759px) {}
 

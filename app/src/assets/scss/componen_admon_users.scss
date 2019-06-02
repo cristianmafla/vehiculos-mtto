@@ -31,23 +31,70 @@
   tbody{
     tr{
       td{
+        padding: 5px 10px 5px 5px;
         img{
           cursor:pointer;
-          background-color: #D8D8D8;
+          background-color: #FFFFFF;
           width: 40px;
           height: 40px;
-          padding:1px;
           border-radius: 100px;
           -moz-border-radius: 100px;
           -webkit-border-radius: 100px;
+          border: 1.5px solid rgba(0, 0, 0, 0.13);
           &:hover{
-            border: 1.5px solid #FFFFFF;
+            border: 1.5px solid rgba(0, 0, 0, 0.20);
           }
-        }
-        i{
- 
         }
       }
     }
   }
+}
+.user_online_prueba{
+  position: relative;
+  width: 10px;
+  left: -12px;
+  top: 12px;
+  display: inline;
+  background-color: #42b72a;
+  color: #42b72a;
+  font-size: 9px;
+  padding: 0px 6px 0px 6px;
+  border: 1.4px solid #FFFFFF;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  z-index: 1;
+}
+.user_offline_prueba{
+  position: relative;
+  width: 10px;
+  left: -12px;
+  top: 12px;
+  display: inline;
+  background-color: $icons_font;
+  color: $icons_font;
+  font-size: 9px;
+  padding: 0px 6px 0px 6px;
+  border: 1.4px solid #FFFFFF;
+  border-radius: 50px;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  z-index: 1;
+}
+
+//PAGINATION LIST USER
+.pagination_right{
+    cursor: pointer;
+    margin-left: 20px;
+    color:#333333;
+}
+.pagination_left{
+    cursor: pointer;
+    margin-right: 20px;
+    color:#333333;
+}
+.pagination_disable{
+    cursor:no-drop;
+    background-color:#FFF;
+    color:#A4A4A4;
 }

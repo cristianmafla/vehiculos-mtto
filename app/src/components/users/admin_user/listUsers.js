@@ -67,7 +67,12 @@ class ListUsers extends Component {
           <tbody>
             {this.props.users.map((user,key) => (
               <tr key={key} className={key % 2 === 0 ? 'table-info' : ''}>
-                <td><img onClick={() => this.viewModalEditUser(user)} src={SizeImageUser(user.imageUrl,'sx')} className={user.online === true ? 'user_online' : 'user_offline'}/></td>
+                <td>
+                  <div>
+                    <img onClick={() => this.viewModalEditUser(user)} src={SizeImageUser(user.imageUrl, 'sx')} />
+                    <div className={user.online === true ? 'user_online_prueba' : 'user_offline_prueba'}></div>
+                  </div>
+                </td>
                 <td>{user.name}</td>
                 <td>{user.lastname}</td>
                 <td>{user.email}</td>

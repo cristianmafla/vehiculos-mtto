@@ -193,41 +193,40 @@ class Form extends  Component {
 
 								<div className="form-group div_checks_newuser">
 
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name="rol_admon"
-												type="checkbox"
-												className="form-check-input"
-												checked={this.state.rol_admon.checked}
-												onChange={this.handleCheked}
+									<div className="custom-control custom-switch">
+										<input
+											id="rol_admon"
+											name="rol_admon"
+											type="checkbox"
+											className="custom-control-input"
+											checked={this.state.rol_admon.checked}
+											onChange={this.handleCheked}
 											/>
-											<span className="">Administrador</span>
-										</label>
+										<label className="custom-control-label" htmlFor="rol_admon">Administrator</label>
 									</div>
 
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name="rol_client"
-												type="checkbox"
-												className="form-check-input"
-												checked={this.state.rol_client.checked}
-												onChange={this.handleCheked} />
-											<span className="custom-control-description">Cliente</span>
-										</label>
+									<div className="custom-control custom-switch">
+										<input
+											id="rol_client"
+											name="rol_client"
+											type="checkbox"
+											className="custom-control-input"
+											checked={this.state.rol_client.checked}
+											onChange={this.handleCheked}
+										/>
+										<label className="custom-control-label" htmlFor="rol_client">Client</label>
 									</div>
 
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name="rol_invited"
-												type="checkbox"
-												className="form-check-input"
-												checked={this.state.rol_invited.checked}
-												onChange={this.handleCheked} />
-											<span className="custom-control-description">Invitado</span>
-										</label>
+									<div className="custom-control custom-switch">
+										<input
+											id="rol_invited"
+											name="rol_invited"
+											type="checkbox"
+											className="custom-control-input"
+											checked={this.state.rol_invited.checked}
+											onChange={this.handleCheked}
+										/>
+										<label className="custom-control-label" htmlFor="rol_invited">Invited</label>
 									</div>
 
 								</div>

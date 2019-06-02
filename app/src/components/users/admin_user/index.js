@@ -2,22 +2,46 @@ import React, { Component, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import { Query } from 'react-apollo';
-import { TOTAL_USERS } from '../../../graphql_client/queries/queryUser';
+import { PAGINATION_USERS } from '../../../graphql_client/queries/queryUser';
 import TemplateLayout from '../../templateLayout';
 import ListUsers from './listUsers';
+import Pagination from '../pagination';
 
 class AdminUsers extends Component {
+	limit = 2;
 	constructor(props){
 		super(props);
+		this.state = {
+			pagination: {
+				offset: 0,
+				currentPage: 1
+			}
+		};
 	}
 
-  componentWillMount = () => {
+  componentWillMount = () => {};
 
-  };
+	componentDidMount = () => {};
+	
+	pagePrevious = () => {
+		this.setState({
+			pagination: {
+				offset: this.state.pagination.offset - this.limit,
+				currentPage: this.state.pagination.currentPage - 1
+			}
+		});
+	}
 
-  componentDidMount = () => {
+	pageFallowing = () => {
+		this.setState({
+			pagination: {
+				offset: this.state.pagination.offset + this.limit,
+				currentPage: this.state.pagination.currentPage + 1
+			}
+		});
+	}
 
-  };
+	finalPage = totalUser => this.state.pagination.currentPage >= Math.ceil(Number(totalUser) / this.limit);
 
 	render(){
 		return(
@@ -25,18 +49,26 @@ class AdminUsers extends Component {
 				<Helmet><title>Admin Users</title></Helmet>
 				<div className="col-sm-8 col-lg-9 mx-auto form">
           <h1 className="h3 mb-3 font-weight-normal text-center">User administration</h1>
-					<Query query={TOTAL_USERS} pollInterval={2500}>
+					<Query query={PAGINATION_USERS} variables={{limit:this.limit,offset:this.state.pagination.offset}} pollInterval={2500}>
             {({loading,error,data,refetch}) => {
               if(loading) return 'loading...';
               if(error) return console.log('error_GRAPHQL_TOTAL_USERS',error);
 							return(
-								<ListUsers
-										users={data.totalUsers || []}
+								<Fragment>
+									<ListUsers
+										users={data.paginationUsers || []}
 										refetch={refetch}
 										session={this.props.session}
 										history={this.props.history}
 										stm={this.props.stm}
 									/>
+									<Pagination
+										currentPage={this.state.pagination.currentPage}
+										previousPage={this.pagePrevious}
+										followingPage={this.pageFallowing}
+										finalPages={this.finalPage(data.totalUsers)}
+									/>
+								</Fragment>
 							);
             }}
           </Query>

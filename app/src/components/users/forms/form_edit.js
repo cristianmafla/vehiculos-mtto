@@ -90,17 +90,15 @@ class FormEdit extends  Component {
 						break;
 				};
 				return (
-					<div key={key} class="form-check">
-						<label className="form-check-label">
+					<div key={key} className="custom-control custom-switch">
 							<input
+								id={rol.name}
 								name={rol.name}
 								type="checkbox"
-								className="form-check-input"
+								className="custom-control-input"
 								defaultChecked={rol.checked}
-								onChange={this.handleCheked}
 							/>
-							<span className="">{name}</span>
-						</label>
+						<label className="custom-control-label" htmlFor={rol.name}>{name}</label>
 					</div>
 				);
 			}) : ''
@@ -109,33 +107,28 @@ class FormEdit extends  Component {
 
 	onSubmit = (e, editUser, refetch) => {
 		e.preventDefault();
-		const file = ImageUploadValid(e.target[0].files[0]);
-		let
+		const
+			file = ImageUploadValid(e.target[0].files[0]),
 			name = document.getElementById('name').value,
 			lastname = document.getElementById('lastname').value,
 			email = document.getElementById('email').value,
-			imageUrl = document.getElementById('imageUser').src;
-			/*
-,
+			imageUrl = document.getElementById('imageUser').src,
 			roles = [{
-					name:'rol_admon',
-					checked:document.getElementById('rol_admon').checked
-				},
-				{
-					name:'rol_client',
-					checked:document.getElementById('rol_client').checked
-				},
-				{
-					name:'rol_invited',
-					checked:document.getElementById('rol_invited').checked
+				name: 'rol_admon',
+				checked: document.getElementById('rol_admon').checked
+			},
+			{
+				name: 'rol_client',
+				checked: document.getElementById('rol_client').checked
+			},
+			{
+				name: 'rol_invited',
+				checked: document.getElementById('rol_invited').checked
 			}];
 
-			let rolvalid = !(roles[0].checked === false && roles[1].checked === false && roles[2].checked === false);
-			if (name !== '' && lastname !== '' && email !== ''  && rolvalid !== false) {
-			*/
-
-		if (name !== '' && lastname !== '' && email !== '' ) {
-			editUser({ variables: { user: { name, lastname, email, imageUrl, file } } })
+		let rolvalid = !(roles[0].checked === false && roles[1].checked === false && roles[2].checked === false);
+		if (name !== '' && lastname !== '' && email !== '' && rolvalid !== false) {
+			editUser({ variables: { user: { name, lastname, email, imageUrl, roles, file } } })
 				.then(userBD => {
 					refetch().then(() => {
 						document.getElementById('name').value = '';
@@ -144,11 +137,10 @@ class FormEdit extends  Component {
 						document.getElementById('imageUser').src = 'public/assets/images_locals/profile.png';
 						this.props.closeModal();
 					});
-					console.log('userBD',userBD);
 				})
 				.catch(error => console.log('*** Error_GRAPHQL_EDIT_USER',error))
 		} else {
-			this.stateErrorValid('campos vacíos');
+			this.stateErrorValid('empty fields');
 		};
 	};
 
@@ -164,10 +156,10 @@ class FormEdit extends  Component {
 		};
     return(
 			<Mutation mutation={EDIT_USER } >
-				{(editUser, { loading, error,data }) => (
+				{(editUser, { loading }) => (
 					<form onSubmit={e => this.onSubmit(e, editUser, this.props.refetch)}>
 						<div className="custom-input-file text-center pb-3" title="subir imagen">
-							<div className="pb-1">Imagen de perfil</div>
+							<div className="pb-1">Profile image</div>
 							<input
 								type="file"
 								id="image"
@@ -192,9 +184,9 @@ class FormEdit extends  Component {
 							<input
 								type="text"
 								className="form-control"
-								name="name"
 								id="name"
-								placeholder="Nombres"
+								name="name"
+								placeholder="Name"
 								defaultValue={this.props.user.name}
 							/>
 						</div>
@@ -203,9 +195,9 @@ class FormEdit extends  Component {
 							<input
 								type="text"
 								className="form-control"
-								name="lastname"
 								id="lastname"
-								placeholder="Apellidos"
+								name="lastname"
+								placeholder="Lastname"
 								defaultValue={this.props.user.lastname}
 							/>
 						</div>
@@ -214,21 +206,19 @@ class FormEdit extends  Component {
 							<input
 								type="text"
 								className="form-control"
-								name="email"
 								id="email"
-								placeholder="Correo"
+								name="email"
+								placeholder="Email"
 								defaultValue={this.props.user.email}
 							/>
 						</div>
 
 						<div className="form-group div_checks_newuser">
-
 							{this.rolesUser(this.props.user.roles)}
-
 						</div>
 
 						<button className="btn btn-lg btn-success btn-block " type="submit">
-							{loading ? 'loading...' : 'Update'}
+							{loading ? 'loading...' : 'update user'}
 						</button>
 
 						<p className="mt-5 mb-3 text-muted"> ©node-2019</p>

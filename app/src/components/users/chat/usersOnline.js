@@ -19,7 +19,6 @@ class UsersOnline extends Component {
 		  updateQuery: (prev, { subscriptionData }) => {
         const emailsUsers = subscriptionData.data.subUsersOnline.user.map(user => user.email);
         if (!subscriptionData.data) return prev;
-
         if (subscriptionData.data.subUsersOnline.update || subscriptionData.data.subUsersOnline.deleted){
           this.props.ActionUsersOnline([]);
           if(emailsUsers.indexOf(this.props.session.email) < 0){
@@ -27,8 +26,6 @@ class UsersOnline extends Component {
             location.replace("/login");
           };
         };
-        
-        console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData.data.subUsersOnline);
         let set = new Set([...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))
         this.props.ActionUsersOnline(Array.from(set).map(JSON.parse));
 		  },
@@ -38,19 +35,27 @@ class UsersOnline extends Component {
 	render(){
 		return(
 			<div className="div_online_user pt-1 pb-1 mt-2">
-				{
-          this.props.UsersOnline.length > 0
-            ? this.props.UsersOnline.map((user, key) => {
-							if(this.props.session.email != user.email){
-								return <img key={key} src={SizeImageUser(user.imageUrl, 'sx')} />
-							};
-						})
-            : this.props.usersOnline.map((user, key) => {
-							if(this.props.session.email != user.email){
-								return <img key={key} src={SizeImageUser(user.imageUrl, 'sx')} />
-              };
-            })
-  }
+				{this.props.UsersOnline.length > 0
+          ? this.props.UsersOnline.map((user, key) => {
+            if(this.props.session.email != user.email){
+              return(
+                <Fragment>
+                  <img key={key} src={SizeImageUser(user.imageUrl, 'sx')} />
+                  <div className="chat_user_online"></div>
+                </Fragment>
+              );
+            };
+          })
+          : this.props.usersOnline.map((user, key) => {
+            if(this.props.session.email != user.email){
+              return(
+                <Fragment>
+                  <img key={key} src={SizeImageUser(user.imageUrl, 'sx')} />
+                  <div className="chat_user_online"></div>
+                </Fragment>
+              );
+            };
+        })}
 			</div>
 		);
   };
@@ -66,34 +71,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersOnline);
-
- /*
- 
-   componentDidMount = () => {
-	  this.props.subscribeToMore({
-		  document: SUB_USER_ONLINE,
-		  updateQuery: (prev, { subscriptionData }) => {
-        const emailsUsers = subscriptionData.data.subUsersOnline.user.map(user => user.email);
-        if (!subscriptionData.data) return prev;
-
-        if (subscriptionData.data.subUsersOnline.deleted){
-          if (emailsUsers.indexOf(this.props.session.email) < 0) {
-            localStorage.setItem('tokenUser', 'null')
-            location.replace("/login");
-          };
-        };
-
-        if (subscriptionData.data.subUsersOnline.update){
-          this.props.ActionUsersOnline([]);
-          if(emailsUsers.indexOf(this.props.session.email) < 0){
-            localStorage.setItem('tokenUser','null')
-            location.replace("/login");
-          };
-        };
-        console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData.data.subUsersOnline);
-        let set = new Set([...this.props.UsersOnline, ...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))
-        this.props.ActionUsersOnline(Array.from(set).map(JSON.parse));
-		  },
-	  });
-  };
- */

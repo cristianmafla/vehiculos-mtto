@@ -22,13 +22,23 @@ export const userValid =  async currentUserApi => {
 };
 
 //SOLO USUARIOS CON ROL DE ADMIN
-export const totalUsers = currentUserApi => {
+export const paginationUsers = (limit, offset, currentUserApi) => {
   if(currentUserApi){
     const rolAdmon = currentUserApi.roles.map(rol => rol.name);
     if (rolAdmon.indexOf('rol_admon') >= 0 ){
-      return modelUser.find().then(users => users).catch(error => console.log('*** Error_MONGODB_totalUsers', error));
+      return modelUser.find({}).limit(limit).skip(offset)
+              .then(users => users)
+              .catch(error => console.log('*** Error_MONGODB_totalUsers', error));
     };
   };
+};
+
+export const totalUsers = async () => {
+  let totalUsers = 0;
+  await modelUser.countDocuments({},(error,count) => {
+    error ? totalUsers = 0 : totalUsers = count;
+  });
+  return totalUsers;
 };
 
 //NUEVO USUARIO Y ROLES PARA INTERACTUAR CON LA API
@@ -87,7 +97,7 @@ export const userOnlineOff = async email => {
   await modelUser.updateOne({ email }, { $set: { online: false } })
     .then(() => {})
     .catch(error => console.log('*** Error_MONGODB_userOnlineOff',error));
-  await usersOnline(true);
+  await usersOnline(true,false);
  return `user ${email} off`;
 };
 

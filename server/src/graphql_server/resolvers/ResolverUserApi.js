@@ -2,6 +2,7 @@ import fs from 'fs';
 import { withFilter } from 'apollo-server-express';
 import { GraphQLUpload } from 'graphql-upload';
 import {
+  paginationUsers,
   totalUsers,
   loginUser,
   userValid,
@@ -28,7 +29,9 @@ export default {
 
     usersOnline: (_, args) => usersOnline(),
 
-    totalUsers: (_, args, { currentUserApi }) => totalUsers(currentUserApi)
+    paginationUsers: (_, { limit, offset }, { currentUserApi }) => paginationUsers(limit, offset, currentUserApi),
+
+    totalUsers: (_, args) => totalUsers()
 
   },
   Mutation:{

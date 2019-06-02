@@ -21,9 +21,9 @@ export const LOGIN_USER_VALID = gql`
     }
 `;
 
-export const TOTAL_USERS = gql`
-  query totalUsers{
-    totalUsers{
+export const PAGINATION_USERS = gql`
+  query paginationUsers($limit:Int,$offset:Int){
+    paginationUsers(limit:$limit,offset:$offset){
       name
       lastname
       email
@@ -35,6 +35,7 @@ export const TOTAL_USERS = gql`
       online
       mode
     }
+    totalUsers
   }
 `;
 

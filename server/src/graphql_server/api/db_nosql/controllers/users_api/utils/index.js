@@ -72,9 +72,9 @@ export const updateUser = user => {
   return new Promise((resolve, reject) => {
     uploadImageUser(user.file, user.email).then(urlImage => {
       user.imageUrl = urlImage || user.imageUrl
-      const { name, lastname, email,imageUrl } = user;
-      model.updateOne({ email }, { $set: { name, lastname, email, imageUrl } })
-        .then(() => resolve({ name,lastname,email,imageUrl }))
+      const { name, lastname, email, imageUrl, roles } = user;
+      model.updateOne({ email }, { $set: { name, lastname, email, imageUrl, roles } })
+        .then(() => resolve({ state: true, message: 'successfully update user', name,lastname,email,imageUrl,roles }))
         .catch(error => console.log('*** Error_MONGODB_editUser', error));
     });
   });

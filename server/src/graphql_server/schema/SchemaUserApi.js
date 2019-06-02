@@ -6,10 +6,13 @@ scalar Date
 
 type Query {
 
-  """ TOTAL USERS ONLY ADMIN """
-  totalUsers:[User]
+  """ PAGINATION USERS ONLY ADMIN """
+  paginationUsers(limit:Int,offset:Int):[User]
 
-  """ USUARIO VALIDO """
+  """ TOTAL USERS FOR PAGINATION ADMIN """
+  totalUsers:Int
+
+  """ USER VALID """
   userValid:User
 
   """RETURN CHAT USERS DB"""

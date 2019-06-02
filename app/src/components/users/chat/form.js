@@ -9,6 +9,7 @@ import ActionChat from '../../../redux_store/actions/actionchat';
 import ActionNotificationChat from '../../../redux_store/actions/actionNotificationChat';
 import { SizeImageUser } from '../../utils';
 import UsersOnline from './usersOnline';
+import moment from 'moment';
 
 class Form extends Component {
 
@@ -56,7 +57,7 @@ class Form extends Component {
               <div className="media float-right">
                 <div className="bubble_chat_user float-right">
                   <div>{msn.message}</div>
-                  <div className="float-right date_chat_user">{msn.date}</div>
+                  <div className="float-right date_chat_user" title={moment(msn.date).format('dddd')}>{moment(msn.date).format('LLL')}</div>
                 </div>
                 <div className="">
                   <Link className="d-block" to={`#`}>
@@ -87,7 +88,7 @@ class Form extends Component {
                 </div>
                 <div className="bubble_chat_other_user">
                   <div>{msn.message}</div>
-                  <div className="date_chat_other_user">{msn.date}</div>
+                  <div className="date_chat_other_user" title={moment(msn.date).format('dddd')}>{moment(msn.date).format('LLL')}</div>
                 </div>
               </div>
             </li>
