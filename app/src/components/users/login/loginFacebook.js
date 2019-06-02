@@ -17,10 +17,18 @@ class Facebook extends Component {
         email: userFacebook.email,
         password: userFacebook.id,
         imageUrl: userFacebook.picture.data.url,
-        roles:{
-          name:'rol_invited',
-          checked:true
+        roles: [{
+          name: 'rol_admon',
+          checked: false
         },
+        {
+          name: 'rol_client',
+          checked: false
+        },
+        {
+          name: 'rol_invited',
+          checked: true
+        }],
         file: false,
         mode:'facebook'
     };

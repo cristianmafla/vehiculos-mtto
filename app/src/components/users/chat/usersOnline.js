@@ -23,7 +23,7 @@ class UsersOnline extends Component {
         if (subscriptionData.data.subUsersOnline.deleted){
           if (emailsUsers.indexOf(this.props.session.email) < 0) {
             localStorage.setItem('tokenUser', 'null')
-            location.reload();
+            location.replace("/login");
           };
         };
 
@@ -31,10 +31,10 @@ class UsersOnline extends Component {
           this.props.ActionUsersOnline([]);
           if(emailsUsers.indexOf(this.props.session.email) < 0){
             localStorage.setItem('tokenUser','null')
-            location.reload();
+            location.replace("/login");
           };
         };
-        console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData);
+        console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData.data.subUsersOnline);
         let set = new Set([...this.props.UsersOnline, ...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))
         this.props.ActionUsersOnline(Array.from(set).map(JSON.parse));
 		  },

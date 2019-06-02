@@ -6,6 +6,7 @@ import {
   loginUser,
   userValid,
   newUser,
+  editUser,
   deleteUser,
   chatUsers,
   newChatUser,
@@ -37,6 +38,8 @@ export default {
     userOnlineOff: (_, { email }) => userOnlineOff(email),
 
     newUser: (_, { user }) => newUser(user),
+
+    editUser: (_,{ user }) => editUser(user),
 
     newChatUser: (_, { user, message }) => newChatUser(user, message),
 

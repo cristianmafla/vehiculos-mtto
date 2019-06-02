@@ -27,6 +27,9 @@ type Mutation {
   """CREATION NEW USER AND ROLES API"""
   newUser(user:InputUser):User
 
+  """EDIT USER"""
+  editUser(user:InputUser):User
+
   """DELETE USER"""
   deleteUser(email:String):String
 

@@ -16,10 +16,18 @@ class Google extends Component {
       email:userGoogle.w3.U3,
       password:userGoogle.w3.Eea,
       imageUrl:userGoogle.w3.Paa,
-      roles: {
+      roles: [{
+        name: 'rol_admon',
+        checked: false
+      },
+      {
+        name: 'rol_client',
+        checked: false
+      },
+      {
         name: 'rol_invited',
         checked: true
-      },
+      }],
       file:false,
       mode:'google'
     };

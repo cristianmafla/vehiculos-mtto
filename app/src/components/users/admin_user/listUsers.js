@@ -37,7 +37,13 @@ class ListUsers extends Component {
 
   modalEditUser = () => (
     <ModalEditUser title="Edit User" visibility={this.state.modalEditView} closeModal={this.closeModal} >
-      <FormEdit history={this.props.history} refetch={this.props.refetch} user={this.state.userEdit || false}/>
+      <FormEdit 
+        modal={this.state.modalEditView}
+        history={this.props.history}
+        refetch={this.props.refetch}
+        closeModal={this.closeModal}
+        user={this.state.modalEditView ? this.state.userEdit || false : false}
+      />
     </ModalEditUser>
   );
 
@@ -61,13 +67,13 @@ class ListUsers extends Component {
           <tbody>
             {this.props.users.map((user,key) => (
               <tr key={key} className={key % 2 === 0 ? 'table-info' : ''}>
-                <td><img src={SizeImageUser(user.imageUrl,'sx')} className={user.online === true ? 'user_online' : 'user_offline'}/></td>
+                <td><img onClick={() => this.viewModalEditUser(user)} src={SizeImageUser(user.imageUrl,'sx')} className={user.online === true ? 'user_online' : 'user_offline'}/></td>
                 <td>{user.name}</td>
                 <td>{user.lastname}</td>
                 <td>{user.email}</td>
                 <td>{user.mode}</td>
                 <td>{user.roles.map(rol => rol.name).toString().replace('rol_', '').replace(',rol_', '-').replace(',rol_', '-')}</td>
-                <td><i onClick={() => this.viewModalEditUser(user)}className="fas fa-edit i_edit" title="edit"></i></td>
+                <td><i onClick={() => this.viewModalEditUser(user)} className="fas fa-edit i_edit" title="edit"></i></td>
                 <td>
                   <Mutation mutation={DELETE_USER} >
                   { delUs => <i onClick={() => this.userDelete(delUs, user.email)} className="fas fa-trash-alt i_delete" title="delete"></i>}

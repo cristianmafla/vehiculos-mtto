@@ -1,7 +1,7 @@
 import { PubSub } from 'apollo-server-express';
 import { chatUsers as model } from '../../models/chat_users';
 import { userApi as modelUser } from '../../models/user_api';
-import { getTokenUser, addNewUser } from './utils'
+import { getTokenUser, addNewUser, updateUser } from './utils'
 
 const pubsub = new PubSub();
 
@@ -31,6 +31,17 @@ export const totalUsers = currentUserApi => {
 
 //NUEVO USUARIO Y ROLES PARA INTERACTUAR CON LA API
 export const newUser =  user =>  addNewUser(user);
+
+export const editUser =  async user => {
+  let objUser = []
+  await updateUser(user)
+    .then(async (userDB) => {
+      await usersOnline(true, false);
+      objUser = userDB;
+    })
+    .catch(error => console.log('*** Error_MONGODB_updateUser',error));
+    return objUser;
+};
 
 export const deleteUser = async email =>  {
   let delt = '';

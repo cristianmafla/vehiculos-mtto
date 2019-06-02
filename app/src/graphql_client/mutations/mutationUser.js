@@ -26,6 +26,23 @@ export const NEW_USER = gql`
   }
 `;
 
+export const EDIT_USER = gql`
+  mutation editUser($user:InputUser){
+    editUser(user:$user){
+      state
+      message
+      name
+      lastname
+      email
+      imageUrl
+      roles{
+          name
+          checked
+      }
+    }
+  }
+`;
+
 export const NEW_CHAT_USER = gql`
 mutation newChatUser($user:InputUser,$message:String){
   newChatUser(user:$user,message:$message){
