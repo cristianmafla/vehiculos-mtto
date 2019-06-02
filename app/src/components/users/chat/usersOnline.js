@@ -20,22 +20,16 @@ class UsersOnline extends Component {
         const emailsUsers = subscriptionData.data.subUsersOnline.user.map(user => user.email);
         if (!subscriptionData.data) return prev;
 
-        if (subscriptionData.data.subUsersOnline.deleted){
-          if (emailsUsers.indexOf(this.props.session.email) < 0) {
-            localStorage.setItem('tokenUser', 'null')
-            location.replace("/login");
-          };
-        };
-
-        if (subscriptionData.data.subUsersOnline.update){
+        if (subscriptionData.data.subUsersOnline.update || subscriptionData.data.subUsersOnline.deleted){
           this.props.ActionUsersOnline([]);
           if(emailsUsers.indexOf(this.props.session.email) < 0){
             localStorage.setItem('tokenUser','null')
             location.replace("/login");
           };
         };
+        
         console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData.data.subUsersOnline);
-        let set = new Set([...this.props.UsersOnline, ...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))
+        let set = new Set([...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))
         this.props.ActionUsersOnline(Array.from(set).map(JSON.parse));
 		  },
 	  });
@@ -72,3 +66,34 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersOnline);
+
+ /*
+ 
+   componentDidMount = () => {
+	  this.props.subscribeToMore({
+		  document: SUB_USER_ONLINE,
+		  updateQuery: (prev, { subscriptionData }) => {
+        const emailsUsers = subscriptionData.data.subUsersOnline.user.map(user => user.email);
+        if (!subscriptionData.data) return prev;
+
+        if (subscriptionData.data.subUsersOnline.deleted){
+          if (emailsUsers.indexOf(this.props.session.email) < 0) {
+            localStorage.setItem('tokenUser', 'null')
+            location.replace("/login");
+          };
+        };
+
+        if (subscriptionData.data.subUsersOnline.update){
+          this.props.ActionUsersOnline([]);
+          if(emailsUsers.indexOf(this.props.session.email) < 0){
+            localStorage.setItem('tokenUser','null')
+            location.replace("/login");
+          };
+        };
+        console.log('USER_ONLINE subscription SUB_USER_ONLINE', subscriptionData.data.subUsersOnline);
+        let set = new Set([...this.props.UsersOnline, ...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))
+        this.props.ActionUsersOnline(Array.from(set).map(JSON.parse));
+		  },
+	  });
+  };
+ */

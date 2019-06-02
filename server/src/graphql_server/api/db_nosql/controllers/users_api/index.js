@@ -15,11 +15,13 @@ export const loginUser = (email, password) =>  getTokenUser(email, password);
 //OBTIENE EL USUARIO DEL TOKEN VALIDADO
 export const userValid =  async currentUserApi => {
   if (currentUserApi){
-    await pubsub.publish(CHAT_USERS_ONLINE, { subUsersOnline: { update: false, user: [currentUserApi] } });
+    //await pubsub.publish(CHAT_USERS_ONLINE, { subUsersOnline: { update: false, user: [currentUserApi] } });
+    await usersOnline();
   };
   return currentUserApi;
 };
 
+//SOLO USUARIOS CON ROL DE ADMIN
 export const totalUsers = currentUserApi => {
   if(currentUserApi){
     const rolAdmon = currentUserApi.roles.map(rol => rol.name);
