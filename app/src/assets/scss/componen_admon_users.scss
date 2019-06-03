@@ -98,3 +98,25 @@
     background-color:#FFF;
     color:#A4A4A4;
 }
+
+//MORE USER LIST
+.div_more_pag{
+  p{
+    color:rgba(0, 0, 0, 0.7);
+    i{
+      border-radius: 3px;
+      -moz-border-radius: 3px;
+      -webkit-border-radius:3px;
+     // font-size: 12px;
+      color:#A4A4A4;
+      border: 1px solid #A4A4A4;
+      padding:3px;
+      margin-left:10px;
+      &:hover{
+        cursor:pointer;
+        color:rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.7);
+      }
+    }
+  }
+}

@@ -88,6 +88,9 @@ class ListUsers extends Component {
             ))}
           </tbody>
         </table>
+          <div className="text-center div_more_pag" >
+          <b>{`${this.props.currentPage} - ${this.props.totalPages}`}</b>
+          </div>
         {this.modalEditUser()}
       </div>
     );
