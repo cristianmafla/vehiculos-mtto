@@ -51,12 +51,7 @@ class Pagination extends Component {
           </li>
         );
       };
-    
-    }
-
-
-
-
+    };
     return (
       <ul className="pagination justify-content-center">
         <li onClick={this.props.previousPage} className={`page-item ${previousPage}`}>
@@ -73,3 +68,12 @@ class Pagination extends Component {
   }
 }
 export default Pagination;
+
+
+
+/*
+
+1 junio 21610 pagovirtual pse
+aws 365498
+
+*/

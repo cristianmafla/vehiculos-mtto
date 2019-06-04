@@ -15,7 +15,7 @@ class AdminUsers extends Component {
 			pagination: {
 				offset: 0,
 				currentPage: 1
-			}
+			},
     };
 	}
 
