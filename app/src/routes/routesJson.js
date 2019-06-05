@@ -4,23 +4,27 @@ const routesGeneral = [
     {
         to: '/',
         name: 'Home',
+        permission: ['rol_invited'],
         icon: <i className="far fa-address-card"></i>,
         viewNav: true,
     },
     {
         to: '/new_user',
         name: 'Registrarme',
+        permission: ['rol_invited'],
         icon: <i className="fas fa-user"></i>,
         viewNav: true,
     },
     {
         to: '/login',
         name: 'Entrar',
+        permission: ['rol_invited'],
         icon: <i className="fas fa-sign-in-alt"></i>,
         viewNav: true,
     },
     {
         to: '*',
+        permission: ['rol_invited'],
         viewNav:false,
     }
 ];
@@ -30,6 +34,7 @@ const routesSession = [
   {
     to: '/admin_users',
     name: 'Admin Users',
+    permission: 'rol_admon',
     icon: <i className="fas fa-users"></i>,
     viewNav: true,
   },

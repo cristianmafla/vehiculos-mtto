@@ -9,14 +9,14 @@ class Home extends Component {
 	constructor(props){
 		super(props);
 		this.state = {};
-	};
+	}
 
 	componentWillMount = () => {};
 
   componentDidMount = () => {};
 
   soundReact = () => {
-
+    // eslint-disable-next-line no-console
     console.log('sonido')
   };
 
@@ -29,7 +29,7 @@ class Home extends Component {
 				<div className="col-sm-8 col-lg-5 mx-auto form">
 					<h1 className="h3 mb-3 font-weight-normal text-center">HOME</h1>
 					<Query query={ANYQUERY} variables={{}}>
-					{({ error, loading, data }) => (
+					{({ loading, data }) => (
 						<Fragment>
 							<h4>*** {loading ? 'cargando...' : ''} {data ? data.anyQuery : 'Error: SERVER GRAPHQL'} ***</h4>
               <button onClick={this.soundReact}>SOUND CLICK</button>
@@ -40,8 +40,8 @@ class Home extends Component {
 				</div>
 			</TemplateLayout>
 		);
-	};
-};
+	}
+}
 
 export default Home;
 

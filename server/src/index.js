@@ -5,7 +5,6 @@ import graphQL from './graphql_server';
 
 import dotenv from 'dotenv';
 dotenv.config({ path: 'variables.env' });
-
 const
     app = express(),
     PORT = process.env.PORT || 5000;
