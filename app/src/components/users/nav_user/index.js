@@ -1,5 +1,6 @@
 import React, { Component,Fragment } from 'react';
 import { Link } from 'react-router-dom';
+import { SUB_USER_PROFILE } from '../../../graphql_client/subscription/subscriptionUser';
 import ModalChat from '../../modal';
 import Chat from '../chat';
 import ModalUserProfile from '../../modal';
@@ -16,17 +17,23 @@ class NavUser extends Component {
       modalUser: false,
       modalChatUser:false,
       modalNotification:false,
-      user:{
-          name:"",
-          lastname:"",
-          email:"",
-          imageUrl:""
-      },
+      user:{},
       imageUrl:""
     };
   };
 
   componentWillMount = () => {};
+
+  componentDidMount = () => {
+    this.props.subscribeToMore({
+      document: SUB_USER_PROFILE,
+      updateQuery: (prev, { subscriptionData }) => {
+        if (!subscriptionData.data) return prev;
+        console.log('subscriptionData', subscriptionData.data.subUserProfile);
+        this.setState({ user: subscriptionData.data.subUserProfile})
+      },
+    });
+  };
 
   ViewModalUser = () => this.setState({ modalUser: true });
 
@@ -88,6 +95,9 @@ class NavUser extends Component {
 
 	avatarUsuario = user => {
 	  if(user){
+      if(user.email == this.state.user.email){
+        user = this.state.user;
+      };
 	    return(
         <Fragment>
           <div className="div_nav_img_user">

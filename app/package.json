@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development babel-node ./server",
+    "dev": "cross-env NODE_ENV=development babel-node ./server",
     "production": "cross-env NODE_ENV=production babel-node ./server",
     "wp": "rimraf dist && webpack --config ./webpack.config.prod.js"
   },

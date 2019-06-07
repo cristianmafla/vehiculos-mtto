@@ -1,17 +1,20 @@
 import { createUploadLink } from 'apollo-upload-client';
 import { setContext } from 'apollo-link-context';
-import { BASE_URL_GRAPHQL, BASE_WS_GRAPHQL } from './urlGrapQL';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import ws from 'isomorphic-ws';
 import { split } from 'apollo-link';
 import { WebSocketLink } from 'apollo-link-ws';
 import { SubscriptionClient } from "subscriptions-transport-ws";
 import { getMainDefinition } from 'apollo-utilities';
+import {
+  BASE_URL_GRAPHQL,
+  BASE_WS_GRAPHQL,
+} from './urlGrapQL';
 
 //fetch para el funcionamiento del cliente graphql en el renderizado del servidor
 global.fetch = require('node-fetch');
 
-const UploadLink = createUploadLink({ uri:`${BASE_URL_GRAPHQL}/graphql`});
+const UploadLink = createUploadLink({ uri: `${BASE_URL_GRAPHQL}/graphql`});
 const authLink = setContext((_, { headers }) => ({ headers: { authorization: localStorage.getItem('tokenUser')  } }));
 
 const numAleatory = () => Math.floor((Math.random() * 100000000) + 1);

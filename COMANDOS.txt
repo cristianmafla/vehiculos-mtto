@@ -47,4 +47,15 @@ taskkill /F /PID nro_pid ///matar proceso
     npx sequelize db:seed:undo --seed name-of-seed-as-in-data
     npx sequelize db:seed:undo:all
 
-"apollo-boost": "^0.1.28",
+////////////////HEROKU////////////////////
+* login
+    heroku login --interactive
+
+* instalar dependencias de desarrollo
+    heroku config:set NPM_CONFIG_PRODUCTION=false
+
+*ejemplo consulta
+    https://api-ap-graphql.herokuapp.com/graphql?query={anyQuery}
+	-----------------------
+	heroku logs --tail
+	

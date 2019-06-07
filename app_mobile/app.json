@@ -4,6 +4,9 @@
     "slug": "app_mobile",
     "privacy": "public",
     "sdkVersion": "32.0.0",
+    "android": {
+      "package": "com.framwcaxi.myapp"
+    },
     "platforms": [
       "ios",
       "android"

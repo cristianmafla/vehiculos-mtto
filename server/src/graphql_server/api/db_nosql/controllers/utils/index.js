@@ -7,6 +7,7 @@ dotenv.config({ path: 'variables.env' });
 
 
 export const uploadImageUser = async (upload, email) => {
+  console.log('upload',upload);
   if(upload){
     let UPLOAD_DIR = `./public/usuarios/${email}/images`
 

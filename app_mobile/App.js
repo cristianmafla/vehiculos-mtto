@@ -1,12 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { ApolloProvider } from 'react-apollo';
+import client from './src/graphql_client';
+import Home from './src/components/home';
+
+
 
 export default class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>HOLA CRISTIAN</Text>
-      </View>
+      <ApolloProvider client={client}>
+        <View style={styles.container}>
+          <Home/>
+        </View>
+      </ApolloProvider>
     );
   }
 }

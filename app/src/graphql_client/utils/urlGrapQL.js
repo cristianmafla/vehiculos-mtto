@@ -1,6 +1,19 @@
 const BASE_URL = `localhost:5000`;
-//const BASE_URL = `b48e03f9.ngrok.io`;
+const BASE_URL_HTTPS = `api-ap-graphql.herokuapp.com`;
 
-export const BASE_URL_GRAPHQL = `http://${BASE_URL}`;
+let
+    MOD = 'DEV',
+    BASE_URL_GRAPHQL = '',
+    BASE_WS_GRAPHQL = '';
 
-export const BASE_WS_GRAPHQL = `ws://${BASE_URL}`;
+if(MOD === 'DEV'){
+    BASE_URL_GRAPHQL = `http://${BASE_URL}`;
+    BASE_WS_GRAPHQL = `ws://${BASE_URL}`;
+}
+if (MOD === 'PROD') {
+    BASE_URL_GRAPHQL = `http://${BASE_URL_HTTPS}`;
+    BASE_WS_GRAPHQL = `ws://${BASE_URL_HTTPS}`;
+}
+
+
+export { BASE_URL_GRAPHQL, BASE_WS_GRAPHQL}

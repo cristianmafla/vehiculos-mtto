@@ -94,7 +94,7 @@ class Login extends Component {
                       />
 
                       <button className="btn btn-lg btn-primary btn-block " type="submit">{this.state.btnSubmit}</button>
-                      <Link className="link_none" to={`/`}>
+                      <Link className="link_none" to={`/new_user`}>
                           Registrarme
                       </Link>
                       <p className="mt-5 mb-3 text-muted"> AppReact©node-2019</p>

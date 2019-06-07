@@ -130,6 +130,7 @@ class FormEdit extends  Component {
 		if (name !== '' && lastname !== '' && email !== '' && rolvalid !== false) {
 			editUser({ variables: { user: { name, lastname, email, imageUrl, roles, file } } })
 				.then(userBD => {
+					console.log('userBD',userBD)
 					refetch().then(() => {
 						document.getElementById('name').value = '';
 						document.getElementById('lastname').value = '';

@@ -3,10 +3,12 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import session_redis from './session_DB_Redis';
+import cors from 'cors';
 
 const app = express();
 
 app
+    .use(cors())
     .use('/public',express.static(path.resolve(__dirname, '../../public')))
     .use(bodyParser.urlencoded({ extended: false }))
     .use(bodyParser.json())

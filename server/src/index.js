@@ -2,7 +2,6 @@ import http from 'http';
 import express from 'express';
 import config from './utils';
 import graphQL from './graphql_server';
-
 import dotenv from 'dotenv';
 dotenv.config({ path: 'variables.env' });
 const

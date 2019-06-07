@@ -14,7 +14,8 @@ import {
   subChatUsers,
   userOnlineOff,
   usersOnline,
-  subUsersOnline
+  subUsersOnline,
+  subUserProfile
   } from '../api/db_nosql/controllers/users_api';
 
 export default {
@@ -53,7 +54,9 @@ export default {
 
     subChatUsers: subChatUsers(),
 
-    subUsersOnline: subUsersOnline()
+    subUsersOnline: subUsersOnline(),
+
+    subUserProfile: subUserProfile()
 
   }
 };

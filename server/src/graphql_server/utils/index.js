@@ -15,9 +15,9 @@ const context = async ({req, connection}) => {
         return { currentUserApi };
       } catch (err) {
         console.log(`*** NOT TOKEN ACCESS CLIENT ***`);
-      };
-    };
-  };
+      }
+    }
+  }
 };
 
 const uploads = {

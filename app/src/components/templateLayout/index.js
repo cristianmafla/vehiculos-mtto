@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Query } from 'react-apollo';
+import { ANYQUERY} from '../../graphql_client/queries/queryUser';
 import NavUser from '../users/nav_user';
 import Nav from './nav';
 
@@ -35,7 +37,15 @@ class TemplateLayout extends Component {
                   {
                     this.props.pathUrl === 'login'
                       ? null
-                      : <NavUser session={this.props.session} />
+                      : <Query query={ANYQUERY}>
+                        {({ loading, error, subscribeToMore}) => {
+                          if(loading) return 'loading...';
+                          if (error) return console.log('error_GRAPHQL_ANYQUERY',error);
+                          return(
+                            <NavUser session={this.props.session} subscribeToMore={subscribeToMore} />
+                          );
+                        }}
+                      </Query>
                   }
               </header>
               <div className="div_general_content">

@@ -7,19 +7,41 @@ const pubsub = new PubSub();
 
 const
   CHAT_USER = 'CHAT_USER',
-  CHAT_USERS_ONLINE = 'CHAT_USERS_ONLINE';
+  CHAT_USERS_ONLINE = 'CHAT_USERS_ONLINE',
+  USER_PROFILE = 'USER_PROFILE';
 
 //GENERATE TOKEN
 export const loginUser = (email, password) =>  getTokenUser(email, password);
 
 //OBTIENE EL USUARIO DEL TOKEN VALIDADO
-export const userValid =  async currentUserApi => {
-  if (currentUserApi){
-    //await pubsub.publish(CHAT_USERS_ONLINE, { subUsersOnline: { update: false, user: [currentUserApi] } });
+export const userValid = async currentUserApi => {
+  if (currentUserApi) {
     await usersOnline();
-  };
-  return currentUserApi;
+    return new Promise((resolve, reject) => {
+      modelUser.findOne({ email: currentUserApi.email })
+        .then(userBD => {
+          const newUser = {
+            name: userBD.name,
+            lastname: userBD.lastname,
+            email: userBD.email,
+            imageUrl: userBD.imageUrl,
+            roles: userBD.roles
+          };
+          const currentUser = {
+            name: currentUserApi.name,
+            lastname: currentUserApi.lastname,
+            email: currentUserApi.email,
+            imageUrl: currentUserApi.imageUrl,
+            roles: currentUserApi.roles
+          };
+          newUser == currentUser ? resolve(currentUserApi) : resolve(newUser);
+        })
+    });
+  } else {
+    return currentUserApi;
+  }
 };
+
 
 //SOLO USUARIOS CON ROL DE ADMIN
 export const paginationUsers = (limit, offset, currentUserApi) => {
@@ -29,16 +51,16 @@ export const paginationUsers = (limit, offset, currentUserApi) => {
       return modelUser.find({}).limit(limit).skip(offset)
               .then(users => users)
               .catch(error => console.log('*** Error_MONGODB_totalUsers', error));
-    };
-  };
+    }
+  }
 };
 
-export const totalUsers = async () => {
-  let totalUsers = 0;
-  await modelUser.countDocuments({},(error,count) => {
-    error ? totalUsers = 0 : totalUsers = count;
+export const totalUsers = () => {
+  return new Promise((resolve, reject) => {
+    modelUser.countDocuments({}, (error, count) => {
+      error ? reject(error) : resolve(count);
+    });
   });
-  return totalUsers;
 };
 
 //NUEVO USUARIO Y ROLES PARA INTERACTUAR CON LA API
@@ -49,6 +71,7 @@ export const editUser =  async user => {
   await updateUser(user)
     .then(async (userDB) => {
       await usersOnline(true, false);
+      await pubsub.publish(USER_PROFILE, { subUserProfile: userDB });
       objUser = userDB;
     })
     .catch(error => console.log('*** Error_MONGODB_updateUser',error));
@@ -105,4 +128,6 @@ export const userOnlineOff = async email => {
 export const subChatUsers = () => ({ subscribe: () => pubsub.asyncIterator(CHAT_USER) });
 
 export const subUsersOnline = () => ({ subscribe: () => pubsub.asyncIterator(CHAT_USERS_ONLINE) });
+
+export const subUserProfile = () => ({subscribe: () => pubsub.asyncIterator(USER_PROFILE)});
 

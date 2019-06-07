@@ -4,7 +4,8 @@
   "description": "api backend financial data",
   "main": "./src/index.js",
   "scripts": {
-    "start": "nodemon --exec babel-node ./src/index.js"
+    "dev": "nodemon --exec babel-node ./src/index.js",
+    "start": "babel-node ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -37,8 +38,10 @@
     "axios": "^0.18.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "cloudinary": "^1.14.0",
     "connect-redis": "^3.4.1",
     "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
     "dotenv": "^8.0.0",
     "express": "^4.16.4",
     "express-session": "^1.16.1",

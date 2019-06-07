@@ -9,7 +9,9 @@ const server = new ApolloServer({
     resolvers,
     context,
     uploads,
-    subscriptions
+    subscriptions,
+    introspection: true,
+    playground: true,
 });
 
 export default server;

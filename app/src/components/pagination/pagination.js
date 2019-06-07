@@ -4,7 +4,9 @@ class Pagination extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    }
+    };
+    this.items = [],
+    this.iItems = 3;
   };
 
   componentDidMount = () => { };
@@ -12,15 +14,11 @@ class Pagination extends Component {
   componentWillMount = () => { };
 
   render() {
-    const
-      previousPage = (this.props.currentPage <= 1) ? 'disabled' : '',
-      followingPage = this.props.finalPages ? 'disabled' : '';
-    let
-      items = [],
-      iItems = 3;
-    if (this.props.totalPages > iItems) {
-      for (let i = 0; i < iItems; i++) {
-        items.push(
+    this.items = [];
+
+    if (this.props.totalPages > this.iItems) {
+      for (let i = 0; i < this.iItems; i++) {
+        this.items.push(
           <li
             className={this.props.currentPage === (i + 1) ? `page-item active` : 'page-item'}
             onClick={() => this.props.onChangePag(i)}
@@ -29,15 +27,15 @@ class Pagination extends Component {
           </li>
         );
       };
-      items.push(
-        <li className={this.props.currentPage > iItems ? `page-item active` : 'page-item disabled'}>
-          <a className="page-link" href="#">{this.props.currentPage > iItems ? this.props.currentPage : '...'}</a>
+      this.items.push(
+        <li className={this.props.currentPage > this.iItems ? `page-item active` : 'page-item disabled'}>
+          <a className="page-link" href="#">{this.props.currentPage > this.iItems ? this.props.currentPage : '...'}</a>
         </li>
       );
 
     }else{
       for (let i = 0; i < this.props.totalPages; i++) {
-        items.push(
+        this.items.push(
           <li className={this.props.currentPage === (i + 1) ? `page-item active` : 'page-item'}>
             <a  onClick={() => this.props.onChangePag(i)} className="page-link" href="#">{i + 1}</a>
           </li>
@@ -46,13 +44,13 @@ class Pagination extends Component {
     };
     return (
       <ul className="pagination justify-content-center mt-2">
-        <li className={`page-item ${previousPage}`}>
+        <li className={`page-item ${(this.props.currentPage <= 1) ? 'disabled' : ''}`}>
           <a onClick={this.props.previousPage}  className="page-link"  tabIndex="-1">Prev</a>
         </li>
 
-        {items.map((item, key) => <Fragment key={key}>{item}</Fragment>)}
+        {this.items.map((item, key) => <Fragment key={key}>{item}</Fragment>)}
 
-        <li  className={`page-item ${followingPage}`}>
+        <li className={`page-item ${this.props.finalPages ? 'disabled' : ''}`}>
           <a onClick={this.props.followingPage} className="page-link"  tabIndex="-1">Next</a>
         </li>
       </ul>

@@ -4,7 +4,7 @@ export default {
 
     Query: {
 
-        anyQuery: (_,{parameter}) => 'DATO DE RESPUESTA SERVER GRAPHQL http://localhost:3000/graphql',
+        anyQuery: (_,args) => 'DATO DE RESPUESTA SERVER GRAPHQL http://localhost:3000/graphql',
 
     },
 

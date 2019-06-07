@@ -52,6 +52,9 @@ type Subscription {
   """SUBSCRIPTION USER ONLINE"""
   subUsersOnline:UserOnline
 
+  """SUBSCRIPTION USER PROFILE"""
+  subUserProfile:User
+
 }
 
 type User {

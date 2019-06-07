@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { PAGINATION_USERS } from '../../../graphql_client/queries/queryUser';
 import TemplateLayout from '../../templateLayout';
 import ListUsers from './listUsers';
-import Pagination from '../pagination/pagination';
+import Pagination from '../../pagination/pagination';
 
 class AdminUsers extends Component {
   limit = 2;
@@ -41,7 +41,7 @@ class AdminUsers extends Component {
 		});
 	}
 
-  finalPage = totalUser => this.state.pagination.currentPage >= Math.ceil(Number(totalUser) / this.limit);
+  finalPage = totalUser => this.state.pagination.currentPage === Math.ceil(Number(totalUser) / this.limit);
   
   onChangePag = page => {
     this.setState({
@@ -70,15 +70,15 @@ class AdminUsers extends Component {
 										session={this.props.session}
                     history={this.props.history}
                     currentPage={this.state.pagination.currentPage}
-                    totalPages={Math.ceil(Number(data.totalUsers) / this.limit)}
+                    totalPages={Math.ceil(Number(data.totalUsers || 0) / this.limit)}
 									/>
 									<Pagination
                     currentPage={this.state.pagination.currentPage}
                     previousPage={this.pagePrevious}
                     followingPage={this.pageFallowing}
                     onChangePag={this.onChangePag}
-                    finalPages={this.finalPage(data.totalUsers)}
-										totalPages={Math.ceil(Number(data.totalUsers) / this.limit)}
+                    finalPages={this.finalPage(data.totalUsers || 0)}
+										totalPages={Math.ceil(Number(data.totalUsers || 0) / this.limit)}
                   />
 								</Fragment>
 							);
