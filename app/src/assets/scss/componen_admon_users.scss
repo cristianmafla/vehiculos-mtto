@@ -1,31 +1,31 @@
 @import 'variables.scss';
 .i_edit{
-  color:#3864c1;
+  color:$ic_edit;
   padding:10px;
   &:hover{
     cursor:pointer;
     border-radius: 100px;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
-    background-color: rgba(0, 0, 0, 0.12);
+    background-color: $bk_trans;
   }
 }
 .i_delete{
-  color:#FF0000;
+  color:$ic_delete;
   padding:10px;
   &:hover{
     cursor:pointer;
     border-radius: 100px;
     -moz-border-radius: 100px;
     -webkit-border-radius: 100px;
-    background-color: rgba(0, 0, 0, 0.12);
+    background-color: $bk_trans;
   }
 }
 .user_online{
-  border: 1.5px solid #42b72a;
+  border: 1.5px solid $online_user;
 }
 .user_offline{
-  border: 1.5px solid #D8D8D8;
+  border: 1.5px solid $offline_user;
 }
 .table_list_users{
   tbody{
@@ -34,15 +34,15 @@
         padding: 5px 10px 5px 5px;
         img{
           cursor:pointer;
-          background-color: #FFFFFF;
+          background-color: $font_chat_user;
           width: 40px;
           height: 40px;
           border-radius: 100px;
           -moz-border-radius: 100px;
           -webkit-border-radius: 100px;
-          border: 1.5px solid rgba(0, 0, 0, 0.13);
+          border: 1.5px solid $bk_trans;
           &:hover{
-            border: 1.5px solid rgba(0, 0, 0, 0.20);
+            border: 1.5px solid $bk_trans_hover;
           }
         }
       }
@@ -55,11 +55,11 @@
   left: -12px;
   top: 12px;
   display: inline;
-  background-color: #42b72a;
-  color: #42b72a;
+  background-color: $online_user;
+  color: $online_user;
   font-size: 9px;
   padding: 0px 6px 0px 6px;
-  border: 1.4px solid #FFFFFF;
+  border: 1.4px solid $online_user_border;
   border-radius: 50px;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
@@ -75,7 +75,7 @@
   color: $icons_font;
   font-size: 9px;
   padding: 0px 6px 0px 6px;
-  border: 1.4px solid #FFFFFF;
+  border: 1.4px solid $online_user_border;
   border-radius: 50px;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
@@ -86,17 +86,17 @@
 .pagination_right{
     cursor: pointer;
     margin-left: 20px;
-    color:#333333;
+    color:$pagination_r_f;
 }
 .pagination_left{
     cursor: pointer;
     margin-right: 20px;
-    color:#333333;
+    color:$pagination_r_f;
 }
 .pagination_disable{
     cursor:no-drop;
-    background-color:#FFF;
-    color:#A4A4A4;
+    background-color:$font_chat_user;
+    color:$pagination_disable;
 }
 
 //MORE USER LIST
@@ -108,8 +108,8 @@
       -moz-border-radius: 3px;
       -webkit-border-radius:3px;
      // font-size: 12px;
-      color:#A4A4A4;
-      border: 1px solid #A4A4A4;
+      color:$icons_font;
+      border: 1px solid $icons_font;
       padding:3px;
       margin-left:10px;
       &:hover{
@@ -120,3 +120,7 @@
     }
   }
 }
+
+@media (max-width: 759px) {}
+
+@media (max-width: 320px) {}

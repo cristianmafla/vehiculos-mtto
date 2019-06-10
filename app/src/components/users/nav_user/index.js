@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import ActionNotificationChat from '../../../redux_store/actions/actionNotificationChat';
 import { SizeImageUser } from '../../utils';
 
+
 class NavUser extends Component {
 
   constructor(props) {
@@ -20,7 +21,7 @@ class NavUser extends Component {
       user:{},
       imageUrl:""
     };
-  };
+  }
 
   componentWillMount = () => {};
 
@@ -45,7 +46,7 @@ class NavUser extends Component {
           {user.name} {user.lastname}
         </ModalUserProfile>
       );
-    };
+    }
   };
 
   ViewModalChatUser = () => {
@@ -60,7 +61,7 @@ class NavUser extends Component {
           <Chat session={user} visibility={this.state.modalChatUser}/>
         </ModalChat>
       );
-    };
+    }
   };
 
   ViewModaNotificationl = () => this.setState({ modalNotification: true });
@@ -71,14 +72,14 @@ class NavUser extends Component {
         <ModalNotification title="User Notification" visibility={this.state.modalNotification} size="" closeModal={this.closeModal}>
         </ModalNotification>
       );
-    };
+    }
   };
 
   closeModal = () => this.setState({ modalChatUser:false, modalUser:false, modalNotification:false });
 
 	itemsUsuario = user => {
-	  if(user){
-  	  return(
+	  if(user) {
+  	  return (
         <Fragment>
           <div className="div_msn_notification">
             <div className={this.props.NotificationChat}><i></i></div>
@@ -90,14 +91,14 @@ class NavUser extends Component {
           </div>
         </Fragment>
   	  );
-	  };
+	  }
 	};
 
 	avatarUsuario = user => {
 	  if(user){
       if(user.email == this.state.user.email){
         user = this.state.user;
-      };
+      }
 	    return(
         <Fragment>
           <div className="div_nav_img_user">
@@ -109,7 +110,7 @@ class NavUser extends Component {
             />
           </div>
         </Fragment>
-	    );
+	    )
 	  }else{
       return(
         <div className="div_nav_img_user">
@@ -122,7 +123,7 @@ class NavUser extends Component {
           </Link>
         </div>
       );
-    };
+    }
   };
 
   render(){
@@ -135,9 +136,9 @@ class NavUser extends Component {
         {this.ModalNotification(this.props.session || false)}
       </div>
     );
-  };
+  }
 
-};
+}
 
 const mapStateToProps = state => ({
   NotificationChat: state.ActionNotificationChat,

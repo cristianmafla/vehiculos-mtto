@@ -121,7 +121,7 @@ class Form extends  Component {
 						{(loginUser,{ data }) => (
 							<form onSubmit={e => this.onSubmit(e, newUser, loginUser)}>
 								<div className="custom-input-file text-center pb-3" title="subir imagen">
-									<div className="pb-1">Imagen de perfil</div>
+									<div className="pb-1">profile picture</div>
 									<input
 										type="file"
 										id="image"
@@ -146,7 +146,7 @@ class Form extends  Component {
 										type="text"
 										className="form-control"
 										name="name"
-										placeholder="Nombres"
+										placeholder="Name"
 										onChange={this.onChange}
 									/>
 								</div>
@@ -156,7 +156,7 @@ class Form extends  Component {
 										type="text"
 										className="form-control"
 										name="lastname"
-										placeholder="Apellidos"
+										placeholder="Last name"
 										onChange={this.onChange}
 									/>
 								</div>
@@ -166,7 +166,7 @@ class Form extends  Component {
 										type="text"
 										className="form-control"
 										name="email"
-										placeholder="Correo"
+										placeholder="Email"
 										onChange={this.onChange}
 									/>
 								</div>
@@ -176,7 +176,7 @@ class Form extends  Component {
 										type="text"
 										className="form-control"
 										name="password"
-										placeholder="Contraseña"
+										placeholder="Password"
 										onChange={this.onChange}
 									/>
 								</div>
@@ -186,7 +186,7 @@ class Form extends  Component {
 										type="text"
 										className="form-control"
 										name="valid_password"
-										placeholder="Repetir Contraseña"
+										placeholder="Repeat password"
 										onChange={this.onChange}
 									/>
 								</div>
@@ -232,10 +232,10 @@ class Form extends  Component {
 								</div>
 
 								<button className="btn btn-lg btn-primary btn-block " type="submit">
-									{loading ? 'Registrarme...' : 'Registrarme'}
+									{loading ? 'Loading...' : 'Create an account'}
 								</button>
 
-								<p className="mt-5 mb-3 text-muted"> ©node-2019</p>
+								<p className="mt-5 mb-3 text-muted"> <i className="fab fa-react"></i> <i className="fab fa-node-js"></i> - 2019</p>
 							</form>
 						)}
 					</Mutation>

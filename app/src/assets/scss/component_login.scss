@@ -2,7 +2,7 @@
 
 @media (max-width: 759px) {}
 
-@media (max-width: 480px) {}
+@media (max-width: 320px) {}
 
 /*|****|COMPONENT LOGIN|****|*/
 
@@ -10,7 +10,7 @@
     margin:0 25px 0 25px;
     color:$fonts;
     position:relative;
-    background-color:rgba(0, 0, 0, 0.58);
+    background-color:$icons_font_hover;
     top:-40px;
     padding:10px 0 10px 0;
 }
@@ -18,19 +18,19 @@
     margin-top:60px;
 }
 .btn_login_facebook {
-    background-color: #3864c1;
+    background-color: $login_facebook;
     color:$bg_form;
     &:hover{
-      background-color:#3b5998;
+      background-color:$login_facebook_hover;
       color:$fonts_hover;
     }
 }
 
 .btn_login_google{
-    background-color:#ff1919;
+    background-color:$login_google;
     color:$bg_form;
     &:hover{
-    background-color:#FF0000;
+    background-color:$login_google_hover;
     color:$fonts_hover;
     }
 }

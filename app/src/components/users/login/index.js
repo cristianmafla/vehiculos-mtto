@@ -21,9 +21,9 @@ class Login extends Component {
             error:false,
             message:''
         },
-        btnSubmit:"Ingresar"
+        btnSubmit:"Sing In"
     };
-  };
+  }
 
   onChange = e => this.setState({ user: { ...this.state.user, [e.target.name]: e.target.value } });
 
@@ -51,7 +51,7 @@ class Login extends Component {
         };
       }).catch(error => console.log('*** Error_loginMutation',error));
     } else {
-      this.setState({ errorValid: { error: true, message: "campos vacíos" } });
+      this.setState({ errorValid: { error: true, message: "empty fields" } });
     };
   };
 
@@ -62,15 +62,15 @@ class Login extends Component {
     return (
       <TemplateLayout pathUrl="login" session={this.props.session}>
           <Helmet>
-              <title>login usuario</title>
+              <title>sign in</title>
           </Helmet>
           <div className='container'>
             <div className='col-sm-8 col-lg-5 mx-auto form'>
-              <h1 id="titulo" className="h3 mb-3 font-weight-normal text-center">Inicio de session</h1>
+              <h1 id="titulo" className="h3 mb-3 font-weight-normal text-center">Sign in to lorem ipsums</h1>
               <Mutation mutation={LOGIN_USER}  variables={{email,password}}>
                 {(loginUser, { loading, error, data }) => {
                   if(error) return error;
-                  loading ? this.state.btnSubmit = 'Ingresando...' : this.state.btnSubmit = 'Ingresar';
+                  loading ? this.state.btnSubmit = 'Loading...' : this.state.btnSubmit = 'Sing In';
                   return (
                     <form className="" onSubmit={e => this.handleSubmit(e, loginUser)}>
                       <FacebookLogin history={this.props.history} refetch={this.props.refetch} errorValid={this.errorValid}/>
@@ -81,7 +81,7 @@ class Login extends Component {
                           type="email"
                           className="form-control margintb"
                           name="email"
-                          placeholder="correo"
+                          placeholder="email"
                           onChange={this.onChange}
                       />
 
@@ -89,15 +89,15 @@ class Login extends Component {
                           type="text"
                           className="form-control margintb"
                           name="password"
-                          placeholder="contraseña"
+                          placeholder="password"
                           onChange={this.onChange}
                       />
 
                       <button className="btn btn-lg btn-primary btn-block " type="submit">{this.state.btnSubmit}</button>
                       <Link className="link_none" to={`/new_user`}>
-                          Registrarme
+                          Create an account
                       </Link>
-                      <p className="mt-5 mb-3 text-muted"> AppReact©node-2019</p>
+                      <p className="mt-5 mb-3 text-muted"> <i className="fab fa-react"></i> <i className="fab fa-node-js"></i> - 2019</p>
                     </form>
                   );
                 }}

@@ -20,7 +20,7 @@ body{
   background-color: $icons_font_hover;
 }
 ::-moz-scrollbar-track{
-  background-color: #efefef;
+  background-color: $bk_scroll;
 }
 
 ::-moz-scrollbar{
@@ -36,7 +36,7 @@ body{
   background-color: $icons_font_hover;
 }
 ::-webkit-scrollbar-track{
-  background-color: #efefef;
+  background-color: $bk_scroll;
 }
 
 ::-webkit-scrollbar{
@@ -152,7 +152,7 @@ nav{
 .pagination_disable{
   cursor:no-drop;
   background-color:#FFF;
-  color:#A4A4A4;
+  color:$pagination_disable;
 }
 .error_message{
   display:none;
@@ -186,7 +186,7 @@ nav{
 
 @media (max-width: 320px){
   .site_name{
-    font-size:35px;
+    font-size:30px;
       position:absolute;
       top:6px;
       padding-bottom:15px;

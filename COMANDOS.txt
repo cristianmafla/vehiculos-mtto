@@ -1,3 +1,21 @@
+/////////////////////////////VARIABLES SERVER HEROKU/////////////////////////////
+SECRET = tokesecretcontextgraphql
+HTTP = https
+WS = wss
+BASE_URL_LOCAL = api-ap-graphql.herokuapp.com
+BASE_URL_IMAGE = api-ap-graphql.herokuapp.com
+MONGODB = mongodb+srv://cristianmafla:mafla2019@apiappgraphql-hwc2y.mongodb.net/test?retryWrites=true&w=majority
+MYSQL_DB = database_development
+
+/////////////////////////////VARIABLES SERVER LOCAL/////////////////////////////
+SECRET = tokesecretcontextgraphql
+HTTP = http
+WS = ws
+BASE_URL_LOCAL = localhost:5000
+BASE_URL_IMAGE = localhost:5000
+MONGODB = mongodb://127.0.0.1:27017/ApiAppGraphQl
+MYSQL_DB = database_development
+
 
 /////////////////////// GIT /////////////////////////
 git remote -v ///muestra la url del repositorio remoto ejemplo ==> origin https//github.com/cristianmafla/algunrepositorio.git
@@ -17,7 +35,9 @@ taskkill /F /PID nro_pid ///matar proceso
 
 //////////////////// SEQUELIZE ////////////////////////////
 ******************instalar
-    npm install --save sequelize-cli
+NOTA:CORRER COMANDO NPX DESDE db_sql
+
+npm install --save sequelize-cli
 
 *iniciar
     npx sequelize init
@@ -26,7 +46,7 @@ taskkill /F /PID nro_pid ///matar proceso
     npx sequelize db:create
 
 *crear migracion y modelo
-    npx sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string
+    npx sequelize model:generate --name User --attributes firstName:string,lastName:string,email:string,numero:integer
 
 *ejecutar las migraciones
     npx sequelize db:migrate
@@ -49,7 +69,8 @@ taskkill /F /PID nro_pid ///matar proceso
 
 ////////////////HEROKU////////////////////
 * login
-    heroku login --interactive
+    heroku login --interactive    user:cristiancaxi@gmail.com pass:ladesiempre.
+    heroku logout
 
 * instalar dependencias de desarrollo
     heroku config:set NPM_CONFIG_PRODUCTION=false
@@ -58,4 +79,3 @@ taskkill /F /PID nro_pid ///matar proceso
     https://api-ap-graphql.herokuapp.com/graphql?query={anyQuery}
 	-----------------------
 	heroku logs --tail
-	

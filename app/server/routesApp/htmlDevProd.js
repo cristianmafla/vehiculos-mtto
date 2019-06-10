@@ -16,7 +16,7 @@ const HTML = ( mode , req ) => {
     //( req.session ) ? console.log('|****|req--htmlDevProd.js|****|', req.session) : null;
     let bundleCss = '',
         content = '',
-        bundleJs = '<script src="bundle.js"></script>';
+        bundleJs = '<script src="/bundle.js"></script>';
 
     if (mode === 'production'){
         bundleCss = '<link rel="stylesheet" href="bundle.css" ></link>';

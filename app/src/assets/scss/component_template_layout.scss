@@ -96,7 +96,7 @@
       position:relative;
       left:37px;
       top:-10px;
-      background-color:red;
+      background-color:$ic_delete;
       font-size: 9px;
       color:$fonts;
       padding:0 6px 0 6px;
@@ -109,7 +109,7 @@
       position:relative;
       left:85px;
       top:-10px;
-      background-color:red;
+      background-color:$ic_delete;
       font-size: 9px;
       color:$fonts;
       padding:0 6px 0 6px;
@@ -147,4 +147,4 @@
 
 @media (max-width: 759px) {}
 
-@media (max-width: 480px) {}
+@media (max-width: 320px) {}

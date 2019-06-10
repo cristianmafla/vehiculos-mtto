@@ -12,11 +12,11 @@ class NewUsuario extends Component {
 		return(
 			<TemplateLayout session={this.props.session}>
 				<Helmet>
-					<title>Nuevo Usuario</title>
+					<title>create an account</title>
 				</Helmet>
 				<div className='container'>
 					<div className='col-sm-8 col-lg-5 mx-auto form'>
-						<h1 id="titulo" className="h3 mb-3 font-weight-normal text-center">Registrarme</h1>
+						<h1 id="titulo" className="h3 mb-3 font-weight-normal text-center">Create your personal account</h1>
 						<Form history={this.props.history} refetch={this.props.refetch}/>
 					</div>
 				</div>

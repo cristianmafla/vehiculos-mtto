@@ -10,13 +10,14 @@ import ActionNotificationChat from '../../../redux_store/actions/actionNotificat
 import { SizeImageUser } from '../../utils';
 import UsersOnline from './usersOnline';
 import moment from 'moment';
+import { soundNewMsnChat } from '../../utils/sounds';
 
 class Form extends Component {
 
   constructor(props) {
     super(props);
     this.state = {};
-  };
+  }
 
   componentWillMount = () => { };
 
@@ -38,11 +39,12 @@ class Form extends Component {
     this.props.ActionChat(Array.from(set).map(JSON.parse));
     if (subscriptionData.data.subChatUsers.user.email != this.props.session.email && this.props.visibility === false) {
       if (subscriptionData.data.subChatUsers.new) {
+        soundNewMsnChat();
         this.props.ActionNotificationChat('div_msn_count_notification');
-      };
+      }
     } else {
       this.props.ActionNotificationChat('');
-    };
+    }
   };
 
   scrolling = () => document.getElementById('list_msn').scrollTop = document.getElementById('list_msn').scrollHeight;

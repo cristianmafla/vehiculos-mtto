@@ -9,7 +9,7 @@ const Session = Component => props => (
         if(error) return console.log('ERROR_LOGIN_USER_VALID',error);
         if(loading) return null;
         let session = false;
-        if(data){session = data.userValid};
+        if(data){ session = data.userValid }
         return(
             <Component
                 {...props}

@@ -16,6 +16,24 @@ const routesGeneral = [
         viewNav: true,
     },
     {
+        to:"#",
+        name:'Colombia',
+        icon: <i className="far fa-address-card"></i>,
+        viewNav: true,
+        subRoutes:[{
+            to: "/departamentos",
+            name: 'Departamentos',
+            icon: <i className="far fa-address-card"></i>,
+            viewNav: true,
+        },
+        {
+            to: "/municipios",
+            name: 'Municipios',
+            icon: <i className="far fa-address-card"></i>,
+            viewNav: true,
+        }]
+    },
+    {
         to: '/login',
         name: 'Entrar',
         permission: ['rol_invited'],
@@ -29,7 +47,7 @@ const routesGeneral = [
     }
 ];
 
-const routesSession = [ 
+const routesSession = [
   ...routesGeneral ,
   {
     to: '/admin_users',

@@ -24,7 +24,7 @@ const closeSession = ({ handlerToogle, email, ActionUsersOnline }) => (
               className="btn btn-outline-secondary btn-sm"
               onClick={() => btnClose(onlineOff, email, client, handlerToogle, ActionUsersOnline)}
             >
-              <i className="fas fa-sign-out-alt"></i> salir
+              <i className="fas fa-sign-out-alt"></i> Sign Out
               </button>
         )}
         </Mutation>

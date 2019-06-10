@@ -3,9 +3,9 @@ import { Query } from 'react-apollo';
 import {ANYQUERY} from '../../graphql_client/queries';
 import { Helmet } from 'react-helmet';
 import TemplateLayout from '../templateLayout';
+import { PruebaSounds,sounds } from '../utils/sounds';
 
 class Home extends Component {
-
 	constructor(props){
 		super(props);
 		this.state = {};
@@ -14,11 +14,6 @@ class Home extends Component {
 	componentWillMount = () => {};
 
   componentDidMount = () => {};
-
-  soundReact = () => {
-    // eslint-disable-next-line no-console
-    console.log('sonido')
-  };
 
 	render(){
 		return(
@@ -32,7 +27,14 @@ class Home extends Component {
 					{({ loading, data }) => (
 						<Fragment>
 							<h4>*** {loading ? 'cargando...' : ''} {data ? data.anyQuery : 'Error: SERVER GRAPHQL'} ***</h4>
-              <button onClick={this.soundReact}>SOUND CLICK</button>
+							<h5>SOUNDS :</h5>
+								{sounds.map((sound,key) => {
+									return(
+										<div key={key} className="pt-2 pb-2">
+											<button type="button" className="btn btn-outline-dark btn-block" onClick={() => PruebaSounds(sound.name)}>{sound.name}</button>
+										</div>
+									)
+								})}
 						</Fragment>
 					)}
 					</Query>

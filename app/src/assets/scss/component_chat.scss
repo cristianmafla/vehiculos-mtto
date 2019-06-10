@@ -51,9 +51,9 @@
       border-radius:100px;
       -moz-border-radius:100px;
       -webkit-border-radius:100px;
-      border: 1.5px solid rgba(0, 0, 0, 0.13);
+      border: 1.5px solid $bk_trans;
       &:hover{
-        border: 1.5px solid rgba(0, 0, 0, 0.20);
+        border: 1.5px solid $bk_trans_hover;
       }
   }
 }
@@ -64,11 +64,11 @@
   left: -13px;
   top: 20px;
   display: inline;
-  background-color: #42b72a;
-  color: #42b72a;
+  background-color: $online_user;
+  color: $online_user;
   font-size: 9px;
   padding: 0px 6px 0px 6px;
-  border: 1.4px solid #FFFFFF;
+  border: 1.4px solid $online_user_border;
   border-radius: 50px;
   -moz-border-radius: 50px;
   -webkit-border-radius: 50px;
@@ -76,4 +76,4 @@
 }
 @media (max-width: 759px) {}
 
-@media (max-width: 480px) {}
+@media (max-width: 320px) {}
