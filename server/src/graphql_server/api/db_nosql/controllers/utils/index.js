@@ -47,7 +47,53 @@ export const uploadImageUser = async (upload, email) => {
           });
         });
       });
-  };
+  }
+  return null;
+};
+
+
+export const uploadImageCar = async (upload, placa) => {
+  console.log('upload', upload);
+  if (upload) {
+    let UPLOAD_DIR = `./public/car/${placa}/images`
+
+    const
+      { createReadStream, filename, mimetype } = await upload,
+      stream = createReadStream(),
+      ID = shortid.generate(),
+      imgPath = `${UPLOAD_DIR}/lg_${ID}_${filename}`,
+      imgMdPath = `${UPLOAD_DIR}/md_${ID}_${filename}`,
+      imgSxPath = `${UPLOAD_DIR}/sx_${ID}_${filename}`,
+      PATH_IMAGE_CAR = `${process.env.HTTP}://${process.env.BASE_URL_IMAGE}/public/car/${placa}/images/**size**_${ID}_${filename}`;
+
+    mkdirp.sync(UPLOAD_DIR);
+    return new Promise((resolve, reject) => {
+      stream
+        .on('error', error => {
+          if (stream.truncated)
+            fs.unlinkSync(imgPath)
+          console.log('error_truncate', error);
+          reject(error);
+        })
+        .pipe(fs.createWriteStream(imgPath))
+        .on('error', error => {
+          console.log('errorfile', error)
+          reject(error);
+        })
+        .on('finish', result => {
+          resizeImg(fs.readFileSync(imgPath), { width: 250, height: 250 })
+            .then(buf => {
+              fs.writeFileSync(imgMdPath, buf);
+              resolve(`${PATH_IMAGE_CAR}`);
+            });
+          resizeImg(fs.readFileSync(imgPath), { width: 65, height: 65 })
+            .then(buf => {
+              fs.writeFileSync(imgSxPath, buf);
+              resolve(`${PATH_IMAGE_CAR}`);
+            });
+        });
+    });
+  }
   return null;
 };
 

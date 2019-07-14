@@ -4,11 +4,13 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+	devtool: 'hidden-source-map',
 	entry: path.resolve(__dirname, 'src'),
 	output: {
 		path: path.resolve(__dirname, 'dist'),
 		filename: 'bundle.js',
-		publicPath: '/'
+		publicPath: '/',
+		sourceMapFilename:'main.map'
 	},
 	plugins: [
 		new webpack.DefinePlugin({
@@ -46,7 +48,7 @@ module.exports = {
 					use: [
 						'css-loader',
 						'resolve-url-loader',
-						'sass-loader',
+						'sass-loader?sourceMap',
 						{
 							loader: 'postcss-loader',
 							options: {

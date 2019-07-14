@@ -23,9 +23,9 @@ class UsersOnline extends Component {
           this.props.ActionUsersOnline([]);
           if(emailsUsers.indexOf(this.props.session.email) < 0){
             localStorage.setItem('tokenUser','null')
-            location.replace("/login");
-          };
-        };
+            location.replace("/");
+          }
+        }
         let set = new Set([...subscriptionData.data.subUsersOnline.user].map(JSON.stringify))
         this.props.ActionUsersOnline(Array.from(set).map(JSON.parse));
 		  },
@@ -39,28 +39,28 @@ class UsersOnline extends Component {
           ? this.props.UsersOnline.map((user, key) => {
             if(this.props.session.email != user.email){
               return(
-                <Fragment>
-                  <img key={key} src={SizeImageUser(user.imageUrl, 'sx')} />
+                <Fragment key={key}>
+                  <img src={SizeImageUser(user.imageUrl, 'sx')} />
                   <div className="chat_user_online"></div>
                 </Fragment>
               );
-            };
+            }
           })
           : this.props.usersOnline.map((user, key) => {
             if(this.props.session.email != user.email){
               return(
-                <Fragment>
-                  <img key={key} src={SizeImageUser(user.imageUrl, 'sx')} />
+                <Fragment key={key}>
+                  <img src={SizeImageUser(user.imageUrl, 'sx')} />
                   <div className="chat_user_online"></div>
                 </Fragment>
               );
-            };
+            }
         })}
 			</div>
 		);
-  };
+  }
 
-};
+}
 
 const mapStateToProps = state => ({
   UsersOnline: state.ActionUsersOnline,

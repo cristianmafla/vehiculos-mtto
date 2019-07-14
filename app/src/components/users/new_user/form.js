@@ -19,8 +19,8 @@ class Form extends  Component {
 				imageUrl:''
 			},
 			errorValid:{
-        error:false,
-        message:''
+				error:false,
+				message:''
 			},
 			rol_admon:{
 				name:'rol_admon',

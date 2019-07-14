@@ -21,19 +21,17 @@ const context = async ({req, connection}) => {
 };
 
 const uploads = {
-  maxFileSize: 10000000,
+  maxFileSize: 10000000,// 10 MB
   maxFiles: 20
 };
 
 const subscriptions = {
     onConnect: (connectionParams, webSocket, context) => {
         //console.log('connectionParams',connectionParams);
-/*
         if (connectionParams.authorization) {
             return { currentUserApi: true }
         }
         throw new Error('Missing auth token!.');
-*/
     },
     onDisconnect: (webSocket, context) => {}
 };

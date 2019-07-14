@@ -46,7 +46,7 @@ class Google extends Component {
                 this.setState({ errorValid: { error: false, message: null } });
                 localStorage.setItem('tokenUser', data.loginUser.token);
                 this.props.refetch()
-                  .then(() => this.props.history.push('/'))
+                  .then(() => this.props.history.push('/user_car'))
                   .catch(error => console.log('*** Error_refetch', error));
                 break;
             };

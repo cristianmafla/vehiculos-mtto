@@ -8,7 +8,7 @@ import ListUsers from './listUsers';
 import Pagination from '../../pagination/pagination';
 
 class AdminUsers extends Component {
-  limit = 2;
+  	limit = 2;
 	constructor(props){
 		super(props);
 		this.state = {
@@ -19,14 +19,14 @@ class AdminUsers extends Component {
     };
 	}
 
-  componentWillMount = () => {};
+  	componentWillMount = () => {};
 
 	componentDidMount = () => {};
 
 	pagePrevious = () => {
 		this.setState({
 			pagination: {
-        offset: this.state.pagination.offset - this.limit,
+        		offset: this.state.pagination.offset - this.limit,
 				currentPage: this.state.pagination.currentPage - 1
 			}
 		});
@@ -35,7 +35,7 @@ class AdminUsers extends Component {
 	pageFallowing = () => {
 		this.setState({
 			pagination: {
-        offset: this.state.pagination.offset + this.limit,
+       		 	offset: this.state.pagination.offset + this.limit,
 				currentPage: this.state.pagination.currentPage + 1
 			}
 		});
@@ -45,9 +45,9 @@ class AdminUsers extends Component {
   
   onChangePag = page => {
     this.setState({
-      pagination: {
-				offset: page * this.limit,
-        currentPage: page + 1
+		pagination: {
+			offset: page * this.limit,
+			currentPage: page + 1
       }
     });
   };
@@ -57,7 +57,7 @@ class AdminUsers extends Component {
 			<TemplateLayout session={this.props.session}>
 				<Helmet><title>Admin Users</title></Helmet>
 				<div className="col-sm-8 col-lg-9 mx-auto form">
-          <h1 className="h3 mb-3 font-weight-normal text-center">User administration</h1>
+          		<h1 className="h3 mb-3 font-weight-normal text-center">User administration</h1>
 					<Query query={PAGINATION_USERS} variables={{limit:this.limit,offset:this.state.pagination.offset}} pollInterval={2500}>
 						{({loading,error,data,refetch}) => {
 						if(loading) return 'loading...';
@@ -68,18 +68,18 @@ class AdminUsers extends Component {
 										users={data.paginationUsers || []}
 										refetch={refetch}
 										session={this.props.session}
-                    history={this.props.history}
-                    currentPage={this.state.pagination.currentPage}
-                    totalPages={Math.ceil(Number(data.totalUsers || 0) / this.limit)}
+										history={this.props.history}
+										currentPage={this.state.pagination.currentPage}
+										totalPages={Math.ceil(Number(data.totalUsers || 0) / this.limit)}
 									/>
 									<Pagination
-                    currentPage={this.state.pagination.currentPage}
-                    previousPage={this.pagePrevious}
-                    followingPage={this.pageFallowing}
-                    onChangePag={this.onChangePag}
-                    finalPages={this.finalPage(data.totalUsers || 0)}
+										currentPage={this.state.pagination.currentPage}
+										previousPage={this.pagePrevious}
+										followingPage={this.pageFallowing}
+										onChangePag={this.onChangePag}
+										finalPages={this.finalPage(data.totalUsers || 0)}
 										totalPages={Math.ceil(Number(data.totalUsers || 0) / this.limit)}
-                  />
+                  					/>
 								</Fragment>
 							);
 						}}

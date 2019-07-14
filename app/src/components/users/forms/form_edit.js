@@ -34,10 +34,9 @@ class FormEdit extends  Component {
 				checked: false
 			}
 		};
-	};
+	}
 
 	componentWillMount = () => {
-		
 	};
 
 	componentDidMount = () => {
@@ -68,7 +67,7 @@ class FormEdit extends  Component {
     				user: {...this.state.user, imageUrl:'' },
     				errorValid:{ error:true, message:objUpload.message }
     			});
-        };
+        }
       })
 	};
 
@@ -142,19 +141,19 @@ class FormEdit extends  Component {
 				.catch(error => console.log('*** Error_GRAPHQL_EDIT_USER',error))
 		} else {
 			this.stateErrorValid('empty fields');
-		};
+		}
 	};
 
   render(){
 		if(!this.props.modal){
 			this.state.user.imageUrl = false
-		};
+		}
 		if(this.props.user){
 			document.getElementById('name').value = this.props.user.name;
 			document.getElementById('lastname').value = this.props.user.lastname;
 			document.getElementById('email').value = this.props.user.email;
 			document.getElementById('imageUser').src = SizeImageUser(this.props.user.imageUrl,'sx');
-		};
+		}
     return(
 			<Mutation mutation={EDIT_USER } >
 				{(editUser, { loading }) => (
@@ -230,48 +229,3 @@ class FormEdit extends  Component {
   }
 }
 export default FormEdit;
-
-/*
-
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name='rol_admon'
-												id='rol_admon'
-												type="checkbox"
-												className="form-check-input"
-												defaultChecked={this.state.rol_admon.checked}
-												onChange={this.handleCheked}
-											/>
-											<span className="">Administrator</span>
-										</label>
-									</div>
-
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name='rol_client'
-												id='rol_client'
-												type="checkbox"
-												className="form-check-input"
-												defaultChecked={this.state.rol_client.checked}
-												onChange={this.handleCheked}
-											/>
-											<span className="">Client</span>
-										</label>
-									</div>
-
-									<div class="form-check">
-										<label className="form-check-label">
-											<input
-												name='rol_invited'
-												id='rol_invited'
-												type="checkbox"
-												className="form-check-input"
-												defaultChecked={this.state.rol_invited.checked}
-												onChange={this.handleCheked}
-											/>
-											<span className="">Invited</span>
-										</label>
-									</div>
-*/

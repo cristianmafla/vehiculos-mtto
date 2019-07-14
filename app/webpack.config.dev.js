@@ -3,6 +3,7 @@ const
 	webpack = require('webpack');
 
 module.exports = {
+	devtool:'source-map',
 	entry: [ 'webpack-hot-middleware/client', path.resolve(__dirname, 'src') ],
 	output: {
 		path: path.resolve(__dirname, 'src'),
@@ -26,7 +27,7 @@ module.exports = {
 				use: [
 					'style-loader',
 					'css-loader',
-					'sass-loader',
+					'sass-loader?sourceMap',
 					{
 						loader: 'postcss-loader',
 						options: { plugins: function() { return [require('autoprefixer')] } }

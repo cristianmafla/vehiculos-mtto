@@ -9,12 +9,11 @@ import { connect } from 'react-redux';
 import ActionNotificationChat from '../../../redux_store/actions/actionNotificationChat';
 import { SizeImageUser } from '../../utils';
 
-
 class NavUser extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
+      internet:false,
       modalUser: false,
       modalChatUser:false,
       modalNotification:false,
@@ -23,7 +22,9 @@ class NavUser extends Component {
     };
   }
 
-  componentWillMount = () => {};
+  componentWillMount = () => {
+
+  };
 
   componentDidMount = () => {
     this.props.subscribeToMore({
@@ -34,6 +35,8 @@ class NavUser extends Component {
         this.setState({ user: subscriptionData.data.subUserProfile})
       },
     });
+
+
   };
 
   ViewModalUser = () => this.setState({ modalUser: true });
@@ -83,16 +86,16 @@ class NavUser extends Component {
         <Fragment>
           <div className="div_msn_notification">
             <div className={this.props.NotificationChat}><i></i></div>
-            <i onClick={() => this.ViewModalChatUser()} className="fas fa-comment-dots"></i>
+            <i onClick={() => this.ViewModalChatUser()} className="far fa-comment-dots" title="chat"></i>
           </div>
           <div className="div_nav_notification">
             <div className="div_count_notification"><i></i></div>
-            <i onClick={() => this.ViewModaNotificationl()} className="fas fa-bell"></i>
+            <i onClick={() => this.ViewModaNotificationl()} className="far fa-bell" title="notification"></i>
           </div>
         </Fragment>
   	  );
 	  }
-	};
+  };
 
 	avatarUsuario = user => {
 	  if(user){

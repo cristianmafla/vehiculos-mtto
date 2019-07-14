@@ -19,7 +19,7 @@ const HTML = ( mode , req ) => {
         bundleJs = '<script src="/bundle.js"></script>';
 
     if (mode === 'production'){
-        bundleCss = '<link rel="stylesheet" href="bundle.css" ></link>';
+        bundleCss = '<link rel="stylesheet" href="/bundle.css" ></link>';
         content = renderToString(
             <ApolloProvider client={client}>
                 <Provider store={createStore(reducers)}>
@@ -39,9 +39,41 @@ const HTML = ( mode , req ) => {
         <head>
             <meta charset="utf-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+            <!--CONFIG MANIFEST-->
+            <link rel="manifest" href="/public/manifest.json"/>
+            <meta name="teme-color" content="#333">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js16x16.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js32x32.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js64x64.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js96x96.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js128x128.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js192x192.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js284x284.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js384x384.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js512x512.png">
+            <link rel="icon" type="image/png" sizes="" href="/public/assets/img_app/js1024x1024.png">
+
+            <!--METAS IOS-->
+            <meta name="apple-mobile-web-app-capable" content="yes">
+            <meta name="apple-mobile-web-app-status-bar-style" content="black">
+            <meta name="format-detection" content="telephone=no">
+            <meta name="apple-mobile-web-app-title" content="lorem ipsu">
+            <link rel="apple-touch-icon" sizes="192x192" href="/public/assets/img_app/js192x192.png">
+
+            <!--METAS WINDOWS-->
+            <meta property="og:title" content="lorem ipsu">
+            <meta property="og:locale" content="es_MX">
+            <meta property="og:type" content="website">
+            <meta property="og:image" content="/public/assets/img_app/js284x284.png">
+            <meta property="og:site_name" content="loremIpsu">
+            <meta property="og:url" content="https://app-graphql.herokuapp.com/">
+
+
+
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-            <link rel="stylesheet" href="public/assets/scss/normalize.css">
+            <link rel="stylesheet" href="/public/assets/scss/normalize.css">
 
             ${bundleCss}
             ${helmet.title.toString()}

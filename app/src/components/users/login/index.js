@@ -45,7 +45,7 @@ class Login extends Component {
             this.setState({ errorValid: { error: false, message: null } });
             localStorage.setItem('tokenUser', data.loginUser.token);
             this.props.refetch()
-              .then(() => this.props.history.push('/'))
+              .then(() => this.props.history.push('/list_cars'))
               .catch(error => console.log('*** Error_refetch',error));
             break;
         };
@@ -66,7 +66,7 @@ class Login extends Component {
           </Helmet>
           <div className='container'>
             <div className='col-sm-8 col-lg-5 mx-auto form'>
-              <h1 id="titulo" className="h3 mb-3 font-weight-normal text-center">Sign in to lorem ipsums</h1>
+              <h1 id="titulo" className="h3 mb-3 font-weight-normal text-center">Sign in</h1>
               <Mutation mutation={LOGIN_USER}  variables={{email,password}}>
                 {(loginUser, { loading, error, data }) => {
                   if(error) return error;
@@ -94,9 +94,9 @@ class Login extends Component {
                       />
 
                       <button className="btn btn-lg btn-primary btn-block " type="submit">{this.state.btnSubmit}</button>
-                      <Link className="link_none" to={`/new_user`}>
+                      {/*<Link className="link_none" to={`/new_user`}>
                           Create an account
-                      </Link>
+                      </Link>*/}
                       <p className="mt-5 mb-3 text-muted"> <i className="fab fa-react"></i> <i className="fab fa-node-js"></i> - 2019</p>
                     </form>
                   );

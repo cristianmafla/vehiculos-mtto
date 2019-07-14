@@ -16,6 +16,21 @@ export const ImageUrlUpload = image => {
   });
 }
 
+
+
+export const ExcelUpload = file => {
+	return new Promise((resolve, reject) => {
+		const
+			filePath = file.target.value,
+			allowedExtensions = /(\.xlsx)$/i;
+		if (!allowedExtensions.exec(filePath)) {
+			resolve({ state: false, message: `Archivo incorrecto, carge .xlsx` });
+		}else{
+			resolve({ state:true });
+		}
+	});
+}
+
 export const ImageUploadValid = image => {
 	if(image){
 		const extension = image.type.split('/')[1];
@@ -34,4 +49,11 @@ export const SizeImageUser = (url, size) => {
 		return url.replace('**size**', size);
 	};
 	return 'public/assets/images_locals/profile.png';
+};
+
+export const SizeImageCar = (url, size) => {
+	if (url !== 'false' && url !== false) {
+		return url.replace('**size**', size);
+	}
+	return 'public/assets/images_locals/car.png';
 };

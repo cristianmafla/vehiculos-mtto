@@ -1,6 +1,12 @@
 @import 'variables.scss';
 /*|****|COMPONENT TEMPLATELAYOUT|****|*/
+.signal_internet_on{
+  background-color:$online_user;
+}
 
+.signal_internet_off{
+  background-color:$pagination_disable;
+}
 /*|****|NAV|****|*/
 .slideout-menu {
   position: fixed;
@@ -44,48 +50,50 @@
   background-color:$content_panel_body;
   height:100%;
   header{
-    height:50px;
-    background-color:$content_panel_header;
+    height:40px;
+    background-color:#FFFFFF;
     span{
       cursor:pointer;
-      color:$btn_menu;
+      color:#333333;
       font-size:30px;
-      margin: 10px;
+      margin: 0px 10px 0px 10px; 
       &:hover{
-        color:$fonts_hover;
+        color:black;
       }
     }
   }
 }
 .img_nav_user_off{
   background-color:$fonts;
-  margin: 5px 3px 0px 0;
-  width: 40px;
-  height: 40px;
+  margin: 11px 3px 0px 0;
+  width: 30px;
+  height: 30px;
   border-radius:100px;
   -moz-border-radius:100px;
   -webkit-border-radius:100px;
-  border: 1.5px solid $fonts;
+  border: 1px solid $fonts;
   &:hover{
-    border: 1.5px solid $fonts_hover;
+    border: 1px solid $fonts_hover;
   }
 }
 .img_nav_user{
   background-color:$fonts;
-  margin: 0 3px 8px 0;
-  width: 40px;
-  height: 40px;
+  margin: 5px 3px 8px 0px;
+  width: 30px;
+  height: 30px;
   border-radius:100px;
   -moz-border-radius:100px;
   -webkit-border-radius:100px;
-  border: 1.5px solid $fonts;
+  border: 1px solid $fonts;
   &:hover{
-    border: 1.5px solid $fonts_hover;
+    border: 1px solid $fonts_hover;
   }
 }
 .nav_user{
   float:right;
-  padding:0 10px 0 10px;
+  position:relative;
+  top:-7px;
+  padding:0px 10px 0px 10px;
   height:100%;
   font-size:18px;
   div{
@@ -121,25 +129,25 @@
   }
   .div_nav_notification{
     i{
-      color:$fonts;
+      color:#333333;
       position:relative;
       top:6px;
       left:10px;
       font-size:30px;
       &:hover{
-        color:$fonts_hover;
+        color:black;
       }
     }
   }
   .div_msn_notification{
     i{
-      color:$fonts;
+      color:#333333;
       position:relative;
       top:6px;
       left:52px;
       font-size:30px;
       &:hover{
-        color:$fonts_hover;
+        color:black;
       }
     }
   }
