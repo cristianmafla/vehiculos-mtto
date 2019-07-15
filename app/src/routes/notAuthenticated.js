@@ -9,6 +9,13 @@ const RoutesNotAuthenticated = [
         subRoutes:[],
     },
     {
+        to: '/new_user',
+        name: 'Sign Up',
+        icon: <i className="fas fa-user"></i>,
+        viewNav: true,
+        subRoutes: []
+    },
+    {
         to: '*',
         viewNav: false,
         subRoutes:[]

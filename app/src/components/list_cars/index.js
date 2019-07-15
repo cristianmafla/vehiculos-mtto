@@ -177,9 +177,9 @@ class ListCars extends Component {
 								<Mutation mutation={NEW_CARS_FILE_EXCEL} >
 									{(newCarFileEcxel, { loading, error, data }) => (
 										<i
-											style={{ paddingLeft: '25px', cursor: 'pointer', display: this.state.excel != 0 ? 'inline-block' : 'none' }}
-											className="fas fa-file-export"
-											title='export data-base'
+											style={{display: this.state.excel != 0 ? 'inline-block' : 'none' }}
+											className="fas fa-file-export i_exp_excel"
+											title='export file excel to data-base'
 											onClick={() => this.exportExcelDataBase(this.state.excel, newCarFileEcxel)}
 										></i>
 									)}

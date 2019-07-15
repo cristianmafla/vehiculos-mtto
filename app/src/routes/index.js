@@ -37,7 +37,7 @@ const App = props => {
       <Route path="/user_car" render={() => ValidSession(props, UserCar)} exact />
       {/*ROUTES USER*/}
       <Route path="/" render={() => Component(props, Login)} exact />
-      <Route path="/new_user" render={() => ValidSessionAdmin(props, NewUser)} exact />
+      <Route path="/new_user" render={() => Component(props, NewUser)} exact />
       <Route path="/admin_users" render={() => ValidSessionAdmin(props, AdminUsers)} exact />
       {/*OTHER ROUTES*/}
       <Route path="*" component={Nomatch} />

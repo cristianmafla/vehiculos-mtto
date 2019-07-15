@@ -153,6 +153,20 @@
   }
 }
 
+.i_exp_excel{
+  position:absolute;
+  top:-1px;
+  margin-left:5px; 
+  padding:10px;
+  &:hover{
+    cursor:pointer;
+    border-radius: 100px;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    background-color: $bk_trans;
+  }
+}
+
 @media (max-width: 759px) {}
 
 @media (max-width: 320px) {}

@@ -71,6 +71,7 @@ class ListCarsDb extends Component {
               <th>Edit</th>
               <th>Delete</th>
               <th>valor</th>
+              <th>fecha ingreso</th>
               <th>placa</th>
               <th>modelo</th>
               <th>tipo</th>
@@ -78,7 +79,6 @@ class ListCarsDb extends Component {
               <th>propietario</th>
               <th>Documento</th>
               <th>detalle</th>
-              <th>fecha ingreso</th>
             </tr>
           </thead>
 
@@ -87,7 +87,7 @@ class ListCarsDb extends Component {
               <tr key={key} className={key % 2 === 0 ? 'table-warning' : ''}>
                 <td>
                   <div>
-                    <img onClick={() => this.viewModalEditCar(car)} src={SizeImageCar(car.imageUrl, 'sx')} />
+                    <img onClick={() => this.viewModalEditCar(car)} src={SizeImageCar(car.imageUrl, 'sx')} title="edit" />
                   </div>
                 </td>
                 <td><i onClick={() => this.viewModalEditCar(car)} className="fas fa-edit i_edit" title="edit"></i></td>
@@ -97,6 +97,7 @@ class ListCarsDb extends Component {
                   </Mutation>
                 </td>
                 <td><b>{this.priceMtto(car.fecha, car.modelo)}</b></td>
+                <td>{moment(car.fecha).format('LLL')}</td>
                 <td><b>{car.placa}</b></td>
                 <td>{car.modelo}</td>
                 <td>{car.tipo}</td>
@@ -104,7 +105,6 @@ class ListCarsDb extends Component {
                 <td>{car.propietario}</td>
                 <td>{car.documento}</td>
                 <td>{car.detalle}</td>
-                <td>{moment(car.fecha).format('LLL')}</td>
               </tr>
             ))}
           </tbody>
