@@ -18,6 +18,24 @@ export const NEW_CAR = gql`
   }
 `;
 
+export const NEW_CARS_FILE_EXCEL = gql`
+  mutation newCarFileEcxel($car:InputCar){
+    newCarFileEcxel(car:$car){
+      state
+      message
+      placa
+      modelo
+      tipo
+      marca
+      propietario
+      documento
+      detalle
+      fecha
+      imageUrl
+    }
+  }
+`;
+
 export const EDIT_CAR = gql`
   mutation editCar($car:InputCar){
     editCar(car:$car){

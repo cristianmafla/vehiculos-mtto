@@ -53,9 +53,8 @@ export const uploadImageUser = async (upload, email) => {
 
 
 export const uploadImageCar = async (upload, placa) => {
-  console.log('upload', upload);
   if (upload) {
-    let UPLOAD_DIR = `./public/car/${placa}/images`
+    let UPLOAD_DIR = `./public/car/${placa}/images`;
 
     const
       { createReadStream, filename, mimetype } = await upload,

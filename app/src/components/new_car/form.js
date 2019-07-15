@@ -69,7 +69,7 @@ class Form extends  Component {
 							.then(() => this.props.history.push('/list_cars'))
 							.catch(error => console.log('*** Error_refetch', error));
 					}else{
-						this.stateErrorValid(data.newUser.message)
+						this.stateErrorValid(data.newCar.message)
 					}
 				})
 				.catch(error => console.log('error_newCar',error));

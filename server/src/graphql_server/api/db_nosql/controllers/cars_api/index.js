@@ -1,7 +1,10 @@
-import { addNewCar, updateCar } from './utils'
+import { addNewCar, addNewCarFileEcxel, updateCar } from './utils'
 import { carApi as model } from  '../../models/cars_api';
 
 export const newCar = car => addNewCar(car);
+
+export const newCarFileEcxel = car => addNewCarFileEcxel(car);
+
 
 export const paginationCars = (limit, offset, currentUserApi) => {
     if (currentUserApi) {

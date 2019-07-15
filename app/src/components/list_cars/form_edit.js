@@ -3,6 +3,7 @@ import { EDIT_CAR } from '../../graphql_client/mutations/mutationCar';
 import { Mutation } from 'react-apollo';
 import MessageFlash from '../utils/messageflash';
 import { ImageUrlUpload, ImageUploadValid, SizeImageCar } from '../utils';
+import moment from 'moment';
 
 class FormEdit extends  Component {
 
@@ -83,7 +84,7 @@ class FormEdit extends  Component {
 						document.getElementById('documento').value = '';
 						document.getElementById('detalle').value = '';
 						document.getElementById('fecha').value = '';
-						document.getElementById('imageUser').src = 'public/assets/img_app/car.png';
+						document.getElementById('imageCar').src = 'public/assets/img_app/car.png';
 						this.props.closeModal();
 					});
 				})
@@ -251,8 +252,8 @@ class FormEdit extends  Component {
 									name="fecha"
 									className="form-control"
 									type="text"
-									defaultValue={this.props.car.fecha}
-								/>
+									defaultValue={moment(this.props.car.fecha).format('LLL')}
+						/>
 							</div>
 						</div>
 

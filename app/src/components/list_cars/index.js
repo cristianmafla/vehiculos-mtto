@@ -1,6 +1,7 @@
 import React,{Component, Fragment} from 'react';
-import { Query } from 'react-apollo';
+import { Query,Mutation } from 'react-apollo';
 import { PAGINATION_CARS} from '../../graphql_client/queries/queryCar';
+import { NEW_CARS_FILE_EXCEL } from '../../graphql_client/mutations/mutationCar';
 import { Helmet } from 'react-helmet';
 import TemplateLayout from '../templateLayout';
 import readXlsxFile from 'read-excel-file';
@@ -65,9 +66,79 @@ class ListCars extends Component {
 		});
 	};
 
-	exportExcelDataBase = data => {
-		console.log('data',data);
+	exportExcelDataBaseXXXX = (data, newCarFileEcxel) => {
+		let documentEcxelDB = data.map((row) => {
+
+			newCarFileEcxel({
+				variables: {
+					car: {
+						placa: row[0],
+						modelo: row[1],
+						tipo: row[2],
+						marca: row[3],
+						propietario: row[4],
+						documento: row[5],
+						detalle: row[6],
+						fecha: row[7],
+						imageUrl:'public/assets/img_app/car.png'
+					}
+				}
+			})
+			.then(({ data }) => {
+				if (data.newCarFileEcxel.state) {
+					this.props.refetch().then(() => { }).catch(error => console.log('*** Error_refetch', error));
+				}
+			})
+			.catch(error => console.log('error_newCarFileEcxel', error));
+
+			return {
+				placa:row[0],
+				modelo:row[1],
+				tipo:row[2],
+				marca:row[3],
+				propietario:row[4],
+				documento:row[5],
+				detalle:row[6],
+				fecha: moment(row[7]).format('LLL'),
+			}
+		});
+		console.log('documentEcxelDB',documentEcxelDB)
 	}
+
+	exportExcelDataBase = (data, newCarFileEcxel) => {
+		let i = 0;
+		data.map(row => {
+			i = i + 1;
+			newCarFileEcxel({ variables: { car:{ 
+					placa: row[0],
+					modelo: String(row[1]),
+					tipo: row[2],
+					marca: row[3],
+					propietario: row[4],
+					documento: String(row[5]),
+					detalle: row[6],
+					fecha: new Date(row[7])
+			    }
+			 }})
+			.then(({ data }) => {
+				if (data.newCarFileEcxel.state) {
+					this.props.refetch().then(() => { }).catch(error => console.log('*** Error_refetch', error));
+				}
+			})
+			.catch(error => console.log('error_newCarFileEcxel', error));
+
+			return {
+				placa: row[0],
+				modelo: row[1],
+				tipo: row[2],
+				marca: row[3],
+				propietario: row[4],
+				documento: row[5],
+				detalle: row[6],
+				fecha: new Date(),
+			}
+		});
+	};
 
 	render(){
 		return(
@@ -103,12 +174,16 @@ class ListCars extends Component {
 						<div className="col-lg-6 p-2">
 							<h2 className="h4  font-weight-normal text-center">
 								DATA EXCEL 
-								<i
-									style={{paddingLeft:'5px',cursor:'pointer',display:this.state.excel != 0 ? 'inline-block' : 'none'}}
-									className="fas fa-file-export"
-									title='export data-base'
-									onClick={() => this.exportExcelDataBase(this.state.excel)}
-								></i>
+								<Mutation mutation={NEW_CARS_FILE_EXCEL} >
+									{(newCarFileEcxel, { loading, error, data }) => (
+										<i
+											style={{ paddingLeft: '25px', cursor: 'pointer', display: this.state.excel != 0 ? 'inline-block' : 'none' }}
+											className="fas fa-file-export"
+											title='export data-base'
+											onClick={() => this.exportExcelDataBase(this.state.excel, newCarFileEcxel)}
+										></i>
+									)}
+								</Mutation>
 							</h2>
 
 							{

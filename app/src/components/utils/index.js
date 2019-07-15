@@ -55,5 +55,5 @@ export const SizeImageCar = (url, size) => {
 	if (url !== 'false' && url !== false) {
 		return url.replace('**size**', size);
 	}
-	return 'public/assets/images_locals/car.png';
+	return 'public/assets/img_app/car.png';
 };

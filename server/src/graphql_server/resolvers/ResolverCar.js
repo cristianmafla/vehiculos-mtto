@@ -1,6 +1,6 @@
 import fs from 'fs';
 import { GraphQLUpload } from 'graphql-upload';
-import { newCar, editCar, deleteCar, paginationCars, totalCars } from '../api/db_nosql/controllers/cars_api';
+import { newCar, newCarFileEcxel, editCar, deleteCar, paginationCars, totalCars } from '../api/db_nosql/controllers/cars_api';
 
 export default {
     Upload: GraphQLUpload,
@@ -16,6 +16,8 @@ export default {
     Mutation: {
 
         newCar: (_, { car }) => newCar(car),
+
+        newCarFileEcxel: (_, { car }) => newCarFileEcxel(car),
 
         editCar: (_, { car }) => editCar(car),
 

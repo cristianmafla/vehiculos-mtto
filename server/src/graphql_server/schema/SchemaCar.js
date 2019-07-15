@@ -19,7 +19,10 @@ type Mutation {
   """CREATION NEW MTTO CAR"""
   newCar(car:InputCar):Car
 
-    """EDIT CAR"""
+  """CREATION NEW MTTO CAR FILE EXCEL"""
+  newCarFileEcxel(car:InputCar):Car
+
+  """EDIT CAR"""
   editCar(car:InputCar):Car
 
   """DELETE CAR"""
